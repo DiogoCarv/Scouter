@@ -51,7 +51,7 @@ function App() {
             </div>
 
             <div className='direita'>
-              <p className='texto1'>Coloque aqui os problemas urbanos e rurais existentes pertos de você, assim avise os orgãos responsáveis e os outros moradores.</p>
+              <p className='texto1'>Coloque aqui os problemas urbanos e rurais existentes pertos de você,<br></br> assim avise os orgãos responsáveis e os outros moradores.</p>
             </div>
 
         </div>

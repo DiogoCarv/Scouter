@@ -41,6 +41,7 @@
   margin-top: 25px;
   text-align: center;
   background-color: #0b3e25;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .botao_entrar:hover{
   border-color: blueviolet;
@@ -70,7 +71,7 @@
 
 .meio{
   width: 100%;
-  height: 3000px;
+  height: 2000px;
 }
 .centro {
   display: flex;
@@ -102,7 +103,7 @@
 
 .letreiro{
   width: 100%;
-  height: 1000px;
+  height: 850px;
   background-image: url(./imagens/cidade_verde.jpg);
   display: flex;
   flex-direction: column;
@@ -163,15 +164,24 @@
   color: black;
   justify-content: center;
   align-items: center;
+  font-size: 100px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .direita{
   width: 50%;
   height: 400px;
+  align-items: center
 }
 
 .texto1{
   color: black;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 130px;
 }
 
 /* ============================== */
