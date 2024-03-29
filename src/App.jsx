@@ -44,6 +44,18 @@ function App() {
 
         </div>
 
+        <div className='explicacao'>
+
+          <div className='esquerda'>
+            <p>MOTIVO</p>
+          </div>
+
+          <div className='direita'>
+            <p>Coloque aqui os problemas urbanos e rurais existentes pertos de você, assim avise os orgãos responsáveis e os outros moradores.</p>
+          </div>
+
+        </div>
+
       </div>
 
       <div className='rodape'>

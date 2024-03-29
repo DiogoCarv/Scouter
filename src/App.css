@@ -66,13 +66,20 @@
   height: 3000px;
 }
 
+/* ============================== */
+
 .letreiro{
   width: 100%;
-  height: 700px;
+  height: 1000px;
   background-image: url(./imagens/cidade_verde.jpg);
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.nome_letreiro{
+  width: 100%;
+  height: 350px;
 }
 
 .nome{
@@ -83,8 +90,14 @@
   justify-content: center;
 }
 
+.botao_letreiro{
+  width: 100%;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+}
+
 .botao_saiba{
-  display: flex;
   justify-content: center;
   width: 350px;
   height: 100px;
@@ -96,6 +109,25 @@
 .botao_saiba:hover{
   border-color: blueviolet;
   font-weight: bold;
+}
+
+/* ============================== */
+
+.explicacao{
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.esquerda{
+  width: 50%;
+  height: 400px;
+}
+
+.direita{
+  width: 50%;
+  height: 400px;
 }
 
 /* ============================== */
