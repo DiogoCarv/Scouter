@@ -32,31 +32,33 @@ function App() {
 
       <div className='meio'>
 
-        <div className='letreiro'>
+          <div className='letreiro'>
 
-          <div className='nome_letreiro'>
-            <h1 className='nome'>SCOUTER</h1>
+            <div className='nome_letreiro'>
+                <h1 className='nome'>SCOUTER</h1>
+            </div>
+            <div class="centro_botao">
+        <button class="botao_saiba">Saiba Mais</button>
+      </div>
           </div>
 
-          <div className='botao_letreiro'>
-            <button className='botao_saiba'>SAIBA MAIS</button>
-          </div>
-
-        </div>
+       
 
         <div className='explicacao'>
 
-          <div className='esquerda'>
-            <p className='titulo1'>MOTIVO</p>
-          </div>
+            <div className='esquerda'>
+              <p className='titulo1'>MOTIVO</p>
+            </div>
 
-          <div className='direita'>
-            <p className='texto1'>Coloque aqui os problemas urbanos e rurais existentes pertos de você, assim avise os orgãos responsáveis e os outros moradores.</p>
-          </div>
+            <div className='direita'>
+              <p className='texto1'>Coloque aqui os problemas urbanos e rurais existentes pertos de você, assim avise os orgãos responsáveis e os outros moradores.</p>
+            </div>
 
         </div>
 
       </div>
+
+      
 
       <div className='rodape'>
         <p className='direitos_rodape1'>SCOUTER® - Marca Registrada</p>
