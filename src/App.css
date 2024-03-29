@@ -186,6 +186,41 @@
 
 /* ============================== */
 
+.faixa_quadrado{
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.quadrado{
+  width: 900px;
+  height: 500px;
+  background-image: url(./imagens/cidade_verde.jpg);
+  border-radius: 30px;
+}
+
+.esquerda_quadrado{
+  width: 50%;
+  height: 100%;
+  background-color: white;
+}
+
+.direita_quadrado{
+  width: 50%;
+  height: 100%;
+}
+
+.titulo2{
+  color: black;
+  font-weight: bold;
+  font-size: 40px;
+  align-items: center;
+  justify-items: center;
+}
+
+/* ============================== */
+
 .rodape{
   width: 100%;
   height: 90px;

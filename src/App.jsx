@@ -37,9 +37,11 @@ function App() {
             <div className='nome_letreiro'>
                 <h1 className='nome'>SCOUTER</h1>
             </div>
+
             <div class="centro_botao">
-        <button class="botao_saiba">Saiba Mais</button>
-      </div>
+              <button class="botao_saiba">Saiba Mais</button>
+            </div>
+
           </div>
 
        
@@ -53,6 +55,22 @@ function App() {
             <div className='direita'>
               <p className='texto1'>Coloque aqui os problemas urbanos e rurais existentes pertos de você,<br></br> assim avise os orgãos responsáveis e os outros moradores.</p>
             </div>
+
+        </div>
+
+        <div className='faixa_quadrado'>
+
+          <div className='quadrado'>
+
+            <div className='esquerda_quadrado'>
+              <p className='titulo2'>Envie suas reclamações com fotos no sistema</p>
+            </div>
+
+            <div className='direita_quadrado'>
+
+            </div>
+
+          </div>
 
         </div>
 
