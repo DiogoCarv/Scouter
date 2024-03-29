@@ -47,11 +47,11 @@ function App() {
         <div className='explicacao'>
 
           <div className='esquerda'>
-            <p>MOTIVO</p>
+            <p className='titulo1'>MOTIVO</p>
           </div>
 
           <div className='direita'>
-            <p>Coloque aqui os problemas urbanos e rurais existentes pertos de você, assim avise os orgãos responsáveis e os outros moradores.</p>
+            <p className='texto1'>Coloque aqui os problemas urbanos e rurais existentes pertos de você, assim avise os orgãos responsáveis e os outros moradores.</p>
           </div>
 
         </div>
