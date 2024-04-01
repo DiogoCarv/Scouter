@@ -12,6 +12,7 @@ import logoVerde from './imagens/logo_verde.png'
 import nomeBranco from './imagens/nome_branco.png'
 import nomeVerde from './imagens/nome_verde.png'
 
+
 function App() {
   return(
 
@@ -36,10 +37,13 @@ function App() {
 
             <div className='nome_letreiro'>
                 <h1 className='nome'>SCOUTER</h1>
+                
             </div>
+            <i className="icon icon-angle-down seta"></i>
             <div class="centro_botao">
-        <button class="botao_saiba">Saiba Mais</button>
-      </div>
+             
+              <button class="botao_saiba">Saiba Mais</button>
+           </div>
           </div>
 
        
@@ -48,8 +52,9 @@ function App() {
 
             <div className='esquerda'>
               <p className='titulo1'>MOTIVO</p>
+             
             </div>
-
+           
             <div className='direita'>
               <p className='texto1'>Coloque aqui os problemas urbanos e rurais existentes pertos de você, assim avise os orgãos responsáveis e os outros moradores.</p>
             </div>
