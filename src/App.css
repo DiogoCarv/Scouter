@@ -132,6 +132,7 @@
   background-image: url(./imagens/cidade_verde.jpg) ;
   display: flex;
   flex-direction: column;
+  background-size: cover; /* Ajuste para cobrir toda a área da div */
   justify-content: center;
   align-items: center;
   
