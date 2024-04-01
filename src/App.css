@@ -102,12 +102,12 @@
 }
 .icon.seta {
     
-  text-align:end;
-  font-size:45px;
+  text-align:center;
+  font-size:60px;
   color:#ff0000;
-  width:50px;
-  height:50px;
-  background: #000;
+  width:64px;
+  height:70px;
+  background: transparent url(./imagens/seta-para-baixo.png) no-repeat 0px 0px;
   float:none;
   display:flex;
   opacity:0;
@@ -129,11 +129,13 @@
 .letreiro{
   width: 100%;
   height: 900px;
-  background-image: url(./imagens/cidade_verde.jpg);
+  background-image: url(./imagens/cidade_verde.jpg) ;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
+ 
 }
 
 .nome_letreiro{
