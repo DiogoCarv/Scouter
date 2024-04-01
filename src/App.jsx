@@ -56,8 +56,24 @@ function App() {
             </div>
            
             <div className='direita'>
-              <p className='texto1'>Coloque aqui os problemas urbanos e rurais existentes pertos de você, assim avise os orgãos responsáveis e os outros moradores.</p>
+              <p className='texto1'>Coloque aqui os problemas urbanos e rurais existentes pertos de você,<br></br> assim avise os orgãos responsáveis e os outros moradores.</p>
             </div>
+
+        </div>
+
+        <div className='faixa_quadrado'>
+
+          <div className='quadrado'>
+
+            <div className='esquerda_quadrado'>
+              <p className='titulo2'>Envie suas reclamações com fotos no sistema</p>
+            </div>
+
+            <div className='direita_quadrado'>
+
+            </div>
+
+          </div>
 
         </div>
 
