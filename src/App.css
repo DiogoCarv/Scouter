@@ -71,7 +71,7 @@
 
 .meio{
   width: 100%;
-  height: 2000px;
+  height: 1800px;
 }
 .centro {
   display: flex;
@@ -204,6 +204,10 @@
   width: 50%;
   height: 100%;
   background-color: white;
+  opacity: 50%;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
 }
 
 .direita_quadrado{
@@ -217,6 +221,11 @@
   font-size: 40px;
   align-items: center;
   justify-items: center;
+  background-color: transparent;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  display: flex;
+  margin-left: 10px;
 }
 
 /* ============================== */
