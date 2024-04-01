@@ -32,17 +32,20 @@ function App() {
       </div>
 
       <div className='meio'>
-
+      
           <div className='letreiro'>
 
             <div className='nome_letreiro'>
                 <h1 className='nome'>SCOUTER</h1>
                 
-            </div>
-            <i className="icon icon-angle-down seta"></i>
+            </div>  
             <div class="centro_botao">
-             
+            <i className="icon icon-angle-down seta"></i>
+            </div>
+            <div class="centro_botao">
+              
               <button class="botao_saiba">Saiba Mais</button>
+              
            </div>
           </div>
 
