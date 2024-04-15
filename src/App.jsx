@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 
 import './App.css'
+import LoginForm from './components/LoginForm';
 
 import cidadeVerde from './imagens/cidade_verde.jpg'
 
@@ -11,9 +12,28 @@ import logoVerde from './imagens/logo_verde.png'
 
 import nomeBranco from './imagens/nome_branco.png'
 import nomeVerde from './imagens/nome_verde.png'
+import RegistrationForm from './components/RegistrationForm';
 
 
 function App() {
+  const [showLogin, setShowLogin] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
+
+  const handleLoginButtonClick = () => {
+      setShowLogin(true);
+  };
+
+  const handleCloseLogin = () => {
+      setShowLogin(false);
+  };
+
+  const handleRegisterButtonClick = () => {
+    setShowRegister(true);
+};
+
+const handleCloseRegister = () => {
+    setShowRegister(false);
+};
   return(
 
     <div className='App'>
@@ -25,8 +45,29 @@ function App() {
         </div>
 
         <div className='botoes_cabecalho'>
-          <button className='botao_entrar'>ENTRAR</button>
-          <button className='botao_registrar'>REGISTRAR</button>
+            {!showLogin && (
+                <button className='botao_entrar' onClick={handleLoginButtonClick}>ENTRAR</button>
+            )}
+            {showLogin && (
+                <div className="overlay" onClick={handleCloseLogin}>
+                    <div className="modal">
+                        <button className="close-button" onClick={handleCloseLogin}>X</button>
+                        <LoginForm />
+                    </div>
+                </div>
+            )}
+
+          {!showRegister && (
+                <button className='botao_registrar' onClick={handleRegisterButtonClick}>REGISTRAR</button>
+            )}
+            {showRegister && (
+                <div className="overlay" onClick={handleCloseRegister}>
+                    <div className="modal">
+                        <button className="close-button" onClick={handleCloseRegister}>X</button>
+                        <RegistrationForm />
+                    </div>
+                </div>
+            )}
         </div>
 
       </div>
