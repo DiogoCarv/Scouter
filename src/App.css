@@ -18,6 +18,7 @@
 .logo_cabecalho{
   width: 50%;
   height: 100%;
+  text-align: left;
   justify-content: flex-start;
 }
 

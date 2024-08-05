@@ -100,7 +100,7 @@ const handleCloseRegister = () => {
             </div>
            
             <div className='direita'>
-              <p className='texto1'>Coloque aqui os problemas urbanos e rurais existentes pertos de você,<br></br> assim avise os orgãos responsáveis e os outros moradores.</p>
+              <p className='texto1'>Bem-vindo a plataforma onde os cidadãos podem reportar problemas urbanos diretamente para os órgãos competentes. Nosso objetivo é melhorar a qualidade de vida em nossa cidade, facilitando a comunicação entre a população e as autoridades responsáveis pela manutenção e desenvolvimento urbano.,<br></br> assim avise os orgãos responsáveis e os outros moradores.</p>
             </div>
 
         </div>
