@@ -1,8 +1,8 @@
-
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const sequelize = require('./config/database');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -22,6 +22,9 @@ app.use('/problemas', problemaRoutes);
 app.use('/notificacoes', notificacaoRoutes);
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+
+sequelize.sync().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Servidor rodando na porta ${PORT}`);
+    });
 });
