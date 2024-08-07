@@ -9,14 +9,18 @@ function VerificarProblema() {
     const fetchProblemas = async () => {
       try {
         const response = await axios.get('http://localhost:5000/moradores/verificar-problema');
+        if (response.data.length === 0) {
+          alert('Nenhum problema encontrado.');
+        }
         setProblemas(response.data);
       } catch (error) {
+        alert('Erro ao carregar problemas.');
         console.error(error);
       }
     };
-
     fetchProblemas();
   }, []);
+  
 
   return (
     <div>
