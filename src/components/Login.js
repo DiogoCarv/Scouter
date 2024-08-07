@@ -6,15 +6,21 @@ function Login() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
-  const handleSubmit = async (e) => {
+  cconst handleSubmit = async (e) => {
     e.preventDefault();
+    if (!email || !senha) {
+      alert('Por favor, preencha todos os campos.');
+      return;
+    }
     try {
       const response = await axios.post('http://localhost:5000/moradores/autenticar', { email, senha });
-      console.log(response.data);
+      alert('Login bem-sucedido!');
     } catch (error) {
+      alert('Erro ao fazer login. Verifique suas credenciais.');
       console.error(error);
     }
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>
