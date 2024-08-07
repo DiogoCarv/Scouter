@@ -7,6 +7,9 @@ const jwt = require('jsonwebtoken');
 exports.registrarProblema = async (req, res) => {
     try {
         const { descricao, localizacao, tipo, moradorId } = req.body;
+        if (!descricao || !localizacao || !tipo || !moradorId) {
+            return res.status(400).json({ error: 'Todos os campos são obrigatórios.' });
+          }
         const problema = await Problema.create({
             descricao,
             localizacao,
