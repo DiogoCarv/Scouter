@@ -9,13 +9,19 @@ function RegistrarProblema() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!descricao || !localizacao || !tipo) {
+      alert('Por favor, preencha todos os campos.');
+      return;
+    }
     try {
       const response = await axios.post('http://localhost:5000/moradores/registrar-problema', { descricao, localizacao, tipo });
-      console.log(response.data);
+      alert('Problema registrado com sucesso!');
     } catch (error) {
+      alert('Erro ao registrar problema.');
       console.error(error);
     }
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>
