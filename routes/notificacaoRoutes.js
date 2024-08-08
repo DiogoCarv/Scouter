@@ -4,5 +4,5 @@ import { enviar } from '../controllers/notificacaoController';
 
 router.post('/enviar', enviar);
 
-module.exports = router;
+export default router;
   

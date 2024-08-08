@@ -8,4 +8,4 @@ router.post('/registrar-problema', registrarProblema);
 router.get('/verificar-problema', verificarProblema);
 router.post('/autenticar', autenticar);
 
-module.exports = router;
+export default router;

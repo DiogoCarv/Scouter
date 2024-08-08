@@ -7,5 +7,4 @@ router.get('/:id', obterProblema);
 router.post('/', criarProblema);
 router.put('/:id', atualizarProblema);
 router.delete('/:id', excluirProblema);
-
-module.exports = router;
+export default router;

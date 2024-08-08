@@ -5,4 +5,4 @@ import { atualizarStatus, autenticar } from '../controllers/orgaoCompetenteContr
 router.post('/atualizar-status', atualizarStatus);
 router.post('/autenticar', autenticar);
 
-module.exports = router;
+export default router;

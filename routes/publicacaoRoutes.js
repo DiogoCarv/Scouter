@@ -1,8 +1,8 @@
-import express from 'express';
-import router from  express.Router();
+const express = require('express');
+const router = express.Router();
 import { criarPublicacao, listarPublicacoes } from '../controllers/publicacaoController';
 
 router.post('/publicacao', criarPublicacao);
 router.get('/publicacao', listarPublicacoes);
 
-module.exports = router;
+export default router;
