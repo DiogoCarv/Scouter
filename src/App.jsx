@@ -1,4 +1,4 @@
-//Importações já vindas
+//Importações já vindas do react
 
 import { useState } from 'react'
 
@@ -104,6 +104,8 @@ const ImageMarked = styled('span')(({ theme }) => ({
 }));
 
 //----------------------------------------
+
+//função
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
