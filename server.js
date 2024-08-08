@@ -4,8 +4,15 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const sequelize = require('./config/database');
 
+
+// Configuração de CORS para permitir requisições do front-end
+app.use(cors({
+    origin: 'http://localhost:3000', // Substitua pela URL do seu front-end
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(bodyParser.json());
-app.use(cors());
 
 // Importar rotas
 const moradorRoutes = require('./routes/moradorRoutes');
