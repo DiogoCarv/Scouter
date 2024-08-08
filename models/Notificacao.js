@@ -2,7 +2,7 @@ import Sequelize from 'sequelize';
 import sequelize from '../config/database';
 import Morador from './Morador';
 
-const Notificacao = sequelize.define('notificar', {
+export const Notificacao = sequelize.define('notificar', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

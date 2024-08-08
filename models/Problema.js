@@ -3,7 +3,7 @@ import sequelize from '../config/database';
 import Morador from './Morador';
 import OrgaoCompetente from './OrgaoCompetente';
 
-const Problema = sequelize.define('Problema', {
+export const Problema = sequelize.define('Problema', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

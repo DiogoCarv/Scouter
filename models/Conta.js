@@ -1,7 +1,7 @@
 import sequelize from'../config/database';
 import TipoConta from'./TipoConta';
 
-const Conta = sequelize.define('conta', {
+export const Conta = sequelize.define('conta', {
     id_conta: {
         type: DataTypes.INTEGER,
         primaryKey: true,
