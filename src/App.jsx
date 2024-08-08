@@ -199,12 +199,15 @@ function App() {
         </div>
 
         <div className='explicacao'>
-
           <Box
             sx={{
-              display: 'flex',
+              display: 'flex',  // Mantém os itens internos dispostos em linha
+              justifyContent: 'center',  // Centraliza os itens dentro do Box
               alignItems: 'center',
               bgcolor: 'background.paper',
+              border: '1px solid',
+              borderColor: 'divider',
+              borderRadius: 2,
               color: 'text.secondary',
               '& svg': {
                 m: 1,
@@ -212,25 +215,18 @@ function App() {
             }}
           >
             <h1 className='titulo1'>Motivo</h1>
-            <p className='texto1'>Bem-vindo a plataforma onde os cidadãos podem reportar problemas urbanos diretamente para os órgãos competentes. Nosso objetivo é melhorar a qualidade de vida em nossa cidade, facilitando a comunicação entre a população e as autoridades responsáveis pela manutenção e desenvolvimento urbano, assim avise os orgãos responsáveis e os outros moradores.</p>
-          </Box>
 
+            <p className='texto1'>Bem-vindo a plataforma onde os cidadãos podem reportar problemas urbanos diretamente para os órgãos competentes. Nosso objetivo é melhorar a qualidade de vida em nossa cidade, facilitando a comunicação entre a população e as autoridades responsáveis pela manutenção e desenvolvimento urbano, assim avise os órgãos responsáveis e os outros moradores.</p>
+          </Box>
         </div>
 
         <div className='faixa_quadrado'>
-
           <div className='quadrado'>
-
             <div className='esquerda_quadrado'>
               <p className='titulo2'>Envie suas reclamações com fotos no sistema</p>
             </div>
-
-            <div className='direita_quadrado'>
-
-            </div>
-
+            <div className='direita_quadrado'></div>
           </div>
-
         </div>
 
       </div>

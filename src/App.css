@@ -92,75 +92,79 @@
 
 /* ============================== */
 
-.explicacao{
+.explicacao {
   width: 80%;
   height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 auto; /* Centraliza a div explicacao horizontalmente */
 }
 
-.titulo1{
+.titulo1 {
   color: black;
-  justify-content: center;
-  align-items: center;
   font-size: 100px;
   font-weight: bold;
   text-align: center;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
-.texto1{
+.texto1 {
   color: black;
-  align-items: center;
   font-size: 20px;
   text-align: justify;
-  margin-top: 70px;
+  margin-top: 40px;
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 /* ============================== */
 
-.faixa_quadrado{
+.faixa_quadrado {
   width: 100%;
   height: 500px;
   display: flex;
   justify-content: center;
 }
 
-.quadrado{
+.quadrado {
   width: 900px;
   height: 500px;
   background-image: url(./imagens/cidade_verde.jpg);
   border-radius: 30px;
+  display: flex; /* Adicionado para tornar flexível */
 }
 
-.esquerda_quadrado{
+.esquerda_quadrado {
   width: 50%;
   height: 100%;
   background-color: white;
-  opacity: 50%;
+  opacity: 0.8; /* Ajustado para valor numérico */
   display: flex;
   justify-content: center;
-  justify-items: center;
+  align-items: center; /* Corrigido para alinhar verticalmente */
 }
 
-.direita_quadrado{
+.direita_quadrado {
   width: 50%;
   height: 100%;
-  background-image: "./imagens/lixo.jpg";
+  background-image: url(./imagens/lixo.jpg); /* Corrigido para aplicar imagem */
+  background-size: cover; /* Ajusta a imagem para cobrir toda a área */
+  background-position: center; /* Centraliza a imagem */
+  border-radius: 2px;
 }
 
-.titulo2{
+.titulo2 {
   color: black;
   font-weight: bold;
   font-size: 40px;
-  align-items: center;
-  justify-items: center;
+  text-align: center;
   background-color: transparent;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin: 0;
   display: flex;
-  margin-left: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ============================== */
