@@ -1,7 +1,7 @@
-const Morador = require('../models/Morador');
-const Problema = require('../models/Problema');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+import Morador from '../models/Morador';
+import Problema from '../models/Problema';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 // Registrar problema
 exports.registrarProblema = async (req, res) => {

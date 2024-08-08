@@ -1,4 +1,4 @@
-const Publicacao = require('../models/Publicacao');
+import Publicacao from '../models/Publicacao';
 
 exports.criarPublicacao = async (req, res) => {
     try {
