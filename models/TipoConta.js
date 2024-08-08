@@ -1,4 +1,3 @@
-import { Sequelize, DataTypes } from 'sequelize';
 import sequelize from '../config/database';
 
 const TipoConta = sequelize.define('tipo_conta', {

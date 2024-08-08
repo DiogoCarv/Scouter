@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function VerificarProblema() {
   const [problemas, setProblemas] = useState([]);
-  const [publicacoes, setPublicacoes] = useState([]);
+  const [publicacoes] = useState([]);
 
   useEffect(() => {
     const fetchProblemas = async () => {

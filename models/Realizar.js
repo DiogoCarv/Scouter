@@ -1,4 +1,3 @@
-import Realizar from '../models/Realizar';
 import Publicacao from '../models/Publicacao';
 
 exports.realizarPublicacao = async (req, res) => {

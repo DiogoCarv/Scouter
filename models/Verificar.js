@@ -1,6 +1,4 @@
-import Verificar from '../models/Verificar';
-
-exports.verificarPublicacao = async (req, res) => {
+export async function verificarPublicacao(req, res) {
     try {
         const { id_administrador, id_publicacao } = req.body;
 
@@ -22,4 +20,4 @@ exports.verificarPublicacao = async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: 'Erro ao verificar publicação' });
     }
-};
+}
