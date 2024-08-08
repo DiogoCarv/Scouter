@@ -1,6 +1,6 @@
 import Publicacao from '../models/Publicacao';
 
-exports.realizarPublicacao = async (req, res) => {
+export const realizarPublicacao = async (req, res) => {
     try {
         const { id_reportador, mensagem_publicacao, foto_publicacao } = req.body;
         const novaPublicacao = await Publicacao.create({
