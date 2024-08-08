@@ -27,6 +27,7 @@ app.use('/administradores', administradorRoutes);
 app.use('/orgaos', orgaoCompetenteRoutes);
 app.use('/problemas', problemaRoutes);
 app.use('/notificacoes', notificacaoRoutes);
+app.use('/', authRoutes); // Adicione esta linha
 
 const PORT = process.env.PORT || 5000;
 
