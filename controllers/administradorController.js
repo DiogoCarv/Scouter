@@ -1,8 +1,6 @@
-import Administrador  from '../models/Administrador';
+
 import Morador  from '../models/Morador';
 import Problema  from '../models/Problema';
-import bcrypt  from 'bcrypt';
-import jwt  from 'jsonwebtoken';
 
 // Gerenciar usuários
 exports.gerenciarUsuarios = async (req, res) => {
