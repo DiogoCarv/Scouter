@@ -8,4 +8,4 @@ router.post('/login', login);
 // Rota para registro
 router.post('/register', register);
 
-module.exports = router;
+export default router;
