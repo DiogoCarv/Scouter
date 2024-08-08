@@ -2,7 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 const Morador = require('./Morador');
 
-const Notificacao = sequelize.define('Notificacao', {
+const Notificacao = sequelize.define('notificar', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -25,5 +25,7 @@ const Notificacao = sequelize.define('Notificacao', {
         }
     }
 });
+Notificar.belongsTo(Publicacao, { foreignKey: 'id_publicacao' });
+Notificar.belongsTo(OrgaoResponsavel, { foreignKey: 'id_orgao' });
 
 module.exports = Notificacao;

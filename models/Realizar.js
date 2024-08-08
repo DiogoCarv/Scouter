@@ -13,8 +13,17 @@ exports.realizarPublicacao = async (req, res) => {
             id_publicacao: novaPublicacao.id,
             id_reportador
         });
+        const Realizar = sequelize.define('realizar', {
+            id_realizar_publicacao: {
+                type: DataTypes.INTEGER,
+                primaryKey: true,
+                autoIncrement: true
+            }
+        });
 
         res.status(201).json(novaPublicacao);
+        Realizar.belongsTo(Publicacao, { foreignKey: 'id_publicacao' });
+        Realizar.belongsTo(Reportador, { foreignKey: 'id_reportador' });
     } catch (error) {
         res.status(500).json({ error: 'Erro ao realizar publicação' });
     }
