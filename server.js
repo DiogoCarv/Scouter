@@ -1,5 +1,5 @@
 import express from 'express';
-const app = express();
+import app from express();
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import sequelize from './config/database';
@@ -13,12 +13,12 @@ app.use(cors({
 app.use(bodyParser.json());
 
 // Importar rotas
-const moradorRoutes = require('./routes/moradorRoutes');
-const administradorRoutes = require('./routes/administradorRoutes');
-const orgaoCompetenteRoutes = require('./routes/orgaoCompetenteRoutes');
-const problemaRoutes = require('./routes/problemaRoutes');
-const notificacaoRoutes = require('./routes/notificacaoRoutes');
-const authRoutes = require('./routes/authRoutes'); 
+import moradorRoutes from'./routes/moradorRoutes';
+import administradorRoutes from'./routes/administradorRoutes';
+import orgaoCompetenteRoutes from'./routes/orgaoCompetenteRoutes';
+import problemaRoutes from'./routes/problemaRoutes';
+import notificacaoRoutes from'./routes/notificacaoRoutes';
+import authRoutes from'./routes/authRoutes'; 
 
 // Usar rotas
 app.use('/moradores', moradorRoutes);
