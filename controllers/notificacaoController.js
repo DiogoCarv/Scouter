@@ -1,7 +1,7 @@
 import Notificacao from'../models/Notificacao';
 
 // Enviar notificação
-exports.enviar = async (req, res) => {
+export const enviar = async (req, res) => {
     try {
         const { mensagem, moradorId } = req.body;
         const notificacao = await Notificacao.create({

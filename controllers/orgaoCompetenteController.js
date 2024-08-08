@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 // Atualizar status
-exports.atualizarStatus = async (req, res) => {
+export const atualizarStatus = async (req, res) => {
     try {
         const { id, status } = req.body;
         const problema = await Problema.findByPk(id);
@@ -22,7 +22,7 @@ exports.atualizarStatus = async (req, res) => {
 };
 
 // Autenticar órgão competente
-exports.autenticar = async (req, res) => {
+export const autenticar = async (req, res) => {
     try {
         const { email, senha } = req.body;
         const orgaoCompetente = await OrgaoCompetente.findOne({ where: { email } });

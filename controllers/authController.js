@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken ';
 import User from '../models/User '; 
 
 // Controlador de login
-exports.login = async (req, res) => {
+export const login = async (req, res) => {
     const { username, password } = req.body;
 
     try {
@@ -29,7 +29,7 @@ exports.login = async (req, res) => {
 };
 
 // Controlador de registro
-exports.register = async (req, res) => {
+export const register = async (req, res) => {
     const { username, password, address } = req.body;
 
     try {

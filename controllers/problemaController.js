@@ -1,7 +1,7 @@
 import Problema from '../models/Problema';
 
 // Listar problemas
-exports.listarProblemas = async (req, res) => {
+export const listarProblemas = async (req, res) => {
     try {
         const problemas = await Problema.findAll();
         res.status(200).json(problemas);
@@ -11,7 +11,7 @@ exports.listarProblemas = async (req, res) => {
 };
 
 // Obter problema
-exports.obterProblema = async (req, res) => {
+export const obterProblema = async (req, res) => {
     try {
         const problema = await Problema.findByPk(req.params.id);
         if (!problema) {
@@ -24,7 +24,7 @@ exports.obterProblema = async (req, res) => {
 };
 
 // Criar problema
-exports.criarProblema = async (req, res) => {
+export const criarProblema = async (req, res) => {
     try {
         const { descricao, localizacao, tipo, moradorId, orgaoCompetenteId } = req.body;
         const problema = await Problema.create({
@@ -43,7 +43,7 @@ exports.criarProblema = async (req, res) => {
 };
 
 // Atualizar problema
-exports.atualizarProblema = async (req, res) => {
+export const atualizarProblema = async (req, res) => {
     try {
         const { id } = req.params;
         const { descricao, localizacao, tipo, status, moradorId, orgaoCompetenteId } = req.body;
@@ -67,7 +67,7 @@ exports.atualizarProblema = async (req, res) => {
 };
 
 // Excluir problema
-exports.excluirProblema = async (req, res) => {
+export const excluirProblema = async (req, res) => {
     try {
         const { id } = req.params;
         const problema = await Problema.findByPk(id);
