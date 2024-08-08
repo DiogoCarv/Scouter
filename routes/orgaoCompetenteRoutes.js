@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const { atualizarStatus, autenticar } = require('../controllers/orgaoCompetenteController');
+import express from 'express';
+import router from  express.Router();
+import { atualizarStatus, autenticar } from '../controllers/orgaoCompetenteController';
 
 router.post('/atualizar-status', atualizarStatus);
 router.post('/autenticar', autenticar);
