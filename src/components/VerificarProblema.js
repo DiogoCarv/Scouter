@@ -9,7 +9,7 @@ function VerificarProblema() {
   useEffect(() => {
     const fetchProblemas = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/moradores/verificar-problema');
+        const response = await axios.get('http://localhost:5173/moradores/verificar-problema');
         if (response.data.length === 0) {
           alert('Nenhum problema encontrado.');
         }

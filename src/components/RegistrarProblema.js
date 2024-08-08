@@ -16,7 +16,7 @@ function RegistrarProblema() {
       return;
     }
     try {
-      const response = await axios.post('http://localhost:5000/moradores/registrar-problema', { descricao, localizacao, tipo });
+      const response = await axios.post('http://localhost:5173/moradores/registrar-problema', { descricao, localizacao, tipo });
       alert('Problema registrado com sucesso!');
     } catch (error) {
       alert('Erro ao registrar problema.');
