@@ -1,5 +1,5 @@
-const Realizar = require('../models/Realizar');
-const Publicacao = require('../models/Publicacao');
+import Realizar from '../models/Realizar';
+import Publicacao from '../models/Publicacao';
 
 exports.realizarPublicacao = async (req, res) => {
     try {

@@ -1,4 +1,4 @@
-const Verificar = require('../models/Verificar');
+import Verificar from '../models/Verificar';
 
 exports.verificarPublicacao = async (req, res) => {
     try {
