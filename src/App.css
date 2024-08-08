@@ -193,11 +193,19 @@
   margin-top: -130px;
 }
 
-.direitos_rodape1,
+.direitos_rodape1 {
+  color: black;
+  text-align: center;
+  margin: 0;
+  margin-top: 20px;
+}
+
 .direitos_rodape2 {
   color: black;
   text-align: center;
   margin: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* ============================== */
