@@ -101,90 +101,20 @@
 .botao_saiba {
   margin: 0; /* Remove todas as margens */
 }
-.icon.seta {
-    
-  text-align:center;
-  font-size:60px;
-  color:#ff0000;
-  width:64px;
-  height:70px;
-  background: transparent url(./imagens/seta-para-baixo.png) no-repeat 0px 0px;
-  float:none;
-  display:flex;
-  opacity:0;
-  animation:anima-seta 700ms ease infinite;
-
-
-}
-.icon.seta {
-  margin: 0; /* Remove todas as margens */
-}
-
-@keyframes anima-seta {
-  to {
-      opacity:1;
-      transform: translateY(20px);
-  }
-}
 
 .letreiro{
   width: 100%;
-  height: 900px;
-  background-image: url(./imagens/cidade_verde.jpg) ;
-  display: flex;
-  flex-direction: column;
+  height: 650px;
+  background-image: url(./imagens/cidade_verde.jpg);
   background-size: cover; /* Ajuste para cobrir toda a área da div */
-  justify-content: center;
-  align-items: center;
-  
- 
-}
-
-.nome_letreiro{
-  width: 100%;
-  height: 450px;
-}
-
-.nome{
-  font-family: fantasy;
-  font-style: oblique;
-  font-size: 300px;
-  display: flex;
-  justify-content: center;
-}s
-
-.botao_letreiro{
-  width: 100%;
-  height: 150px;
-  align-items: center;
-  justify-items: center;
-  
-}
-.centro_botao {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.botao_saiba:hover{
-  border-color: blueviolet;
-  font-weight: bold;
 }
 
 /* ============================== */
 
 .explicacao{
-  width: 100%;
+  width: 80%;
   height: 400px;
   display: flex;
-  justify-content: center;
-}
-
-.esquerda{
-  width: 50%;
-  height: 400px;
   justify-content: center;
   align-items: center;
 }
@@ -198,19 +128,13 @@
   text-align: center;
 }
 
-.direita{
-  width: 50%;
-  height: 400px;
-  align-items: center
-}
-
 .texto1{
   color: black;
-  justify-content: center;
   align-items: center;
   font-size: 20px;
-  text-align: center;
-  margin-top: 130px;
+  text-align: justify;
+  margin-top: 70px;
+  margin-left: 20px;
 }
 
 /* ============================== */
@@ -242,6 +166,7 @@
 .direita_quadrado{
   width: 50%;
   height: 100%;
+  background-image: "./imagens/lixo.jpg";
 }
 
 .titulo2{
@@ -277,7 +202,7 @@
   color: black;
   text-align: center;
   font-size: small;
-  margin-top: -10px;
+  margin-top: 10px;
 }
 
 /* ============================== */
