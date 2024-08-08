@@ -3,7 +3,7 @@ import Morador  from '../models/Morador';
 import Problema  from '../models/Problema';
 
 // Gerenciar usuários
-exports.gerenciarUsuarios = async (req, res) => {
+export const gerenciarUsuarios = async (req, res) => {
     try {
         const usuarios = await Morador.findAll();
         res.status(200).json(usuarios);
@@ -13,7 +13,7 @@ exports.gerenciarUsuarios = async (req, res) => {
 };
 
 // Gerenciar problemas
-exports.gerenciarProblemas = async (req, res) => {
+export const gerenciarProblemas = async (req, res) => {
     try {
         const problemas = await Problema.findAll();
         res.status(200).json(problemas);

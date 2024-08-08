@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 // Registrar problema
-exports.registrarProblema = async (req, res) => {
+export const registrarProblema = async (req, res) => {
     try {
         const { descricao, localizacao, tipo, moradorId } = req.body;
         if (!descricao || !localizacao || !tipo || !moradorId) {
@@ -25,7 +25,7 @@ exports.registrarProblema = async (req, res) => {
 };
 
 // Verificar problemas
-exports.verificarProblema = async (req, res) => {
+export const verificarProblema = async (req, res) => {
     try {
         const problemas = await Problema.findAll({ where: { moradorId: req.params.moradorId } });
         res.status(200).json(problemas);
@@ -35,7 +35,7 @@ exports.verificarProblema = async (req, res) => {
 };
 
 // Autenticar morador
-exports.autenticar = async (req, res) => {
+export const autenticar = async (req, res) => {
     try {
         const { email, senha } = req.body;
         const morador = await Morador.findOne({ where: { email } });

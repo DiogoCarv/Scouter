@@ -1,6 +1,6 @@
 import Publicacao from '../models/Publicacao';
 
-exports.criarPublicacao = async (req, res) => {
+export const criarPublicacao = async (req, res) => {
     try {
         const { mensagem_publicacao, foto_publicacao } = req.body;
         const novaPublicacao = await Publicacao.create({
@@ -17,7 +17,7 @@ exports.criarPublicacao = async (req, res) => {
     }
 };
 
-exports.listarPublicacoes = async (req, res) => {
+export const listarPublicacoes = async (req, res) => {
     try {
         const publicacoes = await Publicacao.findAll();
         res.status(200).json(publicacoes);
