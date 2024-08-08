@@ -1,7 +1,8 @@
 import sequelize from '../config/database';
 import { DataTypes} from 'sequelize';
 
-export const Morador = sequelize.define('Morador', {
+export default (sequelize) => {
+    const Morador = sequelize.define('Morador', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -22,4 +23,6 @@ export const Morador = sequelize.define('Morador', {
     }
 });
 
-export default Morador;
+return Morador;
+
+};

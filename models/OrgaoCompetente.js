@@ -1,7 +1,8 @@
 import sequelize from '../config/database';
 import { DataTypes} from 'sequelize';
 
-export const OrgaoCompetente = sequelize.define('OrgaoCompetente', {
+export default (sequelize) => {
+    const OrgaoCompetente = sequelize.define('OrgaoCompetente', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -26,4 +27,6 @@ export const OrgaoCompetente = sequelize.define('OrgaoCompetente', {
     }
 });
 
-export default OrgaoCompetente;
+return OrgaoCompetente;
+
+};

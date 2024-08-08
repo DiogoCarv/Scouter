@@ -3,7 +3,8 @@ import sequelize from '../config/database';
 import Morador from './Morador';
 import OrgaoCompetente from './OrgaoCompetente';
 
-export const Problema = sequelize.define('Problema', {
+export default (sequelize) => {
+    const Problema = sequelize.define('Problema', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -51,4 +52,7 @@ export const Problema = sequelize.define('Problema', {
     }
 });
 
-export default Problema;
+return Problema;
+
+};
+
