@@ -1,3 +1,5 @@
+// Importações react
+
 import { useState } from 'react';
 
 // Importações CSS
