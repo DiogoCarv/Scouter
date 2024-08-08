@@ -109,21 +109,21 @@ function App() {
   const [showRegister, setShowRegister] = useState(false);
 
   const handleLoginButtonClick = () => {
-      setShowLogin(true);
+    setShowLogin(true);
   };
 
   const handleCloseLogin = () => {
-      setShowLogin(false);
+    setShowLogin(false);
   };
 
   const handleRegisterButtonClick = () => {
     setShowRegister(true);
-};
+  };
 
-const handleCloseRegister = () => {
+  const handleCloseRegister = () => {
     setShowRegister(false);
-};
-  return(
+  };
+  return (
 
     <div className='App'>
 
@@ -134,38 +134,38 @@ const handleCloseRegister = () => {
         </div>
 
         <div className='botoes_cabecalho'>
-            {!showLogin && (
-                <button className='botao_entrar' onClick={handleLoginButtonClick}>ENTRAR</button>
-            )}
-            {showLogin && (
-                <div className="overlay" onClick={handleCloseLogin}>
-                    <div className="modal">
-                        <button className="close-button" onClick={handleCloseLogin}>X</button>
-                        <LoginForm />
-                    </div>
-                </div>
-            )}
+          {!showLogin && (
+            <button className='botao_entrar' onClick={handleLoginButtonClick}>ENTRAR</button>
+          )}
+          {showLogin && (
+            <div className="overlay" onClick={handleCloseLogin}>
+              <div className="modal">
+                <button className="close-button" onClick={handleCloseLogin}>X</button>
+                <LoginForm />
+              </div>
+            </div>
+          )}
 
           {!showRegister && (
-                <button className='botao_registrar' onClick={handleRegisterButtonClick}>REGISTRAR</button>
-            )}
-            {showRegister && (
-                <div className="overlay" onClick={handleCloseRegister}>
-                    <div className="modal">
-                        <button className="close-button" onClick={handleCloseRegister}>X</button>
-                        <RegistrationForm />
-                    </div>
-                </div>
-            )}
+            <button className='botao_registrar' onClick={handleRegisterButtonClick}>REGISTRAR</button>
+          )}
+          {showRegister && (
+            <div className="overlay" onClick={handleCloseRegister}>
+              <div className="modal">
+                <button className="close-button" onClick={handleCloseRegister}>X</button>
+                <RegistrationForm />
+              </div>
+            </div>
+          )}
         </div>
 
       </div>
 
       <div className='meio'>
-      
-          <div className='letreiro'>
 
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+        <div className='letreiro'>
+          <div className='centro'>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', minWidth: 300, width: '100%' }}>
               {images.map((image) => (
                 <ImageButton
                   focusRipple
@@ -195,9 +195,8 @@ const handleCloseRegister = () => {
                 </ImageButton>
               ))}
             </Box>
-
-          
           </div>
+        </div>
 
         <div className='explicacao'>
 
@@ -237,10 +236,10 @@ const handleCloseRegister = () => {
       </div>
 
       <div className='rodape'>
-
         <Box
           sx={{
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             border: '1px solid',
             borderColor: 'divider',
@@ -255,7 +254,6 @@ const handleCloseRegister = () => {
           <p className='direitos_rodape1'>SCOUTER® - Marca Registrada</p>
           <p className='direitos_rodape2'>Copyright © 2024 | scouter.com | TODOS OS DIREITOS RESERVADOS</p>
         </Box>
-
       </div>
 
     </div>
