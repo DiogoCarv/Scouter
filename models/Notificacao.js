@@ -3,7 +3,8 @@ import sequelize from '../config/database';
 import Morador from './Morador';
 import { DataTypes} from 'sequelize';
 
-export const Notificacao = sequelize.define('notificar', {
+export default (sequelize) => {
+    const Notificar = sequelize.define('Notificar', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -29,4 +30,6 @@ export const Notificacao = sequelize.define('notificar', {
 Notificar.belongsTo(Publicacao, { foreignKey: 'id_publicacao' });
 Notificar.belongsTo(OrgaoResponsavel, { foreignKey: 'id_orgao' });
 
-export default Notificacao;
+return Notificacao;
+
+};

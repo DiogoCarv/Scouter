@@ -1,7 +1,8 @@
 import sequelize from '../config/database';
 import { DataTypes} from 'sequelize';
 
-export const Publicacao = sequelize.define('publicacao', {
+export default (sequelize) => {
+    const Publicacao = sequelize.define('Publicacao', {
     id_publicacao: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -17,4 +18,7 @@ export const Publicacao = sequelize.define('publicacao', {
     }
 });
 
-export default Publicacao;
+return Publicacao;
+
+};
+

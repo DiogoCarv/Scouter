@@ -2,7 +2,8 @@ import sequelize from'../config/database';
 import TipoConta from'./TipoConta';
 import { DataTypes} from 'sequelize';
 
-export const Conta = sequelize.define('conta', {
+export default (sequelize) => {
+        const Conta = sequelize.define('Conta', {
     id_conta: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -25,4 +26,6 @@ export const Conta = sequelize.define('conta', {
 
 Conta.belongsTo(TipoConta, { foreignKey: 'id_tipo_conta' });
 
-export default Conta;
+return Conta;
+
+};

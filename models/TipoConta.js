@@ -1,7 +1,8 @@
 import sequelize from '../config/database';
 import { DataTypes} from 'sequelize';
 
-export const TipoConta = sequelize.define('tipo_conta', {
+export default (sequelize) => {
+    const TipoConta = sequelize.define('TipoConta', {
     id_tipo_conta: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -13,4 +14,6 @@ export const TipoConta = sequelize.define('tipo_conta', {
     }
 });
 
-export default TipoConta;
+return TipoConta;
+
+};
