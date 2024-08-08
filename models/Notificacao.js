@@ -31,6 +31,6 @@ export default (sequelize) => {
 Notificar.belongsTo(Publicacao, { foreignKey: 'id_publicacao' });
 Notificar.belongsTo(OrgaoResponsavel, { foreignKey: 'id_orgao' });
 
-return Notificacao;
+return Notificar;
 
 };

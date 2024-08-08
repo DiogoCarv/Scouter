@@ -1,8 +1,9 @@
 import express from 'express';
-import router from express.Router();
+const router = express.Router();
 import { enviar } from '../controllers/notificacaoController';
 
 router.post('/enviar', enviar);
 
 export default router;
   
+

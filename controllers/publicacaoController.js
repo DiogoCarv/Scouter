@@ -1,5 +1,6 @@
 import Publicacao from '../models/Publicacao';
 import Realizar from '../models/Realizar';
+import User from '../models/User';
 export const criarPublicacao = async (req, res) => {
     try {
         const { mensagem_publicacao, foto_publicacao } = req.body;
@@ -9,7 +10,7 @@ export const criarPublicacao = async (req, res) => {
         });
         await Realizar.create({
             id_publicacao: novaPublicacao.id_publicacao,
-            id_reportador
+            User
         });
         res.status(201).json(novaPublicacao);
     } catch (error) {

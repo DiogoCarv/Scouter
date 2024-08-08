@@ -1,5 +1,7 @@
 import express from 'express';
-import router from  express.Router();
+const router = express.Router();
+
+
 import { listarProblemas, obterProblema, criarProblema, atualizarProblema, excluirProblema } from '../controllers/problemaController';
 
 router.get('/', listarProblemas);

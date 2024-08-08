@@ -1,7 +1,7 @@
 
 import express from 'express';
+const router = express.Router();
 
-import router  from express.Router();
 import { registrarProblema, verificarProblema, autenticar } from '../controllers/moradorController' ;
 
 router.post('/registrar-problema', registrarProblema);

@@ -1,5 +1,4 @@
 import { Sequelize, DataTypes } from 'sequelize';
-import sequelize from '../config/database';
 import Morador from './Morador';
 import OrgaoCompetente from './OrgaoCompetente';
 

@@ -1,11 +1,13 @@
 import express from 'express';
-import app from express();
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import sequelize from './config/database';
+import process from 'NodeJS';
+// Instanciando o Express
+const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:3000', // Substitua pela URL do seu front-end
+    origin: 'http://localhost:5173', // Substitua pela URL do seu front-end
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -13,12 +15,12 @@ app.use(cors({
 app.use(bodyParser.json());
 
 // Importar rotas
-import moradorRoutes from'./routes/moradorRoutes';
-import administradorRoutes from'./routes/administradorRoutes';
-import orgaoCompetenteRoutes from'./routes/orgaoCompetenteRoutes';
-import problemaRoutes from'./routes/problemaRoutes';
-import notificacaoRoutes from'./routes/notificacaoRoutes';
-import authRoutes from'./routes/authRoutes'; 
+import moradorRoutes from './routes/moradorRoutes';
+import administradorRoutes from './routes/administradorRoutes';
+import orgaoCompetenteRoutes from './routes/orgaoCompetenteRoutes';
+import problemaRoutes from './routes/problemaRoutes';
+import notificacaoRoutes from './routes/notificacaoRoutes';
+import authRoutes from './routes/authRoutes';
 
 // Usar rotas
 app.use('/moradores', moradorRoutes);
@@ -26,7 +28,7 @@ app.use('/administradores', administradorRoutes);
 app.use('/orgaos', orgaoCompetenteRoutes);
 app.use('/problemas', problemaRoutes);
 app.use('/notificacoes', notificacaoRoutes);
-app.use('/', authRoutes); 
+app.use('/', authRoutes);
 
 const PORT = process.env.PORT || 5173;
 
@@ -43,3 +45,6 @@ sequelize.authenticate()
     .catch(error => {
         console.error('Erro ao conectar ao banco de dados:', error);
     });
+
+// Exportando o app, caso necessário
+export default app;

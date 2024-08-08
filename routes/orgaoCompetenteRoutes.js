@@ -1,5 +1,6 @@
 import express from 'express';
-import router from  express.Router();
+const router = express.Router();
+
 import { atualizarStatus, autenticar } from '../controllers/orgaoCompetenteController';
 
 router.post('/atualizar-status', atualizarStatus);

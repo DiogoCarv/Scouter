@@ -1,5 +1,7 @@
 import Publicacao from '../models/Publicacao';
 import { DataTypes} from 'sequelize';
+import sequelize from '../config/database';
+import User from './User';
 
 export const realizarPublicacao = async (req, res) => {
     try {
@@ -23,7 +25,7 @@ export const realizarPublicacao = async (req, res) => {
 
         res.status(201).json(novaPublicacao);
         Realizar.belongsTo(Publicacao, { foreignKey: 'id_publicacao' });
-        Realizar.belongsTo(Reportador, { foreignKey: 'id_reportador' });
+        Realizar.belongsTo(User, { foreignKey: 'id_reportador' });
     } catch (error) {
         res.status(500).json({ error: 'Erro ao realizar publicação' });
     }

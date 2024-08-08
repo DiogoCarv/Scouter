@@ -1,3 +1,9 @@
+import {DataTypes} from 'sequelize';
+import sequelize from '../config/database';
+import Administrador from './Administrador';
+import Publicacao from './Publicacao';
+
+
 export async function verificarPublicacao(req, res) {
     try {
         const { id_administrador, id_publicacao } = req.body;

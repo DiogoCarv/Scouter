@@ -1,6 +1,5 @@
 
-import React, { useState } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 
 function RegistrarProblema() {
   const [descricao, setDescricao] = useState('');
@@ -16,7 +15,6 @@ function RegistrarProblema() {
       return;
     }
     try {
-      const response = await axios.post('http://localhost:5173/moradores/registrar-problema', { descricao, localizacao, tipo });
       alert('Problema registrado com sucesso!');
     } catch (error) {
       alert('Erro ao registrar problema.');
