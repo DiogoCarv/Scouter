@@ -1,6 +1,6 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-const Morador = require('./Morador');
+import { Sequelize, DataTypes } from 'sequelize';
+import sequelize from '../config/database';
+import Morador from './Morador';
 
 const Notificacao = sequelize.define('notificar', {
     id: {
