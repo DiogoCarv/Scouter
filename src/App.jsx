@@ -215,7 +215,7 @@ function App() {
             }}
           >
             <h1 className='titulo1'>Motivo</h1>
-
+            <Divider orientation="vertical" variant="middle" flexItem />
             <p className='texto1'>Bem-vindo a plataforma onde os cidadãos podem reportar problemas urbanos diretamente para os órgãos competentes. Nosso objetivo é melhorar a qualidade de vida em nossa cidade, facilitando a comunicação entre a população e as autoridades responsáveis pela manutenção e desenvolvimento urbano, assim avise os órgãos responsáveis e os outros moradores.</p>
           </Box>
         </div>

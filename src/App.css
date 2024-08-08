@@ -1,4 +1,6 @@
-.App{
+/* ============================== */
+
+.App {
   width: 100%;
   height: 100%;
   color: white;
@@ -6,50 +8,51 @@
 
 /* ============================== */
 
-.cabecalho{
+.cabecalho {
   width: 100%;
   height: 100px;
   color: whitesmoke;
   display: flex;
-  align-items: center; /* Add missing property */
-  justify-content: space-between; /* Add missing property */
+  align-items: center;
+  justify-content: space-between;
 }
 
-.logo_cabecalho{
+.logo_cabecalho {
   width: 50%;
   height: 100%;
   text-align: left;
   justify-content: flex-start;
 }
 
-.logo_pequena{
+.logo_pequena {
   width: 60px;
   height: 60px;
   margin-top: 20px;
   margin-left: 10px;
 }
 
-.botoes_cabecalho{
+.botoes_cabecalho {
   width: 50%;
   height: 100%;
   display: flex;
   justify-content: flex-end;
 }
 
-.botao_entrar{
+.botao_entrar {
   width: 120px;
   height: 50px;
   margin-top: 25px;
   text-align: center;
   background-color: #0b3e25;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
-.botao_entrar:hover{
+
+.botao_entrar:hover {
   border-color: blueviolet;
   font-weight: bold;
 }
 
-.botao_registrar{
+.botao_registrar {
   width: 120px;
   height: 50px;
   margin-top: 25px;
@@ -63,7 +66,8 @@
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.052);
   transition: 0.3s;
 }
-.botao_registrar:hover{
+
+.botao_registrar:hover {
   border-color: blueviolet;
   font-weight: bold;
 }
@@ -87,7 +91,7 @@
   width: 100%;
   height: 650px;
   background-image: url(./imagens/cidade_verde.jpg);
-  background-size: cover; /* Ajuste para cobrir toda a área da div */
+  background-size: cover;
 }
 
 /* ============================== */
@@ -98,7 +102,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto; /* Centraliza a div explicacao horizontalmente */
+  margin: 0 auto;
 }
 
 .titulo1 {
@@ -126,6 +130,8 @@
   height: 500px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-top: 50px; /* Adicionado para espaçamento */
 }
 
 .quadrado {
@@ -133,26 +139,28 @@
   height: 500px;
   background-image: url(./imagens/cidade_verde.jpg);
   border-radius: 30px;
-  display: flex; /* Adicionado para tornar flexível */
+  display: flex;
+  overflow: hidden; /* Para ajustar o overflow da borda */
 }
 
 .esquerda_quadrado {
   width: 50%;
   height: 100%;
   background-color: white;
-  opacity: 0.8; /* Ajustado para valor numérico */
+  opacity: 0.8;
   display: flex;
   justify-content: center;
-  align-items: center; /* Corrigido para alinhar verticalmente */
+  align-items: center;
+  padding: 20px; /* Adicionado para espaçamento interno */
 }
 
 .direita_quadrado {
   width: 50%;
   height: 100%;
-  background-image: url(./imagens/lixo.jpg); /* Corrigido para aplicar imagem */
-  background-size: cover; /* Ajusta a imagem para cobrir toda a área */
-  background-position: center; /* Centraliza a imagem */
-  border-radius: 2px;
+  background-image: url(./imagens/lixo.jpg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 30px 30px 0; /* Para combinar com a borda do quadrado */
 }
 
 .titulo2 {
@@ -175,9 +183,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: -130px;
 }
 
-.direitos_rodape1, .direitos_rodape2 {
+.direitos_rodape1,
+.direitos_rodape2 {
   color: black;
   text-align: center;
   margin: 0;
