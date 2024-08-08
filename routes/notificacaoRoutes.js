@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const { enviar } = require('../controllers/notificacaoController');
+import express from 'express';
+import router from express.Router();
+import { enviar } from '../controllers/notificacaoController';
 
 router.post('/enviar', enviar);
 
