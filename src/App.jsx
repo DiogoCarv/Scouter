@@ -1,16 +1,12 @@
 //Importações já vindas
 
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 
 //----------------------------------------
 
 // Importações CSS
 
 import './App.css'
-import cidadeVerde from './imagens/cidade_verde.jpg'
-import logoBranca from './imagens/logo_branca.png'
 import logoVerde from './imagens/logo_verde.png'
 
 //----------------------------------------
@@ -22,14 +18,18 @@ import LoginForm from './components/LoginForm';
 
 //----------------------------------------
 
+// Importações do MUI
+
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
-import FormatBoldIcon from '@mui/icons-material/FormatBold';
-import FormatItalicIcon from '@mui/icons-material/FormatItalic';
 import Divider from '@mui/material/Divider';
+
+//----------------------------------------
+
+// Const para fazer o botão dentro da imagem
 
 const images = [
   {
@@ -103,6 +103,7 @@ const ImageMarked = styled('span')(({ theme }) => ({
   transition: theme.transitions.create('opacity'),
 }));
 
+//----------------------------------------
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -130,7 +131,9 @@ function App() {
       <div className='cabecalho'>
 
         <div className='logo_cabecalho'>
-          <img src={logoVerde} className='logo_pequena'></img>
+          <a href="./App.jsx">
+            <img src={logoVerde} className='logo_pequena' alt='Logo' />
+          </a>
         </div>
 
         <div className='botoes_cabecalho'>

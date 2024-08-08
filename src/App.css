@@ -29,6 +29,11 @@
   height: 60px;
   margin-top: 20px;
   margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo_pequena:hover {
+  transform: scale(1.2);
 }
 
 .botoes_cabecalho {
@@ -50,6 +55,7 @@
 .botao_entrar:hover {
   border-color: blueviolet;
   font-weight: bold;
+  transform: scale(1.2);
 }
 
 .botao_registrar {
@@ -70,6 +76,7 @@
 .botao_registrar:hover {
   border-color: blueviolet;
   font-weight: bold;
+  transform: scale(1.2);
 }
 
 /* ============================== */
