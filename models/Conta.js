@@ -1,4 +1,4 @@
-import sequelize from'../config/database';
+
 import TipoConta from'./TipoConta';
 import { DataTypes} from 'sequelize';
 

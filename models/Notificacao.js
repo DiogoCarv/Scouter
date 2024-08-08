@@ -1,7 +1,8 @@
 import Sequelize from 'sequelize';
-import sequelize from '../config/database';
 import Morador from './Morador';
 import { DataTypes} from 'sequelize';
+import Publicacao from './Publicacao';
+import OrgaoResponsavel from './OrgaoResponsavel';
 
 export default (sequelize) => {
     const Notificar = sequelize.define('Notificar', {

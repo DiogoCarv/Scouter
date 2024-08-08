@@ -1,5 +1,5 @@
 import Publicacao from '../models/Publicacao';
-
+import Realizar from '../models/Realizar';
 export const criarPublicacao = async (req, res) => {
     try {
         const { mensagem_publicacao, foto_publicacao } = req.body;
