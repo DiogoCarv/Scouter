@@ -1,6 +1,6 @@
 import sequelize from '../config/database';
 
-const Administrador = sequelize.define('Administrador', {
+export const Administrador = sequelize.define('Administrador', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

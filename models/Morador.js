@@ -1,6 +1,6 @@
 import sequelize from '../config/database';
 
-const Morador = sequelize.define('Morador', {
+export const Morador = sequelize.define('Morador', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
