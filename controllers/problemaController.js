@@ -1,4 +1,4 @@
-const Problema = require('../models/Problema');
+import Problema from '../models/Problema';
 
 // Listar problemas
 exports.listarProblemas = async (req, res) => {

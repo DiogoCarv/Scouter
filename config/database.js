@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize');
+import { Sequelize } from 'sequelize';
 
 const sequelize = new Sequelize('sql10724709', 'sql10724709', '7PW5G8GQcX', {
     host: 'sql10.freesqldatabase.com',

@@ -1,7 +1,7 @@
-const OrgaoCompetente = require('../models/OrgaoCompetente');
-const Problema = require('../models/Problema');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+import OrgaoCompetente from'../models/OrgaoCompetente';
+import Problema  from '../models/Problema';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 // Atualizar status
 exports.atualizarStatus = async (req, res) => {
@@ -43,3 +43,4 @@ exports.autenticar = async (req, res) => {
         res.status(500).json({ error: 'Erro ao autenticar órgão competente' });
     }
 };
+

@@ -1,4 +1,4 @@
-const Notificacao = require('../models/Notificacao');
+import Notificacao from'../models/Notificacao';
 
 // Enviar notificação
 exports.enviar = async (req, res) => {

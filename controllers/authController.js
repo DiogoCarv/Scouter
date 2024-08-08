@@ -1,6 +1,6 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const User = require('../models/User'); // Substitua pelo modelo correto de usuário
+import bcrypt from 'bcrypt ';
+import jwt from 'jsonwebtoken ';
+import User from '../models/User '; 
 
 // Controlador de login
 exports.login = async (req, res) => {

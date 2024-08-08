@@ -1,8 +1,8 @@
-const Administrador = require('../models/Administrador');
-const Morador = require('../models/Morador');
-const Problema = require('../models/Problema');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+import Administrador  from '../models/Administrador';
+import Morador  from '../models/Morador';
+import Problema  from '../models/Problema';
+import bcrypt  from 'bcrypt';
+import jwt  from 'jsonwebtoken';
 
 // Gerenciar usuários
 exports.gerenciarUsuarios = async (req, res) => {

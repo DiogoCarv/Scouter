@@ -1,8 +1,8 @@
-const express = require('express');
+import express from 'express';
 const app = express();
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const sequelize = require('./config/database');
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import sequelize from './config/database';
 
 app.use(cors({
     origin: 'http://localhost:3000', // Substitua pela URL do seu front-end
