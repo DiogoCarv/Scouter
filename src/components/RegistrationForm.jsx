@@ -1,4 +1,3 @@
-// src/components/RegistrationForm.jsx
 import React, { useState } from 'react';
 import './RegistrationForm.css';
 
@@ -9,10 +8,9 @@ const RegistrationForm = () => {
     const [address, setAddress] = useState('');
 
     const handleCepChange = (e) => {
-        const newCep = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+        const newCep = e.target.value.replace(/\D/g, '');
         setCep(newCep);
         if (newCep.length === 8) {
-            // Fazer a busca automática do endereço com base no CEP
             fetch(`https://viacep.com.br/ws/${newCep}/json/`)
                 .then(response => response.json())
                 .then(data => {
@@ -22,9 +20,22 @@ const RegistrationForm = () => {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Aqui você pode adicionar a lógica para registrar o usuário
+        try {
+            const response = await fetch('http://localhost:5000/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password, address })
+            });
+            const data = await response.json();
+            // Lógica para lidar com a resposta, como redirecionar o usuário
+            console.log(data);
+        } catch (error) {
+            console.error('Erro ao registrar:', error);
+        }
     };
 
     return (

@@ -13,7 +13,7 @@ function Login() {
       return;
     }
     try {
-      const response = await axios.post('http://localhost:5000/moradores/autenticar', { email, senha });
+      const response = await axios.post('http://localhost:5173/moradores/autenticar', { email, senha });
       alert('Login bem-sucedido!');
       console.log(response.data);
     } catch (error) {
