@@ -1,7 +1,8 @@
-import sequelize from '../config/database';
-import { DataTypes} from 'sequelize';
 
-export const Administrador = sequelize.define('Administrador', {
+import { DataTypes } from 'sequelize';
+
+export default (sequelize) => {
+    const Administrador = sequelize.define('Administrador', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -22,4 +23,6 @@ export const Administrador = sequelize.define('Administrador', {
     }
 });
 
-export default Administrador;
+return Administrador;
+
+};
