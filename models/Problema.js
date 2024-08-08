@@ -51,4 +51,4 @@ export const Problema = sequelize.define('Problema', {
     }
 });
 
-module.exports = Problema;
+export default Problema;

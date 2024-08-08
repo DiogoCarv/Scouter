@@ -1,4 +1,5 @@
 import sequelize from '../config/database';
+import { DataTypes} from 'sequelize';
 
 export const TipoConta = sequelize.define('tipo_conta', {
     id_tipo_conta: {
@@ -12,4 +13,4 @@ export const TipoConta = sequelize.define('tipo_conta', {
     }
 });
 
-module.exports = TipoConta;
+export default TipoConta;

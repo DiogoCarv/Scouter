@@ -1,4 +1,5 @@
 import Publicacao from '../models/Publicacao';
+import { DataTypes} from 'sequelize';
 
 export const realizarPublicacao = async (req, res) => {
     try {

@@ -1,4 +1,5 @@
 import sequelize from '../config/database';
+import { DataTypes} from 'sequelize';
 
 export const Publicacao = sequelize.define('publicacao', {
     id_publicacao: {
@@ -16,4 +17,4 @@ export const Publicacao = sequelize.define('publicacao', {
     }
 });
 
-module.exports = Publicacao;
+export default Publicacao;

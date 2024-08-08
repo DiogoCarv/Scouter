@@ -1,5 +1,6 @@
 import sequelize from'../config/database';
 import TipoConta from'./TipoConta';
+import { DataTypes} from 'sequelize';
 
 export const Conta = sequelize.define('conta', {
     id_conta: {
@@ -24,4 +25,4 @@ export const Conta = sequelize.define('conta', {
 
 Conta.belongsTo(TipoConta, { foreignKey: 'id_tipo_conta' });
 
-module.exports = Conta;
+export default Conta;

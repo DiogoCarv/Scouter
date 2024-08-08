@@ -1,4 +1,5 @@
 import sequelize from '../config/database';
+import { DataTypes} from 'sequelize';
 
 export const Administrador = sequelize.define('Administrador', {
     id: {
@@ -21,4 +22,4 @@ export const Administrador = sequelize.define('Administrador', {
     }
 });
 
-module.exports = Administrador;
+export default Administrador;

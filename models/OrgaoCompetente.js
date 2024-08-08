@@ -1,4 +1,5 @@
 import sequelize from '../config/database';
+import { DataTypes} from 'sequelize';
 
 export const OrgaoCompetente = sequelize.define('OrgaoCompetente', {
     id: {
@@ -25,4 +26,4 @@ export const OrgaoCompetente = sequelize.define('OrgaoCompetente', {
     }
 });
 
-module.exports = OrgaoCompetente;
+export default OrgaoCompetente;

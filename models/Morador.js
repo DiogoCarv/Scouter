@@ -1,4 +1,5 @@
 import sequelize from '../config/database';
+import { DataTypes} from 'sequelize';
 
 export const Morador = sequelize.define('Morador', {
     id: {
@@ -21,4 +22,4 @@ export const Morador = sequelize.define('Morador', {
     }
 });
 
-module.exports = Morador;
+export default Morador;
