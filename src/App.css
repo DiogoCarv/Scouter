@@ -138,48 +138,64 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px; /* Adicionado para espaçamento */
+  margin-top: 50px;
 }
 
 .quadrado {
   width: 900px;
   height: 500px;
   background-image: url(./imagens/cidade_verde.jpg);
+  background-size: cover;
+  background-position: center;
   border-radius: 30px;
   display: flex;
-  overflow: hidden; /* Para ajustar o overflow da borda */
+  overflow: hidden;
 }
 
 .esquerda_quadrado {
   width: 50%;
   height: 100%;
-  background-color: white;
-  opacity: 0.8;
+  background-color: rgba(0, 128, 0, 0.5);
   display: flex;
+  flex-direction: column; /* Alinhar texto e botão verticalmente */
   justify-content: center;
   align-items: center;
-  padding: 20px; /* Adicionado para espaçamento interno */
+  padding: 20px;
 }
 
 .direita_quadrado {
   width: 50%;
   height: 100%;
-  background-image: url(./imagens/lixo.jpg);
-  background-size: cover;
-  background-position: center;
-  border-radius: 0 30px 30px 0; /* Para combinar com a borda do quadrado */
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .titulo2 {
-  color: black;
+  color: white;
   font-weight: bold;
   font-size: 40px;
   text-align: center;
-  background-color: transparent;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0 0 20px 0; /* Margem inferior para separar do botão */
+}
+
+.botao_comecar {
+  padding: 15px 30px;
+  background-color: white;
+  color: green;
+  border: none;
+  border-radius: 25px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.botao_comecar:hover {
+  background-color: whitesmoke;
+  font-weight: bold;
+  transform: scale(1.2);
 }
 
 /* ============================== */
