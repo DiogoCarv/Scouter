@@ -1,22 +1,12 @@
-//Importações já vindas do react
-
-import { useState } from 'react'
-
-//-----------------------------------------
+import React, { useState } from 'react';
 
 // Importações CSS
-
-import './App.css'
-import logoVerde from './imagens/logo_verde.png'
-
-//----------------------------------------
+import './App.css';
+import logoVerde from './imagens/logo_verde.png';
 
 // Importações Login e Registrar
-
 import RegistrationForm from './components/RegistrationForm';
 import LoginForm from './components/LoginForm';
-
-//----------------------------------------
 
 // Importações do MUI
 import { styled } from '@mui/material/styles';
@@ -25,9 +15,10 @@ import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 
-//----------------------------------------
-
-// Const para fazer o botão dentro da imagem
+// Verificação se os componentes são importados corretamente
+const checkComponent = (Component) => {
+  return Component ? <Component /> : null;
+};
 
 const images = [
   {
@@ -101,111 +92,53 @@ const ImageMarked = styled('span')(({ theme }) => ({
   transition: theme.transitions.create('opacity'),
 }));
 
-//----------------------------------------
-
-//função
-
 function App() {
-  const [showLogin, setShowLogin] = useState(false);
-  const [showRegister, setShowRegister] = useState(false);
+  const [showRegistration, setShowRegistration] = useState(false);
 
-  const handleLoginButtonClick = () => {
-    setShowLogin(true);
-  };
-
-  const handleCloseLogin = () => {
-    setShowLogin(false);
-  };
-
-  const handleRegisterButtonClick = () => {
-    setShowRegister(true);
-  };
-
-  const handleCloseRegister = () => {
-    setShowRegister(false);
-  };
   return (
-
-    <div className='App'>
-
-      <div className='cabecalho'>
-
-        <div className='logo_cabecalho'>
-          <a href="./App.jsx">
-            <img src={logoVerde} className='logo_pequena' alt='Logo' />
-          </a>
+    <div className="App">
+      <header className="cabecalho">
+        <div className="logo_cabecalho">
+          <img src={logoVerde} className="logo_pequena" alt="Logo" />
         </div>
-
-        <div className='botoes_cabecalho'>
-          {!showLogin && (
-            <button className='botao_entrar' onClick={handleLoginButtonClick}>ENTRAR</button>
-          )}
-          {showLogin && (
-            <div className="overlay" onClick={handleCloseLogin}>
-              <div className="modal">
-                <button className="close-button" onClick={handleCloseLogin}>X</button>
-                <LoginForm />
-              </div>
-            </div>
-          )}
-
-          {!showRegister && (
-            <button className='botao_registrar' onClick={handleRegisterButtonClick}>REGISTRAR</button>
-          )}
-          {showRegister && (
-            <div className="overlay" onClick={handleCloseRegister}>
-              <div className="modal">
-                <button className="close-button" onClick={handleCloseRegister}>X</button>
-                <RegistrationForm />
-              </div>
-            </div>
-          )}
+        <div className="botoes_cabecalho">
+          <button className="botao_entrar" onClick={() => setShowRegistration(false)}>Entrar</button>
+          <button className="botao_registrar" onClick={() => setShowRegistration(true)}>Registrar</button>
         </div>
+      </header>
 
-      </div>
+      <main className="meio">
+        {showRegistration ? checkComponent(RegistrationForm) : checkComponent(LoginForm)}
 
-      <div className='meio'>
-
-        <div className='letreiro'>
-          <div className='centro'>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', minWidth: 300, width: '100%' }}>
-              {images.map((image) => (
-                <ImageButton
-                  focusRipple
-                  key={image.title}
-                  style={{
-                    width: image.width,
-                  }}
+        <div className="letreiro">
+          {images.map((image) => (
+            <ImageButton
+              key={image.title}
+              style={{
+                width: image.width,
+              }}
+            >
+              <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+              <ImageBackdrop className="MuiImageBackdrop-root" />
+              <Image>
+                <Typography
+                  component="span"
+                  variant="subtitle1"
+                  color="inherit"
                 >
-                  <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
-                  <ImageBackdrop className="MuiImageBackdrop-root" />
-                  <Image>
-                    <Typography
-                      component="span"
-                      variant="subtitle1"
-                      color="inherit"
-                      sx={{
-                        position: 'relative',
-                        p: 4,
-                        pt: 2,
-                        pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
-                      }}
-                    >
-                      {image.title}
-                      <ImageMarked className="MuiImageMarked-root" />
-                    </Typography>
-                  </Image>
-                </ImageButton>
-              ))}
-            </Box>
-          </div>
+                  {image.title}
+                  <ImageMarked className="MuiImageMarked-root" />
+                </Typography>
+              </Image>
+            </ImageButton>
+          ))}
         </div>
 
-        <div className='explicacao'>
+        <div className="explicacao">
           <Box
             sx={{
-              display: 'flex',  // Mantém os itens internos dispostos em linha
-              justifyContent: 'center',  // Centraliza os itens dentro do Box
+              display: 'flex',
+              flexDirection: 'column',
               alignItems: 'center',
               bgcolor: 'background.paper',
               border: '1px solid',
@@ -217,25 +150,24 @@ function App() {
               },
             }}
           >
-            <h1 className='titulo1'>Motivo</h1>
+            <h1 className="titulo1">Motivo</h1>
             <Divider orientation="vertical" variant="middle" flexItem />
-            <p className='texto1'>Bem-vindo a plataforma onde os cidadãos podem reportar problemas urbanos diretamente para os órgãos competentes. Nosso objetivo é melhorar a qualidade de vida em nossa cidade, facilitando a comunicação entre a população e as autoridades responsáveis pela manutenção e desenvolvimento urbano, assim avise os órgãos responsáveis e os outros moradores.</p>
+            <p className="texto1">Bem-vindo a plataforma onde os cidadãos podem reportar problemas urbanos diretamente para os órgãos competentes. Nosso objetivo é melhorar a qualidade de vida em nossa cidade, facilitando a comunicação entre a população e as autoridades responsáveis pela manutenção e desenvolvimento urbano, assim avise os órgãos responsáveis e os outros moradores.</p>
           </Box>
         </div>
 
-        <div className='faixa_quadrado'>
-          <div className='quadrado'>
-            <div className='esquerda_quadrado'>
-              <p className='titulo2'>Envie suas reclamações com fotos no sistema</p>
-              <button className='botao_comecar'>COMECE JÁ</button>
+        <div className="faixa_quadrado">
+          <div className="quadrado">
+            <div className="esquerda_quadrado">
+              <p className="titulo2">Envie suas reclamações com fotos no sistema</p>
+              <button className="botao_comecar">COMECE JÁ</button>
             </div>
-            <div className='direita_quadrado'></div>
+            <div className="direita_quadrado"></div>
           </div>
         </div>
+      </main>
 
-      </div>
-
-      <div className='rodape'>
+      <footer className="rodape">
         <Box
           sx={{
             display: 'flex',
@@ -251,14 +183,12 @@ function App() {
             },
           }}
         >
-          <p className='direitos_rodape1'>SCOUTER® - Marca Registrada</p>
-          <p className='direitos_rodape2'>Copyright © 2024 | scouter.com | TODOS OS DIREITOS RESERVADOS</p>
+          <p className="direitos_rodape1">SCOUTER® - Marca Registrada</p>
+          <p className="direitos_rodape2">Copyright © 2024 | scouter.com | TODOS OS DIREITOS RESERVADOS</p>
         </Box>
-      </div>
-
+      </footer>
     </div>
-
-  )
+  );
 }
 
-export default App
+export default App;
