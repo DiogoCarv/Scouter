@@ -95,6 +95,58 @@
   height: 650px;
   background-image: url(./imagens/cidade_verde.jpg);
   background-size: cover;
+  background-position: center;
+  display: flex; /* Adiciona flexbox para centralização */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+}
+
+.ImageButton {
+  position: relative;
+  max-width: 300px; /* Define uma largura máxima para o botão */
+  max-height: 150px; /* Define uma altura máxima para o botão */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ImageSrc {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.Image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+.ImageBackdrop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Aumenta um pouco a opacidade para um efeito melhor */
+  transition: opacity 0.3s ease;
+}
+
+.ImageMarked {
+  height: 3px;
+  width: 18px;
+  background-color: white;
+  position: absolute;
+  bottom: -2px;
+  left: calc(50% - 9px);
+  transition: opacity 0.3s ease;
 }
 
 /* Explicação */
@@ -125,11 +177,10 @@
 /* Faixa Quadrado */
 .faixa_quadrado {
   width: 100%;
-  height: 300px;
+  height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 128, 0, 0.5);
 }
 
 .quadrado {

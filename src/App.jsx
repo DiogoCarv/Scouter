@@ -4,10 +4,6 @@ import React, { useState } from 'react';
 import './App.css';
 import logoVerde from './imagens/logo_verde.png';
 
-// Importações Login e Registrar
-import RegistrationForm from './components/RegistrationForm';
-import LoginForm from './components/LoginForm';
-
 // Importações do MUI
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -102,37 +98,42 @@ function App() {
           <img src={logoVerde} className="logo_pequena" alt="Logo" />
         </div>
         <div className="botoes_cabecalho">
-          <button className="botao_entrar" onClick={() => setShowRegistration(false)}>Entrar</button>
-          <button className="botao_registrar" onClick={() => setShowRegistration(true)}>Registrar</button>
+          <button className="botao_entrar">
+            Entrar
+          </button>
+          <button className="botao_registrar">
+            Registrar
+          </button>
         </div>
       </header>
 
       <main className="meio">
-        {showRegistration ? checkComponent(RegistrationForm) : checkComponent(LoginForm)}
 
-        <div className="letreiro">
-          {images.map((image) => (
-            <ImageButton
-              key={image.title}
-              style={{
-                width: image.width,
-              }}
-            >
-              <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
-              <ImageBackdrop className="MuiImageBackdrop-root" />
-              <Image>
-                <Typography
-                  component="span"
-                  variant="subtitle1"
-                  color="inherit"
-                >
-                  {image.title}
-                  <ImageMarked className="MuiImageMarked-root" />
-                </Typography>
-              </Image>
-            </ImageButton>
-          ))}
-        </div>
+      <div className="letreiro">
+        {images.map((image) => (
+          <ImageButton
+            key={image.title}
+            style={{
+              width: image.width,
+              // Não define altura aqui, pois será gerida pelo CSS
+            }}
+          >
+            <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+            <ImageBackdrop className="MuiImageBackdrop-root" />
+            <Image>
+              <Typography
+                component="span"
+                variant="subtitle1"
+                color="inherit"
+                style={{ textAlign: 'center' }} // Adiciona alinhamento centralizado ao texto
+              >
+                {image.title}
+                <ImageMarked className="MuiImageMarked-root" />
+              </Typography>
+            </Image>
+          </ImageButton>
+        ))}
+      </div>
 
         <div className="explicacao">
           <Box
