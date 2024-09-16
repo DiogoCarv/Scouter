@@ -9,6 +9,8 @@ import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 
+import { Link } from 'react-router-dom';
+
 // Verificação se os componentes são importados corretamente
 const checkComponent = (Component) => {
   return Component ? <Component /> : null;
@@ -95,12 +97,12 @@ function App() {
           <img src={logoVerde} className="logo_pequena" alt="Logo" />
         </div>
         <div className="botoes_cabecalho">
-          <button className="botao_entrar">
-            <a className='letra_botao' href='login.jsx'>ENTRAR</a>
-          </button>
-          <button className="botao_registrar">
-            <a className='letra_botao' href='login.jsx'>REGISTRAR</a>
-          </button>
+        <button className="botao_entrar">
+          <Link className='letra_botao' to='/login'>ENTRAR</Link>
+        </button>
+        <button className="botao_registrar">
+          <Link className='letra_botao' to='/login'>REGISTRAR</Link>
+        </button>
         </div>
       </header>
 
