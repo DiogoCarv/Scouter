@@ -99,10 +99,10 @@ function App() {
         </div>
         <div className="botoes_cabecalho">
           <button className="botao_entrar">
-            Entrar
+            <a className='letra_botao' href='login.jsx'>ENTRAR</a>
           </button>
           <button className="botao_registrar">
-            Registrar
+            <a className='letra_botao' href='login.jsx'>REGISTRAR</a>
           </button>
         </div>
       </header>
@@ -161,7 +161,9 @@ function App() {
           <div className="quadrado">
             <div className="esquerda_quadrado">
               <p className="titulo2">Envie suas reclamações com fotos no sistema</p>
-              <button className="botao_comecar">COMECE JÁ</button>
+              <button className="botao_comecar">
+                <a className='letra_botao2'>COMECE JÁ</a>
+              </button>
             </div>
             <div className="direita_quadrado"></div>
           </div>

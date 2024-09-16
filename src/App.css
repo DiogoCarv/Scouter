@@ -76,6 +76,26 @@
   transform: scale(1.2);
 }
 
+.letra_botao{
+  color: aliceblue;
+}
+
+.letra_botao:hover{
+  transform: scale(1.63);
+  color: rgb(211, 220, 228);
+  font-weight: bold;
+}
+
+.letra_botao2{
+  color: #0b3e25;
+}
+
+.letra_botao2:hover{
+  transform: scale(1.63);
+  color: #082919;
+  font-weight: bold;
+}
+
 /* Seções Principais */
 .meio {
   width: 100%;
