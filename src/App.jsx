@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-
 // Importações CSS
 import './App.css';
 import logoVerde from './imagens/logo_verde.png';
@@ -89,7 +87,6 @@ const ImageMarked = styled('span')(({ theme }) => ({
 }));
 
 function App() {
-  const [showRegistration, setShowRegistration] = useState(false);
 
   return (
     <div className="App">
