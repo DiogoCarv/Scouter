@@ -7,31 +7,15 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import * as React from 'react';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 
-// Verificação se os componentes são importados corretamente
-const checkComponent = (Component) => {
-  return Component ? <Component /> : null;
-};
-
-const images = [
-  {
-    url: './imagens/cidade_verde.jpg',
-    title: 'SAIBA MAIS',
-    width: '30%',
-  },
-];
-
+// Definindo estilos
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
   height: 200,
   [theme.breakpoints.down('sm')]: {
-    width: '100% !important', // Overrides inline-style
+    width: '100% !important',
     height: 100,
   },
   '&:hover, &.Mui-focusVisible': {
@@ -91,8 +75,7 @@ const ImageMarked = styled('span')(({ theme }) => ({
   transition: theme.transitions.create('opacity'),
 }));
 
-function App() {
-
+function Login() {
   return (
     <div className="App">
       <header className="cabecalho">
@@ -102,30 +85,28 @@ function App() {
       </header>
 
       <main className="meio">
-
         <div className='formulario'>
-            <Box
-                sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                bgcolor: 'background.paper',
-                border: '1px solid',
-                borderColor: 'divider',
-                borderRadius: 2,
-                color: 'text.secondary',
-                '& svg': {
-                    m: 1,
-                },
-                }}
-            >
-                <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                    <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                    <TextField id="input-with-sx" label="With sx" variant="standard" />
-                </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              bgcolor: 'background.paper',
+              border: '1px solid',
+              borderColor: 'divider',
+              borderRadius: 2,
+              color: 'text.secondary',
+              '& svg': {
+                m: 1,
+              },
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+              <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+              <TextField id="input-with-sx" label="With sx" variant="standard" />
             </Box>
+          </Box>
         </div>
-
       </main>
 
       <footer className="rodape">
@@ -152,5 +133,4 @@ function App() {
   );
 }
 
-export default App;
-
+export default Login;
