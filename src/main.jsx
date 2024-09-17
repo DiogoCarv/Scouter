@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import App from './App.jsx';
-import Login from './login.jsx';  // Importar o componente de login
+import App from './home/App.jsx';
+import Login from './login/login.jsx';  // Importar o componente de login
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

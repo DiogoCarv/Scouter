@@ -11,11 +11,6 @@ import Divider from '@mui/material/Divider';
 
 import { Link } from 'react-router-dom';
 
-// Verificação se os componentes são importados corretamente
-const checkComponent = (Component) => {
-  return Component ? <Component /> : null;
-};
-
 const images = [
   {
     url: './imagens/cidade_verde.jpg',
@@ -28,7 +23,7 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
   height: 200,
   [theme.breakpoints.down('sm')]: {
-    width: '100% !important', // Overrides inline-style
+    width: '100% !important',
     height: 100,
   },
   '&:hover, &.Mui-focusVisible': {
@@ -114,7 +109,6 @@ function App() {
             key={image.title}
             style={{
               width: image.width,
-              // Não define altura aqui, pois será gerida pelo CSS
             }}
           >
             <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
@@ -124,7 +118,7 @@ function App() {
                 component="span"
                 variant="subtitle1"
                 color="inherit"
-                style={{ textAlign: 'center' }} // Adiciona alinhamento centralizado ao texto
+                style={{ textAlign: 'center' }}
               >
                 {image.title}
                 <ImageMarked className="MuiImageMarked-root" />

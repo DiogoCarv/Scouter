@@ -116,15 +116,15 @@
   background-image: url(./imagens/cidade_verde.jpg);
   background-size: cover;
   background-position: center;
-  display: flex; /* Adiciona flexbox para centralização */
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ImageButton {
   position: relative;
-  max-width: 300px; /* Define uma largura máxima para o botão */
-  max-height: 150px; /* Define uma altura máxima para o botão */
+  max-width: 300px;
+  max-height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -155,7 +155,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Aumenta um pouco a opacidade para um efeito melhor */
+  background-color: rgba(0, 0, 0, 0.5);
   transition: opacity 0.3s ease;
 }
 

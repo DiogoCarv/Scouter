@@ -13,8 +13,8 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import './App.css';
 import logoVerde from './imagens/logo_verde.png';
-import RegistrationForm from './components/RegistrationForm';
-import LoginForm from './components/LoginForm';
+import RegistrationForm from '../components/RegistrationForm';
+import LoginForm from '../components/LoginForm';
 
 export function InputAdornments() {
   const [showPassword, setShowPassword] = useState(false);
