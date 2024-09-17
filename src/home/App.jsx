@@ -96,7 +96,7 @@ function App() {
           <Link className='letra_botao' to='/login'>ENTRAR</Link>
         </button>
         <button className="botao_registrar">
-          <Link className='letra_botao' to='/login'>REGISTRAR</Link>
+          <Link className='letra_botao' to='/registrar'>REGISTRAR</Link>
         </button>
         </div>
       </header>

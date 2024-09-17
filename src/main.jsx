@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import App from './home/App.jsx';
-import Login from './login/login.jsx';  // Importar o componente de login
+import Login from './login/login.jsx';
+import Registrar from './registrar/registrar.jsx';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -10,7 +11,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Router>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/login" element={<Login />} /> {/* Definir a rota para o componente de login */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/registrar" element={<Registrar />} />
       </Routes>
     </Router>
   </React.StrictMode>
