@@ -5,196 +5,56 @@
 }
 
 /* Cabeçalho */
-.cabecalho {
+.App-header {
   width: 100%;
   height: 100px;
-  color: whitesmoke;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: #0b3e25;
 }
 
-.logo_cabecalho {
-  width: 50%;
-  height: 100%;
-  text-align: left;
-  justify-content: flex-start;
-}
-
-.logo_pequena {
+.App-logo {
   width: 60px;
   height: 60px;
-  margin-top: 20px;
   margin-left: 10px;
   transition: transform 0.3s ease-in-out;
 }
 
-.logo_pequena:hover {
+.App-logo:hover {
   transform: scale(1.2);
 }
 
-.botoes_cabecalho {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.botao_entrar {
-  width: 120px;
-  height: 50px;
-  margin-top: 25px;
-  text-align: center;
-  background-color: #0b3e25;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-.botao_entrar:hover {
-  border-color: blueviolet;
-  font-weight: bold;
-  transform: scale(1.2);
-}
-
-.botao_registrar {
-  width: 120px;
-  height: 50px;
-  margin-top: 25px;
-  margin-left: 20px;
-  margin-right: 20px;
-  text-align: center;
-  background-color: #0b3e25;
-  color: white;
+/* Botões */
+.botao_comecar {
+  padding: 15px 30px;
+  background-color: white;
+  color: green;
   border: none;
+  border-radius: 25px;
+  font-size: 20px;
+  font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.052);
-  transition: 0.3s;
+  transition: background-color 0.3s ease;
 }
 
-.botao_registrar:hover {
-  border-color: blueviolet;
+.botao_comecar:hover {
+  background-color: #f0f0f0;
   font-weight: bold;
   transform: scale(1.2);
 }
 
-.letra_botao{
-  color: aliceblue;
-}
-
-.letra_botao:hover{
-  transform: scale(1.63);
-  color: rgb(211, 220, 228);
-  font-weight: bold;
-}
-
-.letra_botao2{
+.letra_botao2 {
   color: #0b3e25;
+  text-decoration: none;
 }
 
-.letra_botao2:hover{
-  transform: scale(1.63);
+.letra_botao2:hover {
   color: #082919;
   font-weight: bold;
 }
 
 /* Seções Principais */
-.meio {
-  width: 100%;
-  height: 1800px;
-}
-
-.centro {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.letreiro {
-  width: 100%;
-  height: 650px;
-  background-image: url(./imagens/cidade_verde.jpg);
-  background-size: cover;
-  background-position: center;
-  display: flex; /* Adiciona flexbox para centralização */
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
-}
-
-.ImageButton {
-  position: relative;
-  max-width: 300px; /* Define uma largura máxima para o botão */
-  max-height: 150px; /* Define uma altura máxima para o botão */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ImageSrc {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-size: cover;
-  background-position: center;
-}
-
-.Image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  color: white;
-}
-
-.ImageBackdrop {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Aumenta um pouco a opacidade para um efeito melhor */
-  transition: opacity 0.3s ease;
-}
-
-.ImageMarked {
-  height: 3px;
-  width: 18px;
-  background-color: white;
-  position: absolute;
-  bottom: -2px;
-  left: calc(50% - 9px);
-  transition: opacity 0.3s ease;
-}
-
-/* Explicação */
-.explicacao {
-  width: 80%;
-  height: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.titulo1 {
-  color: black;
-  font-size: 100px;
-  font-weight: bold;
-  text-align: center;
-  margin-right: 20px;
-}
-
-.texto1 {
-  color: black;
-  font-size: 18px;
-  text-align: center;
-  margin-left: 20px;
-}
-
-/* Faixa Quadrado */
 .faixa_quadrado {
   width: 100%;
   height: 600px;
@@ -206,9 +66,7 @@
 .quadrado {
   width: 80%;
   height: 100%;
-  background-image: url(./imagens/cidade_verde.jpg);
-  background-size: cover;
-  background-position: center;
+  background-color: rgba(0, 128, 0, 0.5);
   border-radius: 30px;
   display: flex;
   overflow: hidden;
@@ -239,25 +97,7 @@
   font-weight: bold;
   font-size: 40px;
   text-align: center;
-  margin: 0 0 20px 0;
-}
-
-.botao_comecar {
-  padding: 15px 30px;
-  background-color: white;
-  color: green;
-  border: none;
-  border-radius: 25px;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.botao_comecar:hover {
-  background-color: whitesmoke;
-  font-weight: bold;
-  transform: scale(1.2);
+  margin-bottom: 20px;
 }
 
 /* Rodapé */
@@ -267,25 +107,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: -130px;
+  background-color: #f0f0f0;
 }
 
-.direitos_rodape1 {
+.direitos_rodape1, .direitos_rodape2 {
   color: black;
   text-align: center;
-  margin: 0;
-  margin-top: 20px;
+  margin: 10px 0;
 }
 
-.direitos_rodape2 {
-  color: black;
-  text-align: center;
-  margin: 0;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-/* Overlay e Modal */
+/* Ajuste Modal (Se aplicável) */
 .overlay {
   position: fixed;
   top: 0;
@@ -299,10 +130,42 @@
 }
 
 .modal {
-  background-color: rgba(0, 0, 0, 0.514);
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 20px;
   border-radius: 20px;
 }
+/* Botões de Login e Registrar no cabeçalho */
+.botoes_cabecalho {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.botao_login, .botao_registrar {
+  padding: 10px 20px;
+  background-color: #0b3e25;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.botao_login:hover, .botao_registrar:hover {
+  background-color: #06481d;
+}
+
+.letra_botao {
+  color: white;
+  text-decoration: none;
+}
+
+.letra_botao:hover {
+  color: #f0f0f0;
+}
+
 
 .close-button {
   position: absolute;
