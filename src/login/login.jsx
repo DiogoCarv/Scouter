@@ -68,10 +68,6 @@ function Login() {
                 </div>
 
                 <div>
-                  <Button className='botao_senha'>ESQUECI A SENHA</Button>
-                </div>
-
-                <div>
                   <Button className='botao_entrar'>ENTRAR</Button>
                 </div>
 
