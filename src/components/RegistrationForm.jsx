@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './RegistrationForm.css';
 
-
 const RegistrationForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -31,7 +30,7 @@ const RegistrationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage(null);  // Limpar mensagem de erro ao tentar novamente
+    setErrorMessage(null);
 
     try {
       const response = await fetch('http://localhost:3001/register', {  // Verifique a porta correta do backend
@@ -48,7 +47,6 @@ const RegistrationForm = () => {
 
       const data = await response.json();
       console.log('Registro bem-sucedido:', data);
-      // Aqui você pode redirecionar o usuário ou exibir uma mensagem de sucesso
     } catch (error) {
       console.error('Erro ao registrar:', error);
       setErrorMessage('Erro ao registrar. Por favor, tente novamente.');
@@ -58,7 +56,7 @@ const RegistrationForm = () => {
   return (
     <div className="registration-form-container">
       <h1>Registro</h1>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}  {/* Mostrar mensagem de erro */}
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={handleSubmit} className="registration-form">
         <input
           type="text"
