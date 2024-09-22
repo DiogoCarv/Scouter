@@ -8,7 +8,31 @@ const RegistrationForm = () => {
   const [cep, setCep] = useState('');
   const [address, setAddress] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [cep, setCep] = useState('');
+  const [address, setAddress] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
 
+  const handleCepChange = (e) => {
+    const newCep = e.target.value.replace(/\D/g, '');  // Remove caracteres não numéricos
+    setCep(newCep);
+    setErrorMessage(null);  // Limpar mensagem de erro ao tentar novamente
+
+    if (newCep.length === 8) {
+      fetch(`https://viacep.com.br/ws/${newCep}/json/`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.erro) {
+            setErrorMessage('CEP inválido');
+            setAddress('');
+          } else {
+            setAddress(`${data.logradouro}, ${data.localidade} - ${data.uf}`);
+          }
+        })
+        .catch(error => console.error('Erro ao buscar o endereço:', error));
+    }
+  };
   const handleCepChange = (e) => {
     const newCep = e.target.value.replace(/\D/g, '');  // Remove caracteres não numéricos
     setCep(newCep);

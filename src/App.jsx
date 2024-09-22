@@ -8,72 +8,78 @@ import { Link } from 'react-router-dom';
 const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <ButtonBase className="botao_logo">
-          <Link to="/principal">
-            <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
-          </Link>
-        </ButtonBase>
-
+      <header className="cabecalho">
+        <div className="logo_cabecalho">
+          <img src={logoVerde} className="logo_pequena" alt="Logo" />
+        </div>
         <div className="botoes_cabecalho">
-
-          <ButtonBase className="botao_login">
-            <Link to="/login" className="letra_botao">
-              Login
-            </Link>
-          </ButtonBase>
-
-          <ButtonBase className="botao_registrar">
-            <Link to="/registrar" className="letra_botao">
-              Registrar
-            </Link>
-          </ButtonBase>
-
+        <button className="botao_entrar">
+          <Link className='letra_botao' to='/login'>ENTRAR</Link>
+        </button>
+        <button className="botao_registrar">
+          <Link className='letra_botao' to='/login'>REGISTRAR</Link>
+        </button>
         </div>
 
       </header>
 
-      <main>
+      <main className="meio">
 
-        <div className='carrosel'>
-          <h1 className='titulo_carrosel'>SCOUTER</h1>
-        </div>
+      <div className="letreiro">
+        {images.map((image) => (
+          <ImageButton
+            key={image.title}
+            style={{
+              width: image.width,
+              // Não define altura aqui, pois será gerida pelo CSS
+            }}
+          >
+            <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+            <ImageBackdrop className="MuiImageBackdrop-root" />
+            <Image>
+              <Typography
+                component="span"
+                variant="subtitle1"
+                color="inherit"
+                style={{ textAlign: 'center' }} // Adiciona alinhamento centralizado ao texto
+              >
+                {image.title}
+                <ImageMarked className="MuiImageMarked-root" />
+              </Typography>
+            </Image>
+          </ImageButton>
+        ))}
+      </div>
 
-        <div className='motivo'>
-          <div className='conteudo_motivo'>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'row',
-                bgcolor: 'background.paper',
-                border: '1px solid',
-                borderColor: 'divider',
-                borderRadius: 2,
-                color: 'text.secondary',
-                p: 2,
-              }}
-            >
-              <h2 className='titulo_motivo'>Motivo</h2>
-
-              <Divider orientation="vertical" variant="middle" flexItem />
-
-              <h2 className='texto_motivo'>
-                Bem-vindo à plataforma onde os cidadãos podem reportar problemas urbanos diretamente para os órgãos competentes. Nosso objetivo é melhorar a qualidade de vida em nossa cidade, facilitando a comunicação entre a população e as autoridades responsáveis pela manutenção e desenvolvimento urbano.
-              </h2>
-
-            </Box>
-          </div>
+        <div className="explicacao">
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              bgcolor: 'background.paper',
+              border: '1px solid',
+              borderColor: 'divider',
+              borderRadius: 2,
+              color: 'text.secondary',
+              '& svg': {
+                m: 1,
+              },
+            }}
+          >
+            <h1 className="titulo1">Motivo</h1>
+            <Divider orientation="vertical" variant="middle" flexItem />
+            <p className="texto1">Bem-vindo a plataforma onde os cidadãos podem reportar problemas urbanos diretamente para os órgãos competentes. Nosso objetivo é melhorar a qualidade de vida em nossa cidade, facilitando a comunicação entre a população e as autoridades responsáveis pela manutenção e desenvolvimento urbano, assim avise os órgãos responsáveis e os outros moradores.</p>
+          </Box>
         </div>
 
         <div className="faixa_quadrado">
           <div className="quadrado">
             <div className="esquerda_quadrado">
-              <h2 className='conteudo_quadrado'>Envie suas reclamações com fotos no sistema</h2>
-              <ButtonBase className="botao_comecar">
-                <Link to="/registrar" className="letra_botao2">
-                  COMECE JÁ
-                </Link>
-              </ButtonBase>
+              <p className="titulo2">Envie suas reclamações com fotos no sistema</p>
+              <button className="botao_comecar">
+                <a className='letra_botao2'>COMECE JÁ</a>
+              </button>
             </div>
             <div className="direita_quadrado"></div>
           </div>
@@ -81,24 +87,24 @@ const App = () => {
       </main>
 
       <footer className="rodape">
-        <div className='direitos'>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              border: '1px solid',
-              borderColor: 'divider',
-              borderRadius: 2,
-              bgcolor: 'background.paper',
-              color: 'text.secondary',
-              p: 2,
-            }}
-          >
-            <Typography variant="body2">SCOUTER® - Marca Registrada</Typography>
-            <Typography variant="body2">Copyright © 2024 | scouter.com | TODOS OS DIREITOS RESERVADOS</Typography>
-          </Box>
-        </div>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            border: '1px solid',
+            borderColor: 'divider',
+            borderRadius: 2,
+            bgcolor: 'background.paper',
+            color: 'text.secondary',
+            '& svg': {
+              m: 1,
+            },
+          }}
+        >
+          <p className="direitos_rodape1">SCOUTER® - Marca Registrada</p>
+          <p className="direitos_rodape2">Copyright © 2024 | scouter.com | TODOS OS DIREITOS RESERVADOS</p>
+        </Box>
       </footer>
     </div>
   );
