@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Login from './login';
 import OrgaoDashboard from './components/OrgaoDashboard';
-
-import RegistrarProblema from './components/RegistrarProblema';
+import App from './App';
+import RegistrarProblema from './components/RegistrationForm';
 import ListarProblemas from './components/ListarProblemas';
 import Notificacoes from './components/Notificacoes';
 import VerificarProblema from './components/VerificarProblema';
@@ -21,17 +21,19 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         token ? (
           <Component {...props} />
         ) : (
-          <Redirect to="/login" />
+          <Navigate to="/login" />
         )
       }
     />
   );
 };
 
-const Routes = () => {
+const AppRoutes = () => {
   return (
     <Router>
-      <Switch>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route exact path="/login" component={Login} />
         
         {/* Rota do morador */}
@@ -53,8 +55,8 @@ const Routes = () => {
         <PrivateRoute exact path="/listar-todos-problemas" component={ListarProblemas} />
         
         {/* Redirecionar para login por padrão */}
-        <Redirect from="*" to="/login" />
-      </Switch>
+        <Navigate from="*" to="/login" />
+      </Routes>
     </Router>
   );
 };

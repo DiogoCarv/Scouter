@@ -1,0 +1,66 @@
+/* Estilo para o container principal */
+.alterar-status-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f6f9;
+    padding: 20px;
+  }
+  
+  /* Estilo do formulário */
+  .alterar-status-container form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  /* Estilo para os labels e campos do formulário */
+  .alterar-status-container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .alterar-status-container input,
+  .alterar-status-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Estilo do botão */
+  .alterar-status-container button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .alterar-status-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilo da mensagem de feedback */
+  .alterar-status-container p {
+    font-size: 14px;
+    color: green;
+    margin-top: 10px;
+  }
+  
+  .alterar-status-container p.error {
+    color: red;
+  }
+  
