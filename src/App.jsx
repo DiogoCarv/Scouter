@@ -1,70 +1,129 @@
+import { useState } from 'react';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import './App.css';
 import logoVerde from './imagens/logo_verde.png';
+import RegistrationForm from './components/RegistrationForm';
 
-// Importações do MUI
-import { Box, ButtonBase, Typography, Divider } from '@mui/material';
-import { Link } from 'react-router-dom';
+import Login from './login';
 
+export function InputAdornments() {
+  const [showPassword, setShowPassword] = useState(false);
 
-const App = () => {
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logoVerde} className="App-logo" alt="logo" />
-        <Typography variant="h1" component="h1">
-          Bem-vindo ao Scouter
-        </Typography>
+    <FormControl variant="outlined">
+      <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+      <OutlinedInput
+        id="outlined-adornment-password"
+        type={showPassword ? 'text' : 'password'}
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton
+              aria-label="toggle password visibility"
+              onClick={handleClickShowPassword}
+              onMouseDown={handleMouseDownPassword}
+              edge="end"
+            >
+              {showPassword ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
+          </InputAdornment>
+        }
+        label="Password"
+      />
+    </FormControl>
+  );
+}
 
-        <div className="botoes_cabecalho">
-          <ButtonBase className="botao_login">
-            <Link to="/login" className="letra_botao">
-              Login
-            </Link>
-          </ButtonBase>
-          <ButtonBase className="botao_registrar">
-            <Link to="/registrar" className="letra_botao">
-              Registrar
-            </Link>
-          </ButtonBase>
-        </div>
-      </header>
+function App() {
+  const [showLogin, setShowLogin] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
 
-      <main>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            bgcolor: 'background.paper',
-            border: '1px solid',
-            borderColor: 'divider',
-            borderRadius: 2,
-            color: 'text.secondary',
-            p: 2,
-          }}
-        >
-          <Typography variant="h2">Motivo</Typography>
-          <Divider orientation="vertical" variant="middle" flexItem />
-          <Typography variant="body1">
-            Bem-vindo à plataforma onde os cidadãos podem reportar problemas urbanos diretamente para os órgãos competentes. Nosso objetivo é melhorar a qualidade de vida em nossa cidade, facilitando a comunicação entre a população e as autoridades responsáveis pela manutenção e desenvolvimento urbano.
-          </Typography>
-        </Box>
+  const handleLoginButtonClick = () => {
+    setShowLogin(true);
+  };
 
-        <div className="faixa_quadrado">
-          <div className="quadrado">
-            <div className="esquerda_quadrado">
-              <Typography variant="h3">Envie suas reclamações com fotos no sistema</Typography>
-              <ButtonBase className="botao_comecar">
-                <Link to="/registrar" className="letra_botao2">
-                  COMECE JÁ
-                </Link>
-              </ButtonBase>
+  const handleCloseLogin = () => {
+    setShowLogin(false);
+  };
+
+  const handleRegisterButtonClick = () => {
+    setShowRegister(true);
+  };
+
+  const handleCloseRegister = () => {
+    setShowRegister(false);
+  };
+
+  return (
+    <div className='App'>
+      <div className='header'>
+        <img src={logoVerde} alt="Logo Verde" />
+        <h1>Scouter</h1>
+        <div>
+          {!showLogin && (
+            <button className='botao_login' onClick={handleLoginButtonClick}>
+              LOGIN
+            </button>
+          )}
+          {showLogin && (
+            <div className='overlay' onClick={handleCloseLogin}>
+              <div className='modal' onClick={e => e.stopPropagation()}>
+                <button className='close-button' onClick={handleCloseLogin}>
+                  X
+                </button>
+                <Login />
+              </div>
             </div>
-            <div className="direita_quadrado"></div>
-          </div>
+          )}
+          {!showRegister && (
+            <button className='botao_registrar' onClick={handleRegisterButtonClick}>
+              REGISTRAR
+            </button>
+          )}
+          {showRegister && (
+            <div className='overlay' onClick={handleCloseRegister}>
+              <div className='modal' onClick={e => e.stopPropagation()}>
+                <button className='close-button' onClick={handleCloseRegister}>
+                  X
+                </button>
+                <RegistrationForm />
+              </div>
+            </div>
+          )}
         </div>
-      </main>
+      </div>
 
-      <footer className="rodape">
+      <div className='meio'>
+        <div className='box_login'>
+          <Box
+            height={200}
+            width={200}
+            my={4}
+            display='flex'
+            alignItems='center'
+            justifyContent='center'
+            gap={4}
+            p={2}
+            sx={{ border: '2px solid grey' }}
+          >
+            This Box uses MUI System props for quick customization.
+          </Box>
+        </div>
+      </div>
+
+      <div className='rodape'>
         <Box
           sx={{
             display: 'flex',
@@ -75,15 +134,17 @@ const App = () => {
             borderRadius: 2,
             bgcolor: 'background.paper',
             color: 'text.secondary',
-            p: 2,
+            '& svg': {
+              m: 1,
+            },
           }}
         >
-          <Typography variant="body2">SCOUTER® - Marca Registrada</Typography>
-          <Typography variant="body2">Copyright © 2024 | scouter.com | TODOS OS DIREITOS RESERVADOS</Typography>
+          <p className='direitos_rodape1'>SCOUTER® - Marca Registrada</p>
+          <p className='direitos_rodape2'>Copyright © 2024 | scouter.com | TODOS OS DIREITOS RESERVADOS</p>
         </Box>
-      </footer>
+      </div>
     </div>
   );
-};
+}
 
 export default App;
