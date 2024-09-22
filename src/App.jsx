@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import Box from '@mui/material/Box';
+import React, { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
@@ -10,8 +9,84 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import './App.css';
 import logoVerde from './imagens/logo_verde.png';
 import RegistrationForm from './components/RegistrationForm';
-
 import Login from './login';
+import { Box, Typography, Divider, ButtonBase } from '@mui/material';
+import { styled } from '@mui/system';
+
+// Definindo o ImageButton com estilo customizado
+const ImageButton = styled(ButtonBase)(({ theme }) => ({
+  position: 'relative',
+  height: 200,
+  [theme.breakpoints.down('sm')]: {
+    width: '100% !important',
+    height: 100,
+  },
+  '&:hover, &.Mui-focusVisible': {
+    zIndex: 1,
+    '& .MuiImageBackdrop-root': {
+      opacity: 0.15,
+    },
+    '& .MuiImageMarked-root': {
+      opacity: 0,
+    },
+    '& .MuiTypography-root': {
+      border: '4px solid currentColor',
+    },
+  },
+}));
+
+
+
+const ImageSrc = styled('span')({
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center 40%',
+});
+
+const Image = styled('span')(({ theme }) => ({
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: theme.palette.common.white,
+}));
+
+const ImageBackdrop = styled('span')(({ theme }) => ({
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0,
+  backgroundColor: 'black',
+  opacity: 0.4,
+  transition: theme.transitions.create('opacity'),
+}));
+
+const ImageMarked = styled('span')(({ theme }) => ({
+  height: 3,
+  width: 18,
+  backgroundColor: 'white',
+  position: 'absolute',
+  bottom: -2,
+  left: 'calc(50% - 9px)',
+  transition: theme.transitions.create('opacity'),
+}));
+
+const images = [
+  {
+    url: './imagens/logo_verde.png',
+    title: 'logoVerde',
+    width: '40%', // Ajuste a largura conforme necessário
+  },
+];
 
 export function InputAdornments() {
   const [showPassword, setShowPassword] = useState(false);
@@ -67,20 +142,21 @@ function App() {
   };
 
   return (
-    <div className='App'>
-      <div className='header'>
-        <img src={logoVerde} alt="Logo Verde" />
-        <h1>Scouter</h1>
-        <div>
+    <div className="App">
+      <header className="cabecalho">
+        <div className="logo_cabecalho">
+          <img src={logoVerde} className="logo_pequena" alt="Logo" />
+        </div>
+        <div className="botoes_cabecalho">
           {!showLogin && (
-            <button className='botao_login' onClick={handleLoginButtonClick}>
+            <button className="botao_entrar" onClick={handleLoginButtonClick}>
               LOGIN
             </button>
           )}
           {showLogin && (
-            <div className='overlay' onClick={handleCloseLogin}>
-              <div className='modal' onClick={e => e.stopPropagation()}>
-                <button className='close-button' onClick={handleCloseLogin}>
+            <div className="overlay" onClick={handleCloseLogin}>
+              <div className="modal" onClick={(e) => e.stopPropagation()}>
+                <button className="close-button" onClick={handleCloseLogin}>
                   X
                 </button>
                 <Login />
@@ -88,14 +164,14 @@ function App() {
             </div>
           )}
           {!showRegister && (
-            <button className='botao_registrar' onClick={handleRegisterButtonClick}>
+            <button className="botao_registrar" onClick={handleRegisterButtonClick}>
               REGISTRAR
             </button>
           )}
           {showRegister && (
-            <div className='overlay' onClick={handleCloseRegister}>
-              <div className='modal' onClick={e => e.stopPropagation()}>
-                <button className='close-button' onClick={handleCloseRegister}>
+            <div className="overlay" onClick={handleCloseRegister}>
+              <div className="modal" onClick={(e) => e.stopPropagation()}>
+                <button className="close-button" onClick={handleCloseRegister}>
                   X
                 </button>
                 <RegistrationForm />
@@ -103,27 +179,47 @@ function App() {
             </div>
           )}
         </div>
-      </div>
+      </header>
 
-      <div className='meio'>
-        <div className='box_login'>
+      <main className="meio">
+        <div className="letreiro">
+   
+          {images.map((image) => (
+            <ImageButton key={image.title} style={{ width: image.width }}>
+              <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+              <ImageBackdrop className="MuiImageBackdrop-root" />
+              <Image>
+                <Typography component="span" variant="subtitle1" color="inherit" style={{ textAlign: 'center' }}>
+                  {image.title}
+                  <ImageMarked className="MuiImageMarked-root" />
+                </Typography>
+              </Image>
+            </ImageButton>
+          ))}
+          
+        </div>
+
+        <div className="explicacao">
           <Box
-            height={200}
-            width={200}
-            my={4}
-            display='flex'
-            alignItems='center'
-            justifyContent='center'
-            gap={4}
-            p={2}
-            sx={{ border: '2px solid grey' }}
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              bgcolor: 'background.paper',
+              border: '1px solid',
+              borderColor: 'divider',
+              borderRadius: 2,
+              color: 'text.secondary',
+            }}
           >
-            This Box uses MUI System props for quick customization.
+            <h1 className="titulo1">Motivo</h1>
+            <Divider orientation="vertical" variant="middle" flexItem />
+            <p className="texto1">Bem-vindo à plataforma onde os cidadãos podem reportar problemas urbanos diretamente para os órgãos competentes.</p>
           </Box>
         </div>
-      </div>
+      </main>
 
-      <div className='rodape'>
+      <footer className="rodape">
         <Box
           sx={{
             display: 'flex',
@@ -134,15 +230,12 @@ function App() {
             borderRadius: 2,
             bgcolor: 'background.paper',
             color: 'text.secondary',
-            '& svg': {
-              m: 1,
-            },
           }}
         >
-          <p className='direitos_rodape1'>SCOUTER® - Marca Registrada</p>
-          <p className='direitos_rodape2'>Copyright © 2024 | scouter.com | TODOS OS DIREITOS RESERVADOS</p>
+          <p className="direitos_rodape1">SCOUTER® - Marca Registrada</p>
+          <p className="direitos_rodape2">Copyright © 2024 | scouter.com | TODOS OS DIREITOS RESERVADOS</p>
         </Box>
-      </div>
+      </footer>
     </div>
   );
 }

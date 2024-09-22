@@ -26,7 +26,8 @@
     "react-keyframes": "^0.2.3",
     "react-router-dom": "^6.26.2",
     "sequelize": "^6.37.3",
-    "styled-components": "^6.1.12"
+    "styled-components": "^6.1.12",
+    "vite": "^5.4.7"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.24.1",
@@ -37,7 +38,6 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
-    "json-server": "^1.0.0-beta.1",
-    "vite": "^5.2.0"
+    "json-server": "^1.0.0-beta.1"
   }
 }
