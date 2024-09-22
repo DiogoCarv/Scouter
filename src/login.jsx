@@ -1,156 +1,88 @@
-// Importações CSS
+import { useState } from 'react';
 import './App.css';
-import logoVerde from './imagens/logo_verde.png';
-
-// Importações do MUI
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
-import * as React from 'react';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+import axios from 'axios';
+import logoVerde from './imagens/logo_verde.png';  // Assumindo que esse caminho esteja correto
 
-// Verificação se os componentes são importados corretamente
-const checkComponent = (Component) => {
-  return Component ? <Component /> : null;
-};
+const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
 
-const images = [
-  {
-    url: './imagens/cidade_verde.jpg',
-    title: 'SAIBA MAIS',
-    width: '30%',
-  },
-];
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrorMessage(null);  // Limpar mensagem de erro ao tentar novamente
+    setSuccessMessage(null);
 
-const ImageButton = styled(ButtonBase)(({ theme }) => ({
-  position: 'relative',
-  height: 200,
-  [theme.breakpoints.down('sm')]: {
-    width: '100% !important', // Overrides inline-style
-    height: 100,
-  },
-  '&:hover, &.Mui-focusVisible': {
-    zIndex: 1,
-    '& .MuiImageBackdrop-root': {
-      opacity: 0.15,
-    },
-    '& .MuiImageMarked-root': {
-      opacity: 0,
-    },
-    '& .MuiTypography-root': {
-      border: '4px solid currentColor',
-    },
-  },
-}));
+    try {
+      const response = await axios.post('http://localhost:5173/login', {
+        username,
+        password,
+      });
 
-const ImageSrc = styled('span')({
-  position: 'absolute',
-  left: 0,
-  right: 0,
-  top: 0,
-  bottom: 0,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center 40%',
-});
+      if (response.status === 200) {
+        const { token, userType } = response.data;
 
-const Image = styled('span')(({ theme }) => ({
-  position: 'absolute',
-  left: 0,
-  right: 0,
-  top: 0,
-  bottom: 0,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  color: theme.palette.common.white,
-}));
-
-const ImageBackdrop = styled('span')(({ theme }) => ({
-  position: 'absolute',
-  left: 0,
-  right: 0,
-  top: 0,
-  bottom: 0,
-  backgroundColor: theme.palette.common.black,
-  opacity: 0.4,
-  transition: theme.transitions.create('opacity'),
-}));
-
-const ImageMarked = styled('span')(({ theme }) => ({
-  height: 3,
-  width: 18,
-  backgroundColor: theme.palette.common.white,
-  position: 'absolute',
-  bottom: -2,
-  left: 'calc(50% - 9px)',
-  transition: theme.transitions.create('opacity'),
-}));
-
-function App() {
+        // Armazenar o token JWT no localStorage
+        localStorage.setItem('token', token);
+        
+        setSuccessMessage('Login bem-sucedido! Redirecionando...');
+        
+        // Redirecionar o usuário de acordo com seu tipo
+        setTimeout(() => {
+          if (userType === 'morador') {
+            window.location.href = '/morador';  // Redireciona para a página dos moradores
+          } else if (userType === 'orgao') {
+            window.location.href = '/orgao';  // Redireciona para a página do órgão responsável
+          } else if (userType === 'admin') {
+            window.location.href = '/admin';  // Redireciona para a página do admin
+          }
+        }, 1000);
+      } else {
+        setErrorMessage('Erro ao fazer login. Verifique suas credenciais.');
+      }
+    } catch (error) {
+      setErrorMessage('Erro ao fazer login. Verifique suas credenciais.');
+      console.error('Erro ao fazer login:', error);
+    }
+  };
 
   return (
-    <div className="App">
-      <header className="cabecalho">
-        <div className="logo_cabecalho">
-          <img src={logoVerde} className="logo_pequena" alt="Logo" />
-        </div>
-      </header>
-
-      <main className="meio">
-
-        <div className='formulario'>
-            <Box
-                sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                bgcolor: 'background.paper',
-                border: '1px solid',
-                borderColor: 'divider',
-                borderRadius: 2,
-                color: 'text.secondary',
-                '& svg': {
-                    m: 1,
-                },
-                }}
-            >
-                <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                    <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                    <TextField id="input-with-sx" label="With sx" variant="standard" />
-                </Box>
-            </Box>
-        </div>
-
-      </main>
-
-      <footer className="rodape">
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            border: '1px solid',
-            borderColor: 'divider',
-            borderRadius: 2,
-            bgcolor: 'background.paper',
-            color: 'text.secondary',
-            '& svg': {
-              m: 1,
-            },
-          }}
-        >
-          <p className="direitos_rodape1">SCOUTER® - Marca Registrada</p>
-          <p className="direitos_rodape2">Copyright © 2024 | scouter.com | TODOS OS DIREITOS RESERVADOS</p>
-        </Box>
-      </footer>
+    <div className="login-form">
+      <Box display="flex" justifyContent="center" alignItems="center" flexDirection="column">
+        <img src={logoVerde} alt="Logo Verde" width="150px" />
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            label="Nome de Usuário"
+            variant="outlined"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            fullWidth
+            required
+          />
+          <TextField
+            label="Senha"
+            variant="outlined"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            fullWidth
+            required
+            margin="normal"
+          />
+          {errorMessage && <p className="error">{errorMessage}</p>}
+          {successMessage && <p className="success">{successMessage}</p>}
+          <ButtonBase type="submit" variant="contained" color="primary">
+            Entrar
+          </ButtonBase>
+        </form>
+      </Box>
     </div>
   );
-}
+};
 
-export default App;
-
+export default Login;

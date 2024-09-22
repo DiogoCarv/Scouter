@@ -1,17 +1,62 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import App from './App.jsx';
-import Login from './login.jsx';
-import RegistrationForm from './components/RegistrationForm'; // Importando o componente correto
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import Login from './login';
+import OrgaoDashboard from './components/OrgaoDashboard';
 
-const AppRoutes = () => {
+import RegistrarProblema from './components/RegistrarProblema';
+import ListarProblemas from './components/ListarProblemas';
+import Notificacoes from './components/Notificacoes';
+import VerificarProblema from './components/VerificarProblema';
+import AlterarStatusProblema from './components/AlterarStatusProblema';
+import CriarOrgao from './components/CriarOrgao';
+
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  const token = localStorage.getItem('token');
+  const userType = localStorage.getItem('userType');
+  
   return (
-    <Routes>
-      <Route path="/" element={<App />} />  {/* Rota principal */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/registrar" element={<RegistrationForm />} />  {/* Usando RegistrationForm na rota de registro */}
-    </Routes>
+    <Route
+      {...rest}
+      render={props =>
+        token ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to="/login" />
+        )
+      }
+    />
   );
 };
 
-export default AppRoutes;
+const Routes = () => {
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/login" component={Login} />
+        
+        {/* Rota do morador */}
+        <PrivateRoute exact path="/morador" component={MoradorDashboard} />
+        <PrivateRoute exact path="/registrar-problema" component={RegistrarProblema} />
+        <PrivateRoute exact path="/listar-problemas" component={ListarProblemas} />
+        <PrivateRoute exact path="/notificacoes" component={Notificacoes} />
+        
+        {/* Rota do órgão responsável */}
+        <PrivateRoute exact path="/orgao" component={OrgaoDashboard} />
+        <PrivateRoute exact path="/verificar-problema" component={VerificarProblema} />
+        <PrivateRoute exact path="/alterar-status" component={AlterarStatusProblema} />
+        <PrivateRoute exact path="/listar-problemas-orgao" component={ListarProblemas} />
+        <PrivateRoute exact path="/notificacoes-orgao" component={Notificacoes} />
+        
+        {/* Rota do administrador */}
+        <PrivateRoute exact path="/admin" component={AdminDashboard} />
+        <PrivateRoute exact path="/criar-orgao" component={CriarOrgao} />
+        <PrivateRoute exact path="/listar-todos-problemas" component={ListarProblemas} />
+        
+        {/* Redirecionar para login por padrão */}
+        <Redirect from="*" to="/login" />
+      </Switch>
+    </Router>
+  );
+};
+
+export default Routes;

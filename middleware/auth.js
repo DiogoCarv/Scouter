@@ -1,21 +1,34 @@
-
-
 import jwt from 'jsonwebtoken';
 
-const authMiddleware = (req, res, next) => {
-  const token = req.header('Authorization');
+// Middleware de autenticação (Verifica se o token JWT é válido)
+export const authMiddleware = (req, res, next) => {
+  const token = req.headers.authorization?.split(' ')[1];
 
   if (!token) {
-    return res.status(401).json({ message: 'Acesso negado. Nenhum token fornecido.' });
+    return res.status(401).json({ message: 'Token não fornecido. Acesso negado.' });
   }
 
   try {
-    const decoded = jwt.verify(token, 'seuSegredoJWT');
-    req.user = decoded;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded; // Anexa os dados do usuário decodificado ao request
     next();
   } catch (error) {
-    res.status(400).json({ message: 'Token inválido.' });
+    return res.status(403).json({ message: 'Token inválido. Acesso negado.' });
   }
 };
 
-export default authMiddleware;
+// Verifica se o usuário é um órgão competente
+export const isOrgaoCompetente = (req, res, next) => {
+  if (req.user.tipo !== 'orgao') {
+    return res.status(403).json({ message: 'Acesso negado. Somente órgãos competentes podem acessar esta rota.' });
+  }
+  next();
+};
+
+// Verifica se o usuário é administrador
+export const isAdmin = (req, res, next) => {
+  if (req.user.tipo !== 'admin') {
+    return res.status(403).json({ message: 'Acesso negado. Somente administradores podem acessar esta rota.' });
+  }
+  next();
+};
