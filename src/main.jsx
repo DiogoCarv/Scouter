@@ -1,13 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
+import ReactDOM from 'react-dom/client'; // Correto para React 18
+import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './routes.jsx';
-import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Router>
-      <AppRoutes />
-    </Router>
-  </React.StrictMode>
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
+  <BrowserRouter>
+    <AppRoutes />
+  </BrowserRouter>
 );

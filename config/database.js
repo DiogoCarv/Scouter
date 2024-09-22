@@ -1,11 +1,9 @@
+const { Sequelize } = require('sequelize');
+require('dotenv').config();
 
-import { Sequelize } from 'sequelize';
-
-// Configurando a conexão com MySQL no XAMPP
-const sequelize = new Sequelize('sistema_problemas', 'root', '', {
-  host: 'localhost',
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+  host: process.env.DB_HOST,
   dialect: 'mysql',
-  logging: false, // Para desativar logs de SQL no console
 });
 
-export default sequelize;
+module.exports = sequelize;

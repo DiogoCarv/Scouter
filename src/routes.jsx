@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './login';
 import OrgaoDashboard from './components/OrgaoDashboard';
 import App from './App';
@@ -8,57 +8,127 @@ import ListarProblemas from './components/ListarProblemas';
 import Notificacoes from './components/Notificacoes';
 import VerificarProblema from './components/VerificarProblema';
 import AlterarStatusProblema from './components/AlterarStatusProblema';
+import MoradorDashboard from './components/MoradorDashBoard';
 import CriarOrgao from './components/CriarOrgao';
+import AdminDashboard from './components/AdminDashBoard';
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem('token');
-  const userType = localStorage.getItem('userType');
-  
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        token ? (
-          <Component {...props} />
-        ) : (
-          <Navigate to="/login" />
-        )
-      }
-    />
-  );
+  return token ? children : <Navigate to="/login" />;
 };
 
 const AppRoutes = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route exact path="/login" component={Login} />
-        
-        {/* Rota do morador */}
-        <PrivateRoute exact path="/morador" component={MoradorDashboard} />
-        <PrivateRoute exact path="/registrar-problema" component={RegistrarProblema} />
-        <PrivateRoute exact path="/listar-problemas" component={ListarProblemas} />
-        <PrivateRoute exact path="/notificacoes" component={Notificacoes} />
-        
-        {/* Rota do órgão responsável */}
-        <PrivateRoute exact path="/orgao" component={OrgaoDashboard} />
-        <PrivateRoute exact path="/verificar-problema" component={VerificarProblema} />
-        <PrivateRoute exact path="/alterar-status" component={AlterarStatusProblema} />
-        <PrivateRoute exact path="/listar-problemas-orgao" component={ListarProblemas} />
-        <PrivateRoute exact path="/notificacoes-orgao" component={Notificacoes} />
-        
-        {/* Rota do administrador */}
-        <PrivateRoute exact path="/admin" component={AdminDashboard} />
-        <PrivateRoute exact path="/criar-orgao" component={CriarOrgao} />
-        <PrivateRoute exact path="/listar-todos-problemas" component={ListarProblemas} />
-        
-        {/* Redirecionar para login por padrão */}
-        <Navigate from="*" to="/login" />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/login" element={<Login />} />
+      
+      {/* Rota do morador */}
+      <Route
+        path="/morador"
+        element={
+          <PrivateRoute>
+            <MoradorDashboard />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/registrar-problema"
+        element={
+          <PrivateRoute>
+            <RegistrarProblema />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/listar-problemas"
+        element={
+          <PrivateRoute>
+            <ListarProblemas />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/notificacoes"
+        element={
+          <PrivateRoute>
+            <Notificacoes />
+          </PrivateRoute>
+        }
+      />
+      
+      {/* Rota do órgão responsável */}
+      <Route
+        path="/orgao"
+        element={
+          <PrivateRoute>
+            <OrgaoDashboard />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/verificar-problema"
+        element={
+          <PrivateRoute>
+            <VerificarProblema />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/alterar-status"
+        element={
+          <PrivateRoute>
+            <AlterarStatusProblema />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/listar-problemas-orgao"
+        element={
+          <PrivateRoute>
+            <ListarProblemas />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/notificacoes-orgao"
+        element={
+          <PrivateRoute>
+            <Notificacoes />
+          </PrivateRoute>
+        }
+      />
+      
+      {/* Rota do administrador */}
+      <Route
+        path="/admin"
+        element={
+          <PrivateRoute>
+            <AdminDashboard />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/criar-orgao"
+        element={
+          <PrivateRoute>
+            <CriarOrgao />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/listar-todos-problemas"
+        element={
+          <PrivateRoute>
+            <ListarProblemas />
+          </PrivateRoute>
+        }
+      />
+      
+      {/* Redirecionar para app por padrão */}
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
   );
 };
 
-export default Routes;
+export default AppRoutes;
