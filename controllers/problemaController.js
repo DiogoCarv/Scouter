@@ -1,5 +1,7 @@
 import Problema from '../models/Problema';
 
+import Notificacao from '../models/Notificacao';
+
 // Listar problemas
 export const listarProblemas = async (req, res) => {
     try {
@@ -23,24 +25,63 @@ export const obterProblema = async (req, res) => {
     }
 };
 
+
+
 // Criar problema
+
 export const criarProblema = async (req, res) => {
     try {
-        const { descricao, localizacao, tipo, moradorId, orgaoCompetenteId } = req.body;
+        // Verifica se o usuário é um morador
+        if (req.user.tipo !== 'morador') {
+            return res.status(403).json({ message: 'Apenas moradores podem registrar problemas.' });
+        }
+
+        const { descricao, localizacao, tipo, orgaoCompetenteId } = req.body;
+
+        // Cria o problema associando o morador autenticado
         const problema = await Problema.create({
             descricao,
             localizacao,
             tipo,
-            status: 'Pendente',
-            dataRegistro: new Date(),
-            moradorId,
-            orgaoCompetenteId
+            moradorId: req.user.id,  // ID do morador autenticado
+            orgaoCompetenteId,
         });
+
         res.status(201).json(problema);
     } catch (error) {
-        res.status(500).json({ error: 'Erro ao criar problema' });
+        res.status(500).json({ error: 'Erro ao registrar problema.' });
     }
 };
+
+
+export const atualizarStatusProblema = async (req, res) => {
+    try {
+        // Verificar se o usuário é um administrador ou órgão competente
+        if (req.user.tipo !== 'administrador' && req.user.tipo !== 'orgaoCompetente') {
+            return res.status(403).json({ message: 'Acesso negado. Apenas administradores ou órgãos competentes podem alterar o status.' });
+        }
+
+        const problema = await Problema.findByPk(req.params.id);
+        if (!problema) {
+            return res.status(404).json({ message: 'Problema não encontrado.' });
+        }
+
+        problema.status = req.body.status;
+        await problema.save();
+
+        // Enviar notificação para o morador
+        const notificacao = await Notificacao.create({
+            mensagem: `O status do seu problema foi atualizado para: ${problema.status}`,
+            moradorId: problema.moradorId,
+        });
+
+        res.status(200).json({ problema, notificacao });
+    } catch (error) {
+        res.status(500).json({ error: 'Erro ao atualizar status do problema.' });
+    }
+};
+
+
 
 // Atualizar problema
 export const atualizarProblema = async (req, res) => {
