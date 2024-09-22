@@ -10,7 +10,7 @@ const VerificarProblema = () => {
     const fetchProblemas = async () => {
       try {
         const token = localStorage.getItem('token');  // Recupera o token JWT
-        const response = await axios.get('http://localhost:5173/moradores/verificar-problema', {
+        const response = await axios.get('http://localhost:3000/moradores/verificar-problema', {
           headers: {
             'Authorization': `Bearer ${token}`,  // Autenticação JWT
           },

@@ -13,7 +13,7 @@ const AtualizarStatus = ({ problemaId }) => {
 
     try {
       const token = localStorage.getItem('token');  // Recupera o token JWT
-      const response = await axios.put(`http://localhost:5173/problemas/${problemaId}/status`, { status }, {
+      const response = await axios.put(`http://localhost:3000/problemas/${problemaId}/status`, { status }, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },

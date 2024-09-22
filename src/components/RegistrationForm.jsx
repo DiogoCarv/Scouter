@@ -41,7 +41,7 @@ const RegistrarProblema = () => {
 
     try {
       // Requisição POST para criar o usuário/morador
-      const response = await axios.post('http://localhost:5173/moradores', {
+      const response = await axios.post('http://localhost:3000/moradores', {
         username,
         password,
         cep,

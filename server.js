@@ -5,14 +5,28 @@ import sequelize from './config/database';
 import process from 'NodeJS';
 import authMiddleware from './middleware/auth';
 
-app.use('/moradores', authMiddleware, moradorRoutes);
-app.use('/administradores', authMiddleware, administradorRoutes);
-app.use('/orgaos', authMiddleware, orgaoCompetenteRoutes);
-app.use('/problemas', authMiddleware, problemaRoutes);
-app.use('/notificacoes', authMiddleware, notificacaoRoutes);
-// Rota de autenticação não precisa de middleware
-app.use('/', authRoutes);
+// Instanciando o Express
+const app = express();
 
+// Middleware CORS
+app.use(cors({
+    origin: 'http://localhost:5173', // URL do front-end
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+// Middleware BodyParser para interpretar JSON
+app.use(bodyParser.json());
+
+// Importar as rotas do backend
+import moradorRoutes from './routes/moradorRoutes';
+import administradorRoutes from './routes/administradorRoutes';
+import orgaoCompetenteRoutes from './routes/orgaoCompetenteRoutes';
+import problemaRoutes from './routes/problemaRoutes';
+import notificacaoRoutes from './routes/notificacaoRoutes';
+import authRoutes from './routes/authRoutes';
+
+// Middlewares para verificar se o usuário é admin ou órgão competente
 const adminMiddleware = (req, res, next) => {
     if (req.user.tipo !== 'administrador') {
         return res.status(403).json({ message: 'Acesso negado. Apenas administradores podem acessar esta rota.' });
@@ -20,21 +34,6 @@ const adminMiddleware = (req, res, next) => {
     next();
 };
 
-app.use('/administradores', authMiddleware, adminMiddleware, administradorRoutes);
-sequelize.sync({ alter: true })  // Alterar sem recriar todas as tabelas
-    .then(() => {
-        console.log('Banco de dados sincronizado');
-    })
-    .catch(error => {
-        console.error('Erro ao sincronizar banco de dados:', error);
-    });
-
-
-app.use(cors({
-    origin: 'http://localhost:5173', // Alterar para o URL correto do front-end
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
 const orgaoCompetenteMiddleware = (req, res, next) => {
     if (req.user.tipo !== 'orgaoCompetente') {
         return res.status(403).json({ message: 'Acesso negado. Apenas órgãos competentes podem acessar esta rota.' });
@@ -42,39 +41,31 @@ const orgaoCompetenteMiddleware = (req, res, next) => {
     next();
 };
 
+// Rotas protegidas com middleware de autenticação
+app.use('/moradores', authMiddleware, moradorRoutes);
+app.use('/administradores', authMiddleware, adminMiddleware, administradorRoutes);
 app.use('/orgaos', authMiddleware, orgaoCompetenteMiddleware, orgaoCompetenteRoutes);
+app.use('/problemas', authMiddleware, problemaRoutes);
+app.use('/notificacoes', authMiddleware, notificacaoRoutes);
 
+// Rota de autenticação (não requer middleware)
+app.use('/', authRoutes);
 
-// Instanciando o Express
-const app = express();
-
-app.use(cors({
-    origin: 'http://localhost:5173', // Substitua pela URL do seu front-end
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
-app.use(bodyParser.json());
-
-
-
-const PORT = process.env.PORT || 5173;
-
+// Sincronizar o banco de dados
 sequelize.authenticate()
-.then(() => {
-    console.log('Conectado ao banco de dados.');
-
-    // Sincronizando o banco de dados sem recriar as tabelas, apenas alterando quando necessário
-    return sequelize.sync({ alter: true });  // Sincroniza e altera sem recriar
-})
-.then(() => {
-    app.listen(PORT, () => {
-        console.log(`Servidor rodando na porta ${PORT}`);
+    .then(() => {
+        console.log('Conectado ao banco de dados.');
+        // Sincronizando o banco de dados sem recriar as tabelas
+        return sequelize.sync({ alter: true });  // Use `alter: true` para alterar as tabelas sem recriar
+    })
+    .then(() => {
+        const PORT = process.env.PORT || 5000;
+        app.listen(PORT, () => {
+            console.log(`Servidor rodando na porta ${PORT}`);
+        });
+    })
+    .catch(error => {
+        console.error('Erro ao conectar ao banco de dados:', error);
     });
-})
-.catch(error => {
-    console.error('Erro ao conectar ao banco de dados:', error);
-});
 
-// Exportando o app, caso necessário
 export default app;

@@ -10,7 +10,7 @@ const Notificacoes = () => {
     const fetchNotificacoes = async () => {
       try {
         const token = localStorage.getItem('token');  // Recupera o token JWT
-        const response = await axios.get('http://localhost:5173/notificacoes', {
+        const response = await axios.get('http://localhost:3000/notificacoes', {
           headers: {
             'Authorization': `Bearer ${token}`,  // Autenticação via JWT
           },

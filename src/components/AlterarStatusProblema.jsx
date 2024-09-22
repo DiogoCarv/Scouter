@@ -12,7 +12,7 @@ const AlterarStatusProblema = () => {
   useEffect(() => {
     const fetchProblemas = async () => {
       try {
-        const response = await axios.get('http://localhost:5173/orgao/listar-problemas'); // Rota para listar problemas
+        const response = await axios.get('http://localhost:3000/orgao/listar-problemas'); // Rota para listar problemas
         setProblemas(response.data);
       } catch (error) {
         console.error('Erro ao carregar problemas', error);
@@ -27,7 +27,7 @@ const AlterarStatusProblema = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`http://localhost:5173/orgao/atualizar-status/${selectedProblema}`, {
+      const response = await axios.post(`http://localhost:3000/orgao/atualizar-status/${selectedProblema}`, {
         status: novoStatus
       });
 

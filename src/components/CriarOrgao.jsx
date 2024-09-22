@@ -16,7 +16,7 @@ const CriarOrgao = () => {
     setSuccessMessage(null);
 
     try {
-      const response = await axios.post('http://localhost:5173/admin/criar-orgao', {
+      const response = await axios.post('http://localhost:3000/admin/criar-orgao', {
         nome,
         email,
         senha,
