@@ -40,8 +40,13 @@ const orgaoCompetenteMiddleware = (req, res, next) => {
     next();
 };
 
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+  });//log
 // Rotas protegidas com middleware de autenticação
-app.use('/moradores', authMiddleware, moradorRoutes);
+app.use('/', authRoutes);
+app.use('/moradores', moradorRoutes);
 app.use('/administradores', authMiddleware, adminMiddleware, administradorRoutes);
 app.use('/orgaos', authMiddleware, orgaoCompetenteMiddleware, orgaoCompetenteRoutes);
 app.use('/problemas', authMiddleware, problemaRoutes);

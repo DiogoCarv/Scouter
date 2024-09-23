@@ -51,8 +51,7 @@ export const register = async (req, res) => {
 
     try {
         console.log('Dados recebidos no registro:', req.body);  // Verifica se os dados chegaram no backend
-        console.log('JWT_SECRET:', process.env.JWT_SECRET);  // Adicione isso no começo do controlador
-
+        console.log('JWT_SECRET:', process.env.JWT_SECRET); 
         let userExists = await Morador.findOne({ where: { email } });
 
         if (userExists) {
@@ -70,6 +69,7 @@ export const register = async (req, res) => {
         const token = jwt.sign({ id: newUser.id, tipo: 'morador' }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         res.json({ token });
+        res.status(201).json({ message: 'Usuário registrado com sucesso' });
     } catch (error) {
         console.error('Erro ao registrar morador:', error);  // Exibe qualquer erro que acontecer
         res.status(500).json({ message: 'Erro no servidor' });

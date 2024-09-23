@@ -5,8 +5,9 @@ import jwt from 'jsonwebtoken';
 
 // Registrar novo morador
 export const register = async (req, res) => {
+    const { nome, email, senha } = req.body;
     try {
-        const { nome, email, senha } = req.body;
+      
 
         if (!nome || !email || !senha) {
             return res.status(400).json({ error: 'Todos os campos são obrigatórios.' });
@@ -28,6 +29,7 @@ export const register = async (req, res) => {
         const token = jwt.sign({ id: novoMorador.id }, 'secret', { expiresIn: '1h' });
 
         res.status(201).json({ token, morador: novoMorador });
+        res.status(201).json({ message: 'Morador registrado com sucesso' });
     } catch (error) {
         res.status(500).json({ error: 'Erro ao registrar morador' });
     }

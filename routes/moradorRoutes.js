@@ -4,7 +4,7 @@ import { registrarProblema, verificarProblema, autenticar , register } from '../
 import { authMiddleware } from '../middleware/auth.js'; // Middleware de autenticação
 
 // Protegendo as rotas de morador
-router.post('/',authMiddleware, register);
+router.post('/', register);
 router.post('/registrar-problema', authMiddleware, registrarProblema);  
 router.get('/verificar-problema', authMiddleware, verificarProblema);   // Somente moradores autenticados podem verificar seus problemas
 
