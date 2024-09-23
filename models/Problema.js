@@ -1,56 +1,51 @@
-// models/Problema.js
-module.exports = (sequelize, DataTypes) => {
-    const Problema = sequelize.define('Problema', {
-      id: {
+import { DataTypes } from 'sequelize';
+import sequelize from '../config/database.js'; 
+
+// Definindo o modelo Problema
+const Problema = sequelize.define('Problema', {
+    id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
-      },
-      descricao: {
+    },
+    descricao: {
         type: DataTypes.TEXT,
         allowNull: false
-      },
-      localizacao: {
+    },
+    localizacao: {
         type: DataTypes.STRING(255),
         allowNull: false
-      },
-      tipo: {
+    },
+    tipo: {
         type: DataTypes.STRING(50),
         allowNull: false
-      },
-      status: {
+    },
+    status: {
         type: DataTypes.STRING(50),
-        allowNull: false
-      },
-      dataRegistro: {
+        defaultValue: 'pendente'
+    },
+    dataRegistro: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW
-      },
-      moradorId: {
+    },
+    moradorId: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'Morador',
-          key: 'id'
+            model: 'Morador', // Nome da tabela associada
+            key: 'id'
         }
-      },
-      orgaoCompetenteId: {
+    },
+    orgaoCompetenteId: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'OrgaoCompetente',
-          key: 'id'
+            model: 'OrgaoCompetente', // Nome da tabela associada
+            key: 'id'
         }
-      }
-    }, {
-      tableName: 'problema',
-      timestamps: false
-    });
-  
-    // Definindo as relações
-    Problema.associate = (models) => {
-      Problema.belongsTo(models.Morador, { foreignKey: 'moradorId' });
-      Problema.belongsTo(models.OrgaoCompetente, { foreignKey: 'orgaoCompetenteId' });
-    };
-  
-    return Problema;
-  };
-  
+    }
+}, {
+    tableName: 'problema', // Nome da tabela no banco
+    timestamps: false
+});
+
+// Exportando o modelo como default
+export default Problema;

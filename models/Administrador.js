@@ -1,29 +1,29 @@
-// models/Administrador.js
-module.exports = (sequelize, DataTypes) => {
-    const Administrador = sequelize.define('Administrador', {
-      id: {
+import { DataTypes } from 'sequelize';
+import sequelize from '../config/database.js';  
+// Definindo o modelo Administrador
+const Administrador = sequelize.define('Administrador', {
+    id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true
-      },
-      nome: {
-        type: DataTypes.STRING(100),
-        allowNull: false
-      },
-      email: {
+        primaryKey: true,
+    },
+    nome: {
         type: DataTypes.STRING(100),
         allowNull: false,
-        unique: true
-      },
-      senha: {
+    },
+    email: {
         type: DataTypes.STRING(100),
-        allowNull: false
-      }
-    }, {
-      tableName: 'administrador',
-      timestamps: false
-    });
-  
-    return Administrador;
-  };
-  
+        allowNull: false,
+        unique: true,
+    },
+    senha: {
+        type: DataTypes.STRING(100),
+        allowNull: false,
+    },
+}, {
+    tableName: 'administrador',
+    timestamps: false,  // Se você não quiser timestamps (createdAt, updatedAt)
+});
+
+// Exportando o modelo como `default`
+export default Administrador;

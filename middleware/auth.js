@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 // Middleware de autenticação (Verifica se o token JWT é válido)
-export const authMiddleware = (req, res, next) => {
+const authMiddleware = (req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1];
 
   if (!token) {
@@ -19,7 +19,7 @@ export const authMiddleware = (req, res, next) => {
 
 // Verifica se o usuário é um órgão competente
 export const isOrgaoCompetente = (req, res, next) => {
-  if (req.user.userType !== 'orgaoCompetente') {  // Corrigir para 'orgaoCompetente'
+  if (req.user.userType !== 'orgaoCompetente') {
     return res.status(403).json({ message: 'Acesso negado. Somente órgãos competentes podem acessar esta rota.' });
   }
   next();
@@ -27,8 +27,11 @@ export const isOrgaoCompetente = (req, res, next) => {
 
 // Verifica se o usuário é administrador
 export const isAdmin = (req, res, next) => {
-  if (req.user.userType !== 'administrador') {  // Corrigir para 'administrador'
+  if (req.user.userType !== 'administrador') {
     return res.status(403).json({ message: 'Acesso negado. Somente administradores podem acessar esta rota.' });
   }
   next();
 };
+
+// Exportando authMiddleware como default
+export default authMiddleware;
