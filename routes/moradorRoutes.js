@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
-import { registrarProblema, verificarProblema, autenticar , register } from '../controllers/moradorController';
-import { authMiddleware } from '../middleware/auth'; // Middleware de autenticação
+import { registrarProblema, verificarProblema, autenticar , register } from '../controllers/moradorController.js';
+import { authMiddleware } from '../middleware/auth.js'; // Middleware de autenticação
 
 // Protegendo as rotas de morador
 router.post('/registrar-problema', authMiddleware, registrarProblema);  // Moradores precisam estar autenticados

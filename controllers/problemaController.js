@@ -1,6 +1,6 @@
-import Problema from '../models/Problema';
+import Problema from '../models/Problema.js';
 
-import Notificacao from '../models/Notificacao';
+import Notificacao from '../models/Notificacao.js';
 
 // Listar problemas
 export const listarProblemas = async (req, res) => {

@@ -1,5 +1,5 @@
-import OrgaoCompetente from'../models/OrgaoCompetente';
-import Problema  from '../models/Problema';
+import OrgaoCompetente from'../models/OrgaoCompetente.js';
+import Problema  from '../models/Problema.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 

@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import Admin from '../models/Administrador';
-import Morador from '../models/Morador';
-import OrgaoCompetente from '../models/OrgaoCompetente';
+import Admin from '../models/Administrador.js';
+import Morador from '../models/Morador.js';
+import OrgaoCompetente from '../models/OrgaoCompetente.js';
 
 // Controlador de login
 export const login = async (req, res) => {
@@ -51,6 +51,7 @@ export const register = async (req, res) => {
 
     try {
         console.log('Dados recebidos no registro:', req.body);  // Verifica se os dados chegaram no backend
+        console.log('JWT_SECRET:', process.env.JWT_SECRET);  // Adicione isso no começo do controlador
 
         let userExists = await Morador.findOne({ where: { email } });
 
@@ -63,7 +64,7 @@ export const register = async (req, res) => {
         console.log('Senha criptografada:', hashedPassword);
 
         // Tenta criar o morador no banco
-        const newUser = await Morador.create({ email, senha: hashedPassword, nome: nome || 'Morador' });
+        const newUser = await Morador.create({ email, senha: hashedPassword, nome: nome || 'morador' });
         console.log('Novo morador criado:', newUser);
 
         const token = jwt.sign({ id: newUser.id, tipo: 'morador' }, process.env.JWT_SECRET, { expiresIn: '1h' });
