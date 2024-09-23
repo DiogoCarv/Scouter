@@ -2,8 +2,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import './RegistrationForm.css';  // Estilização opcional
 
-const RegistrarProblema = () => {
-  const [username, setUsername] = useState('');
+const RegistrarMorador = () => {
+  const [email, setEmail] = useState('');  // Atualizado de username para email
   const [password, setPassword] = useState('');
   const [cep, setCep] = useState('');
   const [address, setAddress] = useState('');
@@ -34,20 +34,20 @@ const RegistrarProblema = () => {
   // Enviar os dados para o back-end
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!username || !password || !cep || !address) {
+    if (!email || !password || !cep || !address) {
       setErrorMessage('Por favor, preencha todos os campos.');
       return;
     }
-  
+
     try {
       // Requisição POST para criar o usuário/morador
       const response = await axios.post('http://localhost:3000/moradores', {
-        email: username,   // Altere 'username' para 'email'
+        email,       // Atualizado de username para email
         password,
         cep,
         address,
       });
-  
+
       setSuccessMessage('Registro concluído com sucesso!');
       setErrorMessage(null);
     } catch (error) {
@@ -55,18 +55,17 @@ const RegistrarProblema = () => {
       console.error('Erro no registro', error);
     }
   };
-  
 
   return (
     <div className="form-container">
       <h2>Registrar Morador</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Nome de Usuário:</label>
+          <label>Email:</label>  {/* Atualizado para Email */}
           <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            type="email"   // Mudei o tipo para "email" para validação automática
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}  // Atualizado para email
             required
           />
         </div>
@@ -102,4 +101,4 @@ const RegistrarProblema = () => {
   );
 };
 
-export default RegistrarProblema;
+export default RegistrarMorador;

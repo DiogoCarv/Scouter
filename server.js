@@ -54,9 +54,8 @@ app.use('/', authRoutes);
 // Sincronizar o banco de dados
 sequelize.authenticate()
     .then(() => {
-        console.log('Conectado ao banco de dados.');
-        // Sincronizando o banco de dados sem recriar as tabelas
-        return sequelize.sync({ alter: true });  // Use `alter: true` para alterar as tabelas sem recriar
+        console.log('Conexão com o banco de dados foi bem-sucedida.');
+        return sequelize.sync({ alter: true });  // Sincronizando as tabelas
     })
     .then(() => {
         const PORT = process.env.PORT || 5000;
@@ -65,7 +64,9 @@ sequelize.authenticate()
         });
     })
     .catch(error => {
-        console.error('Erro ao conectar ao banco de dados:', error);
+        console.error('Erro ao conectar ao banco de dados:', error);  // Se der erro na conexão, será mostrado aqui
     });
+
+
 
 export default app;

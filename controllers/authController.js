@@ -47,26 +47,30 @@ export const login = async (req, res) => {
 
 // Controlador de registro para cada tipo de usuário
 export const register = async (req, res) => {
-    const { email, password, nome } = req.body;  // Aplique essas mudanças conforme o frontend
+    const { email, password, nome } = req.body;
 
     try {
+        console.log('Dados recebidos no registro:', req.body);  // Verifica se os dados chegaram no backend
+
         let userExists = await Morador.findOne({ where: { email } });
 
         if (userExists) {
+            console.log('Usuário já existe:', email);
             return res.status(400).json({ message: 'Usuário já existe' });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
+        console.log('Senha criptografada:', hashedPassword);
 
-        // Cria o novo morador
-        const newUser = await Morador.create({ email, senha: hashedPassword, nome: nome || 'Morador' }); // Nome opcional
+        // Tenta criar o morador no banco
+        const newUser = await Morador.create({ email, senha: hashedPassword, nome: nome || 'Morador' });
+        console.log('Novo morador criado:', newUser);
 
-        const token = jwt.sign({ id: newUser.id, tipo: 'morador' }, 'seuSegredoJWT', { expiresIn: '1h' });
+        const token = jwt.sign({ id: newUser.id, tipo: 'morador' }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         res.json({ token });
     } catch (error) {
-        console.error(error);
+        console.error('Erro ao registrar morador:', error);  // Exibe qualquer erro que acontecer
         res.status(500).json({ message: 'Erro no servidor' });
     }
 };
-
