@@ -19,5 +19,13 @@
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
+  },
+
+  "banco": {
+    "username": "root",
+    "password": null,
+    "database": "meu_banco",
+    "host": "localhost",
+    "dialect": "mysql"
   }
 }

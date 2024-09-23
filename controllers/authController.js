@@ -78,7 +78,8 @@ export const register = async (req, res) => {
             newUser = await OrgaoCompetente.create({ email, senha: hashedPassword, nome });
         }
 
-        const token = jwt.sign({ id: newUser.id, tipo }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user.id, userType }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
 
         res.status(201).json({ token, message: 'Usuário registrado com sucesso' });
     } catch (error) {

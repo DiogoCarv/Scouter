@@ -28,7 +28,7 @@ export const register = async (req, res) => {
         // Gerar token JWT
         const token = jwt.sign({ id: novoMorador.id }, 'secret', { expiresIn: '1h' });
 
-        res.status(201).json({ token, morador: novoMorador });
+        
         res.status(201).json({ message: 'Morador registrado com sucesso' });
     } catch (error) {
         res.status(500).json({ error: 'Erro ao registrar morador' });
@@ -88,3 +88,20 @@ export const autenticar = async (req, res) => {
         res.status(500).json({ error: 'Erro ao autenticar morador' });
     }
 };
+export const criarMorador = async (req, res) => {
+    try {
+      const { email, password, cep, address } = req.body;
+      
+      // Aqui você insere no banco usando o ORM ou query direta
+      const novoMorador = await Morador.create({ email, password, cep, address });
+      
+      console.log('Morador registrado:', novoMorador);  // Log para verificar se foi inserido
+      res.status(201).json({ message: 'Morador registrado com sucesso' });
+    } catch (error) {
+      console.error('Erro ao registrar morador:', error);  // Log do erro
+      res.status(500).json({ message: 'Erro ao registrar morador' });
+    }
+  };
+  
+
+

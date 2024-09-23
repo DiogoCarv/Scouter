@@ -47,7 +47,10 @@ const RegistrarMorador = () => {
         cep,
         address,
       });
-
+      if (response.status === 201) {
+        console.log('Registrado com sucesso:', response.data);  // Verificar sucesso no front-end
+        setSuccessMessage('Registrado com sucesso!');
+      }
       setSuccessMessage('Registro concluído com sucesso!');
       setErrorMessage(null);
     } catch (error) {
