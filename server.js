@@ -68,7 +68,7 @@ sequelize.authenticate()
         });
     })
     .catch(error => {
-        console.error('Erro ao conectar ao banco de dados:', error);  // Se der erro na conexão, será mostrado aqui
+        console.error('Erro ao conectar ao banco de dados:', error);  
     });
 
 

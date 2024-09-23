@@ -29,7 +29,7 @@ export const login = async (req, res) => {
             return res.status(400).json({ message: 'Usuário não encontrado' });
         }
 
-        const isMatch = await bcrypt.compare(password, user.senha); // Altere 'user.password' para 'user.senha'
+        const isMatch = await bcrypt.compare(password, user.senha); 
 
         if (!isMatch) {
             return res.status(400).json({ message: 'Senha incorreta' });
@@ -48,7 +48,7 @@ export const login = async (req, res) => {
 
 // Controlador de registro para cada tipo de usuário
 export const register = async (req, res) => {
-    const { email, password, nome, tipo } = req.body;  // Agora recebemos o tipo de usuário
+    const { email, password, nome, tipo } = req.body;  
     console.log('Dados recebidos no registro:', req.body);  
     try {
         

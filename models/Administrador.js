@@ -22,7 +22,7 @@ const Administrador = sequelize.define('Administrador', {
     },
 }, {
     tableName: 'administrador',
-    timestamps: false,  // Se você não quiser timestamps (createdAt, updatedAt)
+    timestamps: false,  
 });
 
 // Exportando o modelo como `default`
