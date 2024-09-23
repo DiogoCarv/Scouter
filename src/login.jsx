@@ -7,7 +7,7 @@ import axios from 'axios';
 import logoVerde from './imagens/logo_verde.png';  // Assumindo que esse caminho esteja correto
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
@@ -18,8 +18,8 @@ const Login = () => {
     setSuccessMessage(null);
 
     try {
-      const response = await axios.post('http://localhost:3000/login', {
-        email: username,  // <--- Corrigir aqui
+      const response = await axios.post('http://localhost:5000/login', {
+        email,  // <--- Corrigir aqui
         password,
       });
 
@@ -58,10 +58,10 @@ const Login = () => {
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
           <TextField
-            label="Nome de Usuário"
+            label="Email"
             variant="outlined"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             fullWidth
             required
           />
