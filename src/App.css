@@ -117,7 +117,7 @@
   font-weight: bold;
 }
 
-.letra_botao2{
+
 .letra_botao{
   color: aliceblue;
 }
@@ -132,8 +132,7 @@
   color: #0b3e25;
 }
 
-.letra_botao2:hover{
-  transform: scale(1.63);
+
 .letra_botao2:hover{
   transform: scale(1.63);
   color: #082919;
@@ -474,7 +473,6 @@
   margin-top: 20px;
 }
 
-.direitos_rodape2 {
 .direitos_rodape1 {
   color: black;
   text-align: center;
