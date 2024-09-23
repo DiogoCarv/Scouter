@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import Box from '@mui/material/Box';
-import ButtonBase from '@mui/material/ButtonBase';
+import Button from '@mui/material/Button';  // Import Button no lugar de ButtonBase
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
 import logoVerde from './imagens/logo_verde.png';  // Assumindo que esse caminho esteja correto
@@ -19,7 +19,7 @@ const Login = () => {
 
     try {
       const response = await axios.post('http://localhost:3000/login', {
-        username,
+        email: username,  // <--- Corrigir aqui
         password,
       });
 
@@ -35,9 +35,9 @@ const Login = () => {
         setTimeout(() => {
           if (userType === 'morador') {
             window.location.href = '/morador';  // Redireciona para a página dos moradores
-          } else if (userType === 'orgao') {
+          } else if (userType === 'orgaoCompetente') {  // Corrigir o nome do tipo de usuário
             window.location.href = '/orgao';  // Redireciona para a página do órgão responsável
-          } else if (userType === 'admin') {
+          } else if (userType === 'administrador') {  // Corrigir o nome do tipo de usuário
             window.location.href = '/admin';  // Redireciona para a página do admin
           }
         }, 1000);
@@ -49,6 +49,7 @@ const Login = () => {
       console.error('Erro ao fazer login:', error);
     }
   };
+
 
   return (
     <div className="login-form">
@@ -76,9 +77,9 @@ const Login = () => {
           />
           {errorMessage && <p className="error">{errorMessage}</p>}
           {successMessage && <p className="success">{successMessage}</p>}
-          <ButtonBase type="submit" variant="contained" color="primary">
+          <Button type="submit" variant="contained" color="primary">
             Entrar
-          </ButtonBase>
+          </Button>
         </form>
       </Box>
     </div>

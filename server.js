@@ -2,12 +2,13 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import sequelize from './config/database';
-import process from 'NodeJS';
 import authMiddleware from './middleware/auth';
+import dotenv from 'dotenv';
 
 // Instanciando o Express
 const app = express();
-
+// Carrega as variáveis de ambiente
+dotenv.config();
 // Middleware CORS
 app.use(cors({
     origin: 'http://localhost:3000', // URL do front-end

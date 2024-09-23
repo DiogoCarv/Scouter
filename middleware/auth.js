@@ -19,7 +19,7 @@ export const authMiddleware = (req, res, next) => {
 
 // Verifica se o usuário é um órgão competente
 export const isOrgaoCompetente = (req, res, next) => {
-  if (req.user.tipo !== 'orgao') {
+  if (req.user.userType !== 'orgaoCompetente') {  // Corrigir para 'orgaoCompetente'
     return res.status(403).json({ message: 'Acesso negado. Somente órgãos competentes podem acessar esta rota.' });
   }
   next();
@@ -27,7 +27,7 @@ export const isOrgaoCompetente = (req, res, next) => {
 
 // Verifica se o usuário é administrador
 export const isAdmin = (req, res, next) => {
-  if (req.user.tipo !== 'admin') {
+  if (req.user.userType !== 'administrador') {  // Corrigir para 'administrador'
     return res.status(403).json({ message: 'Acesso negado. Somente administradores podem acessar esta rota.' });
   }
   next();
