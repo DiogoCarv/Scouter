@@ -47,19 +47,10 @@ export const login = async (req, res) => {
 
 // Controlador de registro para cada tipo de usuário
 export const register = async (req, res) => {
-    const { email, password, nome, tipo } = req.body;
+    const { email, password, nome } = req.body;  // Aplique essas mudanças conforme o frontend
 
     try {
-        let userExists;
-
-        // Verifica em cada tabela se o usuário já existe
-        if (tipo === 'administrador') {
-            userExists = await Admin.findOne({ where: { email } });
-        } else if (tipo === 'morador') {
-            userExists = await Morador.findOne({ where: { email } });
-        } else if (tipo === 'orgaoCompetente') {
-            userExists = await OrgaoCompetente.findOne({ where: { email } });
-        }
+        let userExists = await Morador.findOne({ where: { email } });
 
         if (userExists) {
             return res.status(400).json({ message: 'Usuário já existe' });
@@ -67,17 +58,10 @@ export const register = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Cria o novo usuário na tabela correta
-        let newUser;
-        if (tipo === 'administrador') {
-            newUser = await Admin.create({ email, senha: hashedPassword, nome });
-        } else if (tipo === 'morador') {
-            newUser = await Morador.create({ email, senha: hashedPassword, nome });
-        } else if (tipo === 'orgaoCompetente') {
-            newUser = await OrgaoCompetente.create({ email, senha: hashedPassword, nome });
-        }
+        // Cria o novo morador
+        const newUser = await Morador.create({ email, senha: hashedPassword, nome: nome || 'Morador' }); // Nome opcional
 
-        const token = jwt.sign({ id: newUser.id, tipo }, 'seuSegredoJWT', { expiresIn: '1h' });
+        const token = jwt.sign({ id: newUser.id, tipo: 'morador' }, 'seuSegredoJWT', { expiresIn: '1h' });
 
         res.json({ token });
     } catch (error) {
@@ -85,3 +69,4 @@ export const register = async (req, res) => {
         res.status(500).json({ message: 'Erro no servidor' });
     }
 };
+

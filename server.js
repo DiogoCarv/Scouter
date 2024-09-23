@@ -26,7 +26,6 @@ import orgaoCompetenteRoutes from './routes/orgaoCompetenteRoutes';
 import problemaRoutes from './routes/problemaRoutes';
 import notificacaoRoutes from './routes/notificacaoRoutes';
 import authRoutes from './routes/authRoutes';
-
 // Middlewares para verificar se o usuário é admin ou órgão competente
 const adminMiddleware = (req, res, next) => {
     if (req.user.tipo !== 'administrador') {

@@ -38,16 +38,16 @@ const RegistrarProblema = () => {
       setErrorMessage('Por favor, preencha todos os campos.');
       return;
     }
-
+  
     try {
       // Requisição POST para criar o usuário/morador
       const response = await axios.post('http://localhost:3000/moradores', {
-        username,
+        email: username,   // Altere 'username' para 'email'
         password,
         cep,
         address,
       });
-
+  
       setSuccessMessage('Registro concluído com sucesso!');
       setErrorMessage(null);
     } catch (error) {
@@ -55,6 +55,7 @@ const RegistrarProblema = () => {
       console.error('Erro no registro', error);
     }
   };
+  
 
   return (
     <div className="form-container">
