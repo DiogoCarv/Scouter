@@ -137,6 +137,9 @@ function App() {
             '& svg': {
               m: 1,
             },
+            '& svg': {
+              m: 1,
+            },
           }}
         >
           <p className='direitos_rodape1'>SCOUTER® - Marca Registrada</p>

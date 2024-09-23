@@ -21,6 +21,7 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<App />} />
+      <Route path="/" element={<App />} />
       <Route path="/login" element={<Login />} />
       
       {/* Rota do morador */}
