@@ -1,6 +1,6 @@
 // Importando o Sequelize e a instância de conexão
 import { DataTypes } from 'sequelize';
-import sequelize from '../config/database.js'; 
+import sequelize from '../config/database.cjs'; 
 
 // Definindo o modelo Morador
 const Morador = sequelize.define('Morador', {

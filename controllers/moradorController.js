@@ -90,18 +90,28 @@ export const autenticar = async (req, res) => {
 };
 export const criarMorador = async (req, res) => {
     try {
-      const { email, password, cep, address } = req.body;
+      // Log dos dados recebidos
+      console.log('Dados recebidos no servidor:', req.body);
+  
+      // Desestruturar os dados recebidos
+      const { nome, email, senha } = req.body;
+  
+      // Criar o morador
+      const novoMorador = await Morador.create({ nome, email, senha });
       
-      // Aqui você insere no banco usando o ORM ou query direta
-      const novoMorador = await Morador.create({ email, password, cep, address });
-      
-      console.log('Morador registrado:', novoMorador);  // Log para verificar se foi inserido
-      res.status(201).json({ message: 'Morador registrado com sucesso' });
+      // Log do morador criado
+      console.log('Morador criado com sucesso:', novoMorador);
+  
+      // Resposta de sucesso
+      res.status(201).json({ message: 'Morador registrado com sucesso!' });
     } catch (error) {
-      console.error('Erro ao registrar morador:', error);  // Log do erro
-      res.status(500).json({ message: 'Erro ao registrar morador' });
+      // Log do erro
+      console.error('Erro ao registrar morador:', error);
+      res.status(500).json({ message: 'Erro ao registrar morador.' });
     }
   };
+  
+  
   
 
 
