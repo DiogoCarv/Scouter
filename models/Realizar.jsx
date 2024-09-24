@@ -1,8 +1,8 @@
 // models/Realizar.js
 import { DataTypes } from 'sequelize';
-import sequelize from '../config/database.js';
-import User from './User.js';
-import Publicacao from './Publicacao.js';
+import sequelize from '../config/database.jsx';
+import User from './User.jsx';
+import Publicacao from './Publicacao.jsx';
 
 const Realizar = sequelize.define('Realizar', {
     id_realizar: {

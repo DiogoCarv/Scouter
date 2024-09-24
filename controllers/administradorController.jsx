@@ -1,5 +1,5 @@
-import Morador from '../models/Morador.js';
-import Problema from '../models/Problema.js';
+import Morador from '../models/Morador.jsx';
+import Problema from '../models/Problema.jsx';
 
 // Gerenciar usuários
 export const gerenciarUsuarios = async (req, res) => {

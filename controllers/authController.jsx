@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import Admin from '../models/Administrador.js';
-import Morador from '../models/Morador.js';
-import OrgaoCompetente from '../models/OrgaoCompetente.js';
+import Admin from '../models/Administrador.jsx';
+import Morador from '../models/Morador.jsx';
+import OrgaoCompetente from '../models/OrgaoCompetente.jsx';
 
 // Controlador de login
 export const login = async (req, res) => {

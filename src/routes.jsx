@@ -10,7 +10,7 @@ import VerificarProblema from './components/VerificarProblema';
 import AlterarStatusProblema from './components/AlterarStatusProblema';
 import MoradorDashboard from './components/MoradorDashBoard';
 import CriarOrgao from './components/CriarOrgao';
-import AdminDashboard from './components/AdminDashBoard';
+import AdminDashboard from './components/AdminDashboard';
 
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem('token');

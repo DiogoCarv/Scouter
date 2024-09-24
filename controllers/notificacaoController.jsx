@@ -1,4 +1,4 @@
-import Notificacao from'../models/Notificacao.js';
+import Notificacao from'../models/Notificacao.jsx';
 
 // Enviar notificação
 export const enviar = async (req, res) => {

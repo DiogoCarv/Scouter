@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../config/database.js';  
+import sequelize from '../config/database.jsx';  
 // Definindo o modelo Administrador
 const Administrador = sequelize.define('Administrador', {
     id: {

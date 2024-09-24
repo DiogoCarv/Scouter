@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 
-import { listarProblemas, obterProblema, criarProblema, atualizarProblema, excluirProblema } from '../controllers/problemaController.js';
+import { listarProblemas, obterProblema, criarProblema, atualizarProblema, excluirProblema } from '../controllers/problemaController.jsx';
 
 router.get('/', listarProblemas);
 router.get('/:id', obterProblema);
