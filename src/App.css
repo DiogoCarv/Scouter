@@ -236,8 +236,8 @@
 
 .close-button {
   position: absolute;
-  top: 50px;
-  right: 930px;
+  top: 20px;
+  right: 20px;
   background: none;
   border: 5px;
   cursor: pointer;
