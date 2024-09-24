@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import authMiddleware from './middleware/auth.jsx';
 import dotenv from 'dotenv';
-import sequelize from './config/database.jsx'; 
+import { databaseConnect } from './config/databaseconnect'; // Importação da função do databaseconnect.py
 
 const app = express();
 dotenv.config();
@@ -53,12 +53,9 @@ app.use('/problemas', authMiddleware, problemaRoutes);
 app.use('/notificacoes', authMiddleware, notificacaoRoutes);
 
 // Sincronização com banco de dados
-sequelize.authenticate()
+databaseConnect()
     .then(() => {
         console.log('Conexão bem-sucedida com o banco de dados.');
-        return sequelize.sync({ alter: true });
-    })
-    .then(() => {
         const PORT = process.env.PORT || 5000;
         app.listen(PORT, () => {
             console.log(`Servidor rodando na porta ${PORT}`);
