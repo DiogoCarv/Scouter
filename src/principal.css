@@ -23,7 +23,6 @@
 /* Botões Cabeçalho */
 .botoes_cabecalho {
   display: flex;
-  /* Adiciona flexbox para os botões ficarem lado a lado */
   margin-right: 20px;
 }
 
@@ -41,7 +40,6 @@
   text-decoration: none;
   color: white;
   margin-left: 15px;
-  /* Espaço entre os botões */
 }
 
 .letra_botao:hover {
@@ -49,69 +47,60 @@
   color: white;
 }
 
-/* main*/
-
+/* Main */
 .main {
   width: 100%;
   height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d3d3d3;
 }
 
-.principal {
-  display: flex;           /* Alinha os elementos horizontalmente */
-  width: 100%;             /* Garante que ocupe 100% da largura */
+/* Formulário */
+.form_container {
+  width: 400px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-.esquerda, .direita {
-  flex: 1;                 /* Faz cada bloco ocupar o mesmo espaço */
-  margin: 10px;            /* Espaçamento entre os blocos */
-  background-color: white; /* Cor de fundo temporária */
-  box-sizing: border-box;   /* Inclui padding e border no cálculo do tamanho */
-  padding: 20px;
-  border: 1px solid #ccc;   /* Border para visualização */
-}
-
-.nome {
+.form_title {
   font-weight: bold;
-  font-size: 10px;
+  margin-bottom: 20px;
+  color: black;
 }
 
-.titulo {
-  font-weight: bold;
-  font-size: 10px;
+.input_field {
+  margin-bottom: 20px;
 }
 
-.imagem {
-  width: 60px;
-  height: 60px;
+.upload_button {
+  width: 100%;
+  background-color: #004225;
+  color: white;
+  margin-bottom: 20px;
 }
 
-.data_hora {
-  font-weight: bold;
-  font-size: 10px;
+.publish_button {
+  width: 100%;
+  background-color: #004225;
+  color: white;
 }
 
 /* Rodapé */
-
-.direitos {
+.rodape {
   width: 100%;
-  height: 200px;
+  height: 100px;
+  background-color: #333;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.rodape {
-  width: 100%;
-  height: 120px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: white;
-}
-
-.direitos_rodape1,
-.direitos_rodape2 {
-  color: black;
+.direitos {
   text-align: center;
-  margin: 10px 0;
+  color: white;
 }
