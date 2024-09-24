@@ -10,6 +10,8 @@ router.post('/login', login);
 router.post('/register', register);
 router.post('/principal', problema);
 
+router.post
+
 export default router;
 
 

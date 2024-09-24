@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import './App.css';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';  // Import Button no lugar de ButtonBase
+import Button from '@mui/material/Button';  
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
-import logoVerde from './imagens/logo_verde.png';  // Assumindo que esse caminho esteja correto
-
+import logoVerde from './imagens/logo_verde.png';  
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
