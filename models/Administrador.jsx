@@ -1,18 +1,13 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../config/database.js'; 
-
-// Definindo o modelo OrgaoCompetente
-const OrgaoCompetente = sequelize.define('OrgaoCompetente', {
+import sequelize from '../config/database.jsx';  
+// Definindo o modelo Administrador
+const Administrador = sequelize.define('Administrador', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
     nome: {
-        type: DataTypes.STRING(100),
-        allowNull: false,
-    },
-    tipo: {
         type: DataTypes.STRING(100),
         allowNull: false,
     },
@@ -24,11 +19,11 @@ const OrgaoCompetente = sequelize.define('OrgaoCompetente', {
     senha: {
         type: DataTypes.STRING(100),
         allowNull: false,
-    }
+    },
 }, {
-    tableName: 'orgaocompetente', // Nome da tabela no banco de dados
-    timestamps: false,
+    tableName: 'administrador',
+    timestamps: false,  
 });
 
-// Exportando o modelo como default
-export default OrgaoCompetente;
+// Exportando o modelo como `default`
+export default Administrador;

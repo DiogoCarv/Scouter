@@ -1,9 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import authMiddleware from './middleware/auth.js';
+import authMiddleware from './middleware/auth.jsx';
 import dotenv from 'dotenv';
-import sequelize from './config/database.js'; 
+import sequelize from './config/database.jsx'; 
 
 const app = express();
 dotenv.config();

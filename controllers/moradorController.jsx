@@ -1,5 +1,5 @@
-import Morador from '../models/Morador.js';
-import Problema from '../models/Problema.js';
+import Morador from '../models/Morador.jsx';
+import Problema from '../models/Problema.jsx';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 

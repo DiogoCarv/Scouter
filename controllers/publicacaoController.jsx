@@ -1,6 +1,6 @@
-import Publicacao from '../models/Publicacao.js';
-import Realizar from '../models/Realizar.js';
-import User from '../models/User.js';
+import Publicacao from '../models/Publicacao.jsx';
+import Realizar from '../models/Realizar.jsx';
+
 
 export const criarPublicacao = async (req, res) => {
     try {

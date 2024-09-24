@@ -1,8 +1,9 @@
+
 import { DataTypes } from 'sequelize';
-import sequelize from '../config/database.js';  
-// Definindo o modelo Administrador
-const Administrador = sequelize.define('Administrador', {
-    id: {
+import sequelize from '../config/database.jsx';
+
+const User = sequelize.define('User', {
+    id_user: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
@@ -21,9 +22,8 @@ const Administrador = sequelize.define('Administrador', {
         allowNull: false,
     },
 }, {
-    tableName: 'administrador',
-    timestamps: false,  
+    tableName: 'user', // Nome da tabela no banco
+    timestamps: false,
 });
 
-// Exportando o modelo como `default`
-export default Administrador;
+export default User;
