@@ -7,33 +7,18 @@
 /* Cabeçalho */
 .App-header {
   width: 100%;
-  height: 100px;
-  color: whitesmoke;
+  height: 50px;
   color: whitesmoke;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.logo_cabecalho {
-  width: 50%;
-  height: 100%;
-  text-align: left;
-  justify-content: flex-start;
-}
-
-.logo_cabecalho {
-  width: 50%;
-  height: 100%;
-  text-align: left;
-  justify-content: flex-start;
+  margin-bottom: 22px;
 }
 
 .App-logo {
   width: 60px;
   height: 60px;
-  margin-top: 20px;
-  margin-left: 10px;
+  margin: 20px 10px 0;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -41,19 +26,12 @@
   transform: scale(1.2);
 }
 
-.botoes_cabecalho {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
+/*botoes cabecalho */
 
-.botao_entrar {
+.botao_login, .botao_registrar {
   width: 120px;
   height: 50px;
-  margin-top: 25px;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin: 25px 20px 0;
   text-align: center;
   background-color: #0b3e25;
   color: white;
@@ -61,71 +39,20 @@
   cursor: pointer;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.052);
   transition: 0.3s;
+  border-radius: 25px; /* Adiciona bordas arredondadas */
 }
 
-.botao_entrar:hover {
+.botao_login:hover, .botao_registrar:hover {
   border-color: blueviolet;
   font-weight: bold;
   transform: scale(1.2);
 }
 
-.botao_registrar {
-  width: 120px;
-  height: 50px;
-  margin-top: 25px;
-  margin-left: 20px;
-  margin-right: 20px;
-  text-align: center;
-  background-color: #0b3e25;
-  color: white;
-  border: none;
-  transform: scale(1.2);
-}
-
-.botao_registrar {
-  width: 120px;
-  height: 50px;
-  margin-top: 25px;
-  margin-left: 20px;
-  margin-right: 20px;
-  text-align: center;
-  background-color: #0b3e25;
-  color: white;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.052);
-  transition: 0.3s;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.052);
-  transition: 0.3s;
-}
-
-
-.botao_registrar:hover {
-  border-color: blueviolet;
-  font-weight: bold;
-  transform: scale(1.2);
-}
-
-.letra_botao{
+.letra_botao {
   color: aliceblue;
 }
 
-.letra_botao:hover{
-  transform: scale(1.63);
-  color: rgb(211, 220, 228);
-  font-weight: bold;
-}
-
-
-.letra_botao{
-  color: aliceblue;
-}
-
-.letra_botao:hover{
-  transform: scale(1.63);
-  color: rgb(211, 220, 228);
-  font-weight: bold;
-}
+/* outro botao */
 
 .letra_botao2{
   color: #0b3e25;
@@ -138,203 +65,54 @@
   font-weight: bold;
 }
 
-/* Seções Principais */
-.meio {
-  width: 100%;
-  height: 1800px;
-}
+/* Carrosel */
 
-.centro {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.carrosel {
   width: 100%;
-  height: 100%;
-}
-
-.letreiro {
-  width: 100%;
-  height: 650px;
-  background-image: url(./imagens/cidade_verde.jpg);
+  height: 700px;
+  background-image: url("https://i.ibb.co/3hVFg2r/cidade-verde.jpg");
   background-size: cover;
-  background-position: center;
-  display: flex; /* Adiciona flexbox para centralização */
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
-}
-
-.ImageButton {
-  position: relative;
-  max-width: 300px; /* Define uma largura máxima para o botão */
-  max-height: 150px; /* Define uma altura máxima para o botão */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.ImageSrc {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-size: cover;
-  background-position: center;
-}
-
-.Image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+.titulo_carrosel {
+  font-weight: bold;
+  font-size: 200px;
   color: white;
 }
 
-.ImageBackdrop {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Aumenta um pouco a opacidade para um efeito melhor */
-  transition: opacity 0.3s ease;
+/* Motivo */
+
+.motivo {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.ImageMarked {
-  height: 3px;
-  width: 18px;
-  background-color: white;
-  position: absolute;
-  bottom: -2px;
-  left: calc(50% - 9px);
-  transition: opacity 0.3s ease;
+.conteudo_motivo {
+  margin-left: 150px;
+  margin-right: 150px;
 }
 
-/* Explicação */
-.explicacao {
-  width: 80%;
-  height: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.titulo1 {
-  color: black;
-  font-size: 100px;
+.titulo_motivo {
   font-weight: bold;
-  text-align: center;
-  margin-right: 20px;
-}
-
-.texto1 {
+  font-size: 40px;
+  margin-right: 15px;
   color: black;
-  font-size: 18px;
-  text-align: center;
-  margin-left: 20px;
 }
 
-/* Faixa Quadrado */
-.meio {
-  width: 100%;
-  height: 1800px;
-}
-
-.centro {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.letreiro {
-  width: 100%;
-  height: 650px;
-  background-image: url(./imagens/cidade_verde.jpg);
-  background-size: cover;
-  background-position: center;
-  display: flex; /* Adiciona flexbox para centralização */
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
-}
-
-.ImageButton {
-  position: relative;
-  max-width: 300px; /* Define uma largura máxima para o botão */
-  max-height: 150px; /* Define uma altura máxima para o botão */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ImageSrc {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-size: cover;
-  background-position: center;
-}
-
-.Image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  color: white;
-}
-
-.ImageBackdrop {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Aumenta um pouco a opacidade para um efeito melhor */
-  transition: opacity 0.3s ease;
-}
-
-.ImageMarked {
-  height: 3px;
-  width: 18px;
-  background-color: white;
-  position: absolute;
-  bottom: -2px;
-  left: calc(50% - 9px);
-  transition: opacity 0.3s ease;
-}
-
-/* Explicação */
-.explicacao {
-  width: 80%;
-  height: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.titulo1 {
-  color: black;
-  font-size: 100px;
+.texto_motivo {
   font-weight: bold;
-  text-align: center;
-  margin-right: 20px;
+  font-size: 20px;
+  margin-right: 15px;
+  margin-left: 15px;
+  text-align: justify;
 }
 
-.texto1 {
-  color: black;
-  font-size: 18px;
-  text-align: center;
-  margin-left: 20px;
-}
+/* Quadrado */
 
-/* Faixa Quadrado */
 .faixa_quadrado {
   width: 100%;
   height: 600px;
@@ -346,12 +124,8 @@
 .quadrado {
   width: 80%;
   height: 100%;
-  background-image: url(./imagens/cidade_verde.jpg);
+  background-image: url("https://i.ibb.co/3hVFg2r/cidade-verde.jpg");
   background-size: cover;
-  background-position: center;
-  background-image: url(./imagens/cidade_verde.jpg);
-  background-size: cover;
-  background-position: center;
   border-radius: 30px;
   display: flex;
   overflow: hidden;
@@ -375,13 +149,6 @@
   margin-left: 55px;
 }
 
-.conteudo_quadrado {
-  font-weight: bold;
-  font-size: 40px;
-  margin-right: 25px;
-  margin-left: 55px;
-}
-
 .direita_quadrado {
   width: 50%;
   height: 100%;
@@ -396,56 +163,32 @@
   font-weight: bold;
   font-size: 40px;
   text-align: center;
-  margin: 0 0 20px 0;
+  margin-bottom: 20px;
 }
 
-.botao_comecar {
-  padding: 15px 30px;
+/* Botões meio */
+
+.letra_botao2 {
   background-color: white;
-  color: green;
-  border: none;
-  border-radius: 25px;
-  font-size: 20px;
+  width: 230px;
+  height: 70px;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  box-shadow: 1px 2px grey;
   font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  text-decoration: none;
+  color: rgba(0, 128, 0, 0.5);
 }
 
-.botao_comecar:hover {
-  background-color: whitesmoke;
-  font-weight: bold;
+.letra_botao2:hover {
   transform: scale(1.2);
-  margin: 0 0 20px 0;
-}
-
-.botao_comecar {
-  padding: 15px 30px;
-  background-color: white;
-  color: green;
-  border: none;
-  border-radius: 25px;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.botao_comecar:hover {
-  background-color: whitesmoke;
-  font-weight: bold;
-  transform: scale(1.2);
+  color: rgba(0, 128, 0, 0.5);
 }
 
 /* Rodapé */
-
-.direitos {
-  width: 100%;
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 
 .direitos {
   width: 100%;
@@ -461,37 +204,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: -130px;
-  margin-top: -130px;
+  background-color: white;
 }
 
-.direitos_rodape1 {
-  color: black;
-  text-align: center;
-  margin: 0;
-  margin-top: 20px;
-}
-
-.direitos_rodape1 {
-  color: black;
-  text-align: center;
-  margin: 0;
-  margin-top: 20px;
-}
-
+.direitos_rodape1,
 .direitos_rodape2 {
   color: black;
   text-align: center;
-  margin: 0;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin: 0;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 10px 0;
 }
 
 /* Overlay e Modal */
-/* Overlay e Modal */
+
 .overlay {
   position: fixed;
   top: 0;
@@ -505,18 +229,18 @@
 }
 
 .modal {
-  background-color: rgba(0, 0, 0, 0.514);
-  background-color: rgba(0, 0, 0, 0.514);
+  background-color: whitesmoke;
   padding: 20px;
   border-radius: 20px;
 }
 
 .close-button {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 50px;
+  right: 930px;
   background: none;
-  border: none;
+  border: 5px;
   cursor: pointer;
   font-size: 50px;
+  background-color: #0b3e25;
 }

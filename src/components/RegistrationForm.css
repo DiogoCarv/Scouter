@@ -6,12 +6,47 @@
     height: 100vh;
 }
 
+.logo-forms {
+    width: 150px;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 24px;
+    margin-bottom: 20px;
+}
+
+.label-divisao {
+    margin-bottom: 10px;
+}
+
 .registration-form {
     display: flex;
     flex-direction: column;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.titulo {
+    color: black;
+}
+
+.label {
+    color: black;
+}
+
+.botao_registrar {
+    width: 120px;
+    height: 50px;
+    text-align: center;
+    background-color: #0b3e25;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.052);
+    transition: 0.3s;
+    border-radius: 25px;
+    margin-left: 39px;
 }
 
 .registration-form input {

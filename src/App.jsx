@@ -8,7 +8,6 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import './App.css';
-import logoVerde from './imagens/logo_verde.png';
 import RegistrationForm from './components/RegistrationForm';
 
 import Login from './login';
@@ -68,20 +67,21 @@ function App() {
 
   return (
     <div className='App'>
-      <div className='header'>
-        <img src={logoVerde} alt="Logo Verde" />
-        <h1>Scouter</h1>
+      <div className='App-header'>
+        
+        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
+
         <div>
           {!showLogin && (
             <button className='botao_login' onClick={handleLoginButtonClick}>
-              LOGIN
+              <h3 className='letra_botao'>LOGIN</h3>
             </button>
           )}
           {showLogin && (
             <div className='overlay' onClick={handleCloseLogin}>
               <div className='modal' onClick={e => e.stopPropagation()}>
                 <button className='close-button' onClick={handleCloseLogin}>
-                  X
+                  x
                 </button>
                 <Login />
               </div>
@@ -89,7 +89,7 @@ function App() {
           )}
           {!showRegister && (
             <button className='botao_registrar' onClick={handleRegisterButtonClick}>
-              REGISTRAR
+              <h3 className='letra_botao'>REGISTRAR</h3>
             </button>
           )}
           {showRegister && (
@@ -106,24 +106,15 @@ function App() {
       </div>
 
       <div className='meio'>
-        <div className='box_login'>
-          <Box
-            height={200}
-            width={200}
-            my={4}
-            display='flex'
-            alignItems='center'
-            justifyContent='center'
-            gap={4}
-            p={2}
-            sx={{ border: '2px solid grey' }}
-          >
-            This Box uses MUI System props for quick customization.
-          </Box>
+ 
+        <div className='carrosel'>
+          <h1 className='titulo_carrosel'>SCOUTER</h1>
         </div>
+
       </div>
 
       <div className='rodape'>
+        
         <Box
           sx={{
             display: 'flex',
@@ -145,7 +136,10 @@ function App() {
           <p className='direitos_rodape1'>SCOUTER® - Marca Registrada</p>
           <p className='direitos_rodape2'>Copyright © 2024 | scouter.com | TODOS OS DIREITOS RESERVADOS</p>
         </Box>
+
       </div>
+
+      
     </div>
   );
 }

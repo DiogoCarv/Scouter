@@ -1,66 +1,65 @@
 /* Estilização do container do formulário de login */
 .login-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    min-height: 100vh; /* Altura total da página */
-    background-color: #f4f6f9;
-    padding: 20px;
-  }
-  
-  /* Estilização da caixa que contém o formulário */
-  .login-form form {
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-  }
-  
-  /* Estilização da imagem do logo */
-  .login-form img {
-    margin-bottom: 20px;
-  }
-  
-  /* Título do login */
-  .login-form h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  /* Estilização dos inputs de login */
-  .login-form .MuiTextField-root {
-    margin-bottom: 15px;
-  }
-  
-  /* Estilização do botão de login */
-  .login-form button {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .login-form button:hover {
-    background-color: #218838;
-  }
-  
-  /* Estilização para as mensagens de erro e sucesso */
-  .error {
-    color: red;
-    margin-top: 10px;
-  }
-  
-  .success {
-    color: green;
-    margin-top: 10px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f4f6f9;
+  padding: 20px;
+}
+
+/* Estilização da caixa que contém o formulário */
+.login-form form {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Estilização da imagem do logo */
+.login-form img {
+  margin-bottom: 20px;
+}
+
+/* Título do login */
+.login-form h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Estilização dos inputs de login */
+.login-form .MuiTextField-root {
+  margin-bottom: 15px;
+}
+
+/* Estilização do botão de login */
+.login-form button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-form button:hover {
+  background-color: #218838;
+}
+
+/* Estilização para as mensagens de erro e sucesso */
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.success {
+  color: green;
+  margin-top: 10px;
+}

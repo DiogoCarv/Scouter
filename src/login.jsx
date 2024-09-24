@@ -77,7 +77,7 @@ const Login = () => {
           />
           {errorMessage && <p className="error">{errorMessage}</p>}
           {successMessage && <p className="success">{successMessage}</p>}
-          <Button type="submit" variant="contained" color="primary">
+          <Button type="submit" variant="contained" className='login-form button'>
             Entrar
           </Button>
         </form>

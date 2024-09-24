@@ -1,20 +1,19 @@
 import { useState } from 'react';
 import axios from 'axios';
-import './RegistrationForm.css';  // Estilização opcional
+import './RegistrationForm.css';
 
 const RegistrarMorador = () => {
-  const [email, setEmail] = useState('');  // Atualizado de username para email
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [cep, setCep] = useState('');
   const [address, setAddress] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
 
-  // Manipular a mudança do CEP e buscar o endereço usando a API ViaCEP
   const handleCepChange = (e) => {
-    const newCep = e.target.value.replace(/\D/g, '');  // Remove caracteres não numéricos
+    const newCep = e.target.value.replace(/\D/g, '');
     setCep(newCep);
-    setErrorMessage(null);  // Limpar mensagem de erro ao tentar novamente
+    setErrorMessage(null);
 
     if (newCep.length === 8) {
       fetch(`https://viacep.com.br/ws/${newCep}/json/`)
@@ -22,7 +21,7 @@ const RegistrarMorador = () => {
         .then(data => {
           if (data.erro) {
             setErrorMessage('CEP inválido');
-            setAddress('');  // Limpar o endereço se o CEP for inválido
+            setAddress('');
           } else {
             setAddress(`${data.logradouro}, ${data.localidade} - ${data.uf}`);
           }
@@ -40,15 +39,14 @@ const RegistrarMorador = () => {
     }
 
     try {
-      // Requisição POST para criar o usuário/morador
       const response = await axios.post('http://localhost:3000/moradores', {
-        email,       // Atualizado de username para email
+        email,
         password,
         cep,
         address,
       });
       if (response.status === 201) {
-        console.log('Registrado com sucesso:', response.data);  // Verificar sucesso no front-end
+        console.log('Registrado com sucesso:', response.data);
         setSuccessMessage('Registrado com sucesso!');
       }
       setSuccessMessage('Registro concluído com sucesso!');
@@ -61,19 +59,19 @@ const RegistrarMorador = () => {
 
   return (
     <div className="form-container">
-      <h2>Registrar Morador</h2>
+      <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="logo-forms" alt="logo" />
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>  {/* Atualizado para Email */}
+        <div className='label-divisao'>
+          <label className='label'>Email:</label>
           <input
-            type="email"   // Mudei o tipo para "email" para validação automática
+            type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}  // Atualizado para email
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Senha:</label>
+        <div className='label-divisao'>
+          <label className='label'>Senha:</label>
           <input
             type="password"
             value={password}
@@ -81,8 +79,8 @@ const RegistrarMorador = () => {
             required
           />
         </div>
-        <div>
-          <label>CEP:</label>
+        <div className='label-divisao'>
+          <label className='label'>CEP:</label>
           <input
             type="text"
             value={cep}
@@ -92,13 +90,13 @@ const RegistrarMorador = () => {
         </div>
         {address && (
           <div>
-            <label>Endereço:</label>
+            <label className='label'>Endereço:</label>
             <input type="text" value={address} readOnly />
           </div>
         )}
         {errorMessage && <p className="error">{errorMessage}</p>}
         {successMessage && <p className="success">{successMessage}</p>}
-        <button type="submit">Registrar</button>
+        <button type="submit" className='botao_registrar'>Registrar</button>
       </form>
     </div>
   );
