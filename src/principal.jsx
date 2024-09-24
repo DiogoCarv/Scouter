@@ -4,22 +4,18 @@ import { Link } from 'react-router-dom';
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 
-const App = () => {
+const Principal = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <ButtonBase className="botao_logo">
-          <Link to="/">
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-          </Link>
-        </ButtonBase>
 
+        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
         <div className="botoes_cabecalho">
-          <ButtonBase className="botao_registrar">
+          <button className="botao_registrar">
             <Link to="/registrar" className="letra_botao">
               SAIR
             </Link>
-          </ButtonBase>
+          </button>
         </div>
       </header>
 
@@ -42,14 +38,14 @@ const App = () => {
             className="input_field"
           />
 
-          <Button variant="contained" component="label" className="upload_button">
+          <button variant="contained" component="label" className="upload_button">
             ESCOLHA O ARQUIVO
             <input type="file" hidden />
-          </Button>
+          </button>
 
-          <Button variant="contained" className="publish_button">
+          <button variant="contained" className="publish_button">
             PUBLICAR
-          </Button>
+          </button>
         </div>
       </main>
 
@@ -77,4 +73,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Principal;
