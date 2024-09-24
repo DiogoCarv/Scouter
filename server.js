@@ -18,12 +18,12 @@ app.use(cors({
 app.use(bodyParser.json());
 
 // Importar as rotas
-import moradorRoutes from './routes/moradorRoutes.js';
-import administradorRoutes from './routes/administradorRoutes.js';
-import orgaoCompetenteRoutes from './routes/orgaoCompetenteRoutes.js';
-import problemaRoutes from './routes/problemaRoutes.js';
-import notificacaoRoutes from './routes/notificacaoRoutes.js';
-import authRoutes from './routes/authRoutes.js';
+import moradorRoutes from './routes/moradorRoutes.jsx';
+import administradorRoutes from './routes/administradorRoutes.jsx';
+import orgaoCompetenteRoutes from './routes/orgaoCompetenteRoutes.jsx';
+import problemaRoutes from './routes/problemaRoutes.jsx';
+import notificacaoRoutes from './routes/notificacaoRoutes.jsx';
+import authRoutes from './routes/authRoutes.jsx';
 
 const adminMiddleware = (req, res, next) => {
     if (req.user.tipo !== 'administrador') {
