@@ -9,6 +9,8 @@ router.post('/login', login);
 // Rota para registro
 router.post('/register', register);
 
+router.post
+
 export default router;
 
 
