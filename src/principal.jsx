@@ -1,7 +1,5 @@
 import './App.css';
-
-// Importações do MUI
-import { Box, ButtonBase, Typography, Divider } from '@mui/material';
+import { Box, ButtonBase, Typography, TextField, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
@@ -17,54 +15,42 @@ const App = () => {
         </ButtonBase>
 
         <div className="botoes_cabecalho">
-
           <ButtonBase className="botao_registrar">
             <Link to="/registrar" className="letra_botao">
               SAIR
             </Link>
           </ButtonBase>
-
         </div>
-
       </header>
 
       <main className='main'>
+        <div className='form_container'>
+          <Typography variant="h5" className="form_title">ENVIE SEU PROBLEMA</Typography>
 
-        <div className='principal'>
+          <TextField
+            label="TÍTULO"
+            variant="outlined"
+            fullWidth
+            className="input_field"
+          />
+          <TextField
+            label="DESCRIÇÃO"
+            variant="outlined"
+            multiline
+            rows={4}
+            fullWidth
+            className="input_field"
+          />
 
-          <div className='esquerda'>
-              <ButtonBase className="botao_registrar">
-                <Link to="/" className="letra_botao">
-                  PUBLICAR
-                </Link>
-              </ButtonBase>
+          <Button variant="contained" component="label" className="upload_button">
+            ESCOLHA O ARQUIVO
+            <input type="file" hidden />
+          </Button>
 
-              <ButtonBase className="botao_registrar">
-                <Link to="/registrar" className="letra_botao">
-                  CONFIGURAR
-                </Link>
-              </ButtonBase>
-
-              <ButtonBase className="botao_registrar">
-                <Link to="/registrar" className="letra_botao">
-                  PESQUISAR
-                </Link>
-              </ButtonBase>
-
-          </div>
-
-          <div className='direita'>
-              <div>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                <h3 className='nome'>Remy Sharp</h3>
-              </div>
-              <h3 className='titulo'>Buraco na Rua</h3>
-              <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="imagem" alt="imagem" />
-              <h3 className='data_hora'> 11/09/2024 - 11:24</h3>
-          </div>
-
+          <Button variant="contained" className="publish_button">
+            PUBLICAR
+          </Button>
         </div>
-
       </main>
 
       <footer className="rodape">
@@ -87,7 +73,6 @@ const App = () => {
           </Box>
         </div>
       </footer>
-
     </div>
   );
 };
