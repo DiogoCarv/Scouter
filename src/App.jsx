@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Box from '@mui/material/Box';
+import { Box, Typography, Divider } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
@@ -81,7 +81,7 @@ function App() {
             <div className='overlay' onClick={handleCloseLogin}>
               <div className='modal' onClick={e => e.stopPropagation()}>
                 <button className='close-button' onClick={handleCloseLogin}>
-                  x
+                  X
                 </button>
                 <Login />
               </div>
@@ -111,35 +111,68 @@ function App() {
           <h1 className='titulo_carrosel'>SCOUTER</h1>
         </div>
 
+        <div className='motivo'>
+          <div className='conteudo_motivo'>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                bgcolor: 'background.paper',
+                border: '1px solid',
+                borderColor: 'divider',
+                borderRadius: 2,
+                color: 'text.secondary',
+                p: 2,
+              }}
+            >
+              <h2 className='titulo_motivo'>Motivo</h2>
+
+              <Divider orientation="vertical" variant="middle" flexItem />
+
+              <h2 className='texto_motivo'>
+                Bem-vindo à plataforma onde os cidadãos podem reportar problemas urbanos diretamente para os órgãos competentes. Nosso objetivo é melhorar a qualidade de vida em nossa cidade, facilitando a comunicação entre a população e as autoridades responsáveis pela manutenção e desenvolvimento urbano.
+              </h2>
+
+            </Box>
+          </div>
+        </div>
+
+        <div className="faixa_quadrado">
+          <div className="quadrado">
+            <div className="esquerda_quadrado">
+              <h2 className='conteudo_quadrado'>Envie suas reclamações com fotos no sistema</h2>
+            </div>
+            <div className="direita_quadrado"></div>
+          </div>
+        </div>
+
       </div>
 
       <div className='rodape'>
         
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            border: '1px solid',
-            borderColor: 'divider',
-            borderRadius: 2,
-            bgcolor: 'background.paper',
-            color: 'text.secondary',
-            '& svg': {
-              m: 1,
-            },
-            '& svg': {
-              m: 1,
-            },
-          }}
-        >
-          <p className='direitos_rodape1'>SCOUTER® - Marca Registrada</p>
-          <p className='direitos_rodape2'>Copyright © 2024 | scouter.com | TODOS OS DIREITOS RESERVADOS</p>
-        </Box>
+        <div className='direitos'>
+          
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                border: '1px solid',
+                borderColor: 'divider',
+                borderRadius: 2,
+                bgcolor: 'background.paper',
+                color: 'text.secondary',
+                p: 2,
+              }}
+            >
+              <Typography variant="body2">SCOUTER® - Marca Registrada</Typography>
+              <Typography variant="body2">Copyright © 2024 | scouter.com | TODOS OS DIREITOS RESERVADOS</Typography>
+            </Box>
+
+        </div>
 
       </div>
 
-      
     </div>
   );
 }
