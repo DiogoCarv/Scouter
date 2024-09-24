@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 
-const App = () => {
+const Principal = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -77,4 +77,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Principal;
