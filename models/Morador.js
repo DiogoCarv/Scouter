@@ -23,7 +23,7 @@ const Morador = sequelize.define('Morador', {
         allowNull: false
     }
 }, {
-    tableName: 'morador', 
+    tableName: 'moradores', 
     timestamps: false     
 });
 
