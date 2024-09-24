@@ -11,7 +11,7 @@ import AlterarStatusProblema from './components/AlterarStatusProblema';
 import MoradorDashboard from './components/MoradorDashBoard';
 import CriarOrgao from './components/CriarOrgao';
 import AdminDashboard from './components/AdminDashboard';
-
+import principal from './principal';
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem('token');
   return token ? children : <Navigate to="/login" />;
@@ -23,38 +23,39 @@ const AppRoutes = () => {
       <Route path="/" element={<App />} />
       <Route path="/" element={<App />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/principal" element={<principal />} />
       
       {/* Rota do morador */}
       <Route
         path="/morador"
         element={
-          <PrivateRoute>
+          
             <MoradorDashboard />
-          </PrivateRoute>
+         
         }
       />
       <Route
         path="/registrar-problema"
         element={
-          <PrivateRoute>
+          
             <RegistrarProblema />
-          </PrivateRoute>
+        
         }
       />
       <Route
         path="/listar-problemas"
         element={
-          <PrivateRoute>
+         
             <ListarProblemas />
-          </PrivateRoute>
+         
         }
       />
       <Route
         path="/notificacoes"
         element={
-          <PrivateRoute>
+         
             <Notificacoes />
-          </PrivateRoute>
+          
         }
       />
       
@@ -62,41 +63,41 @@ const AppRoutes = () => {
       <Route
         path="/orgao"
         element={
-          <PrivateRoute>
+          
             <OrgaoDashboard />
-          </PrivateRoute>
+          
         }
       />
       <Route
         path="/verificar-problema"
         element={
-          <PrivateRoute>
+         
             <VerificarProblema />
-          </PrivateRoute>
+          
         }
       />
       <Route
         path="/alterar-status"
         element={
-          <PrivateRoute>
+          
             <AlterarStatusProblema />
-          </PrivateRoute>
+          
         }
       />
       <Route
         path="/listar-problemas-orgao"
         element={
-          <PrivateRoute>
+          
             <ListarProblemas />
-          </PrivateRoute>
+         
         }
       />
       <Route
         path="/notificacoes-orgao"
         element={
-          <PrivateRoute>
+         
             <Notificacoes />
-          </PrivateRoute>
+         
         }
       />
       
@@ -104,25 +105,24 @@ const AppRoutes = () => {
       <Route
         path="/admin"
         element={
-          <PrivateRoute>
             <AdminDashboard />
-          </PrivateRoute>
+         
         }
       />
       <Route
         path="/criar-orgao"
         element={
-          <PrivateRoute>
+          
             <CriarOrgao />
-          </PrivateRoute>
+          
         }
       />
       <Route
         path="/listar-todos-problemas"
         element={
-          <PrivateRoute>
+         
             <ListarProblemas />
-          </PrivateRoute>
+          
         }
       />
       
