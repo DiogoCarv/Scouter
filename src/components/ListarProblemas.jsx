@@ -26,18 +26,37 @@ const ListarProblemas = () => {
 
   return (
     <div>
-      <h2>Problemas Registrados</h2>
-      {error && <p>{error}</p>}
-      <ul>
-        {problemas.map((problema) => (
-          <li key={problema.id}>
-            <strong>Descrição:</strong> {problema.descricao}<br />
-            <strong>Localização:</strong> {problema.localizacao}<br />
-            <strong>Status:</strong> {problema.status}<br />
-            <strong>Tipo:</strong> {problema.tipo}<br />
-          </li>
-        ))}
-      </ul>
+
+      <div className='cabecalho'>
+        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
+      </div>
+
+      <div className='meio'>
+
+        <h2 className='titulo'>Problemas Registrados</h2>
+
+        {error && <p>{error}</p>}
+
+        <ul>
+
+          {problemas.map((problema) => (
+
+            <li key={problema.id}>
+
+              <strong>Descrição:</strong> {problema.descricao}<br />
+              <strong>Localização:</strong> {problema.localizacao}<br />
+              <strong>Status:</strong> {problema.status}<br />
+              <strong>Tipo:</strong> {problema.tipo}<br />
+              
+            </li>
+
+
+          ))}
+
+        </ul>
+
+      </div>
+
     </div>
   );
 };
