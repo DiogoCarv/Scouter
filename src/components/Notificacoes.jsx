@@ -33,20 +33,39 @@ const Notificacoes = () => {
 
   return (
     <div className="notificacoes-container">
-      <h2>Notificações</h2>
-      {errorMessage && <p className="error">{errorMessage}</p>}
-      {notificacoes.length > 0 ? (
-        <ul>
-          {notificacoes.map((notificacao) => (
-            <li key={notificacao.id} className="notificacao-item">
-              <p><strong>Mensagem:</strong> {notificacao.mensagem}</p>
-              <p><strong>Data de Envio:</strong> {new Date(notificacao.dataEnvio).toLocaleString()}</p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>Nenhuma notificação disponível.</p>
-      )}
+
+      <div className='cabecalho'>
+        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
+      </div>
+
+      <div className='meio'>
+
+        <h2 className='titulo'>Notificações</h2>
+
+        {errorMessage && <p className="error">{errorMessage}</p>}
+        {notificacoes.length > 0 ? (
+
+          <ul>
+
+            {notificacoes.map((notificacao) => (
+
+              <li key={notificacao.id} className="notificacao-item">
+
+                <p><strong>Mensagem:</strong> {notificacao.mensagem}</p>
+                <p><strong>Data de Envio:</strong> {new Date(notificacao.dataEnvio).toLocaleString()}</p>
+
+              </li>
+
+            ))}
+
+          </ul>
+
+        ) : (
+          <p>Nenhuma notificação disponível.</p>
+        )}
+
+      </div>
+
     </div>
   );
 };

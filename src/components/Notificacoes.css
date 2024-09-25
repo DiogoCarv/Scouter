@@ -1,16 +1,42 @@
 .notificacoes-container {
-    padding: 20px;
-    max-width: 600px;
-    margin: auto;
-  }
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
   
-  .notificacao-item {
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-  }
+.notificacao-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
   
-  .error {
-    color: red;
-    font-weight: bold;
-  }
+.error {
+  color: red;
+  font-weight: bold;
+}
   
+.App-logo {
+  height: 60px;
+  width: 60px;
+}
+
+.cabecalho {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.meio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.titulo {
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
+}
