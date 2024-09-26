@@ -7,6 +7,7 @@ const CriarOrgao = () => {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [telefone, setTelefone] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
 
@@ -56,6 +57,10 @@ const CriarOrgao = () => {
         <div>
           <label>Senha:</label>
           <input type="password" value={senha} onChange={(e) => setSenha(e.target.value)} required />
+        </div>
+        <div>
+          <label>Telefone:</label>
+          <input type="password" value={telefone} onChange={(e) => setTelefone(e.target.value)} required />
         </div>
         {errorMessage && <p className="error">{errorMessage}</p>}
         {successMessage && <p className="success">{successMessage}</p>}
