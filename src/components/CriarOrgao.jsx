@@ -60,7 +60,7 @@ const CriarOrgao = () => {
         </div>
         <div>
           <label>Telefone:</label>
-          <input type="password" value={telefone} onChange={(e) => setTelefone(e.target.value)} required />
+          <input type="telefone" value={telefone} onChange={(e) => setTelefone(e.target.value)} required />
         </div>
         {errorMessage && <p className="error">{errorMessage}</p>}
         {successMessage && <p className="success">{successMessage}</p>}
