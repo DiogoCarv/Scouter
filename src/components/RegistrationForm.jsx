@@ -2,11 +2,11 @@ import { useState } from 'react';
 import axios from 'axios';
 import './RegistrationForm.css';
 
-const RegistroForm = () => {
+const RegistrationForm = () => {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const [endereco, setEndereco] = useState('');
+  const [password, setPassword] = useState(''); // Usando 'password'
+  const [address, setAddress] = useState(''); // Usando 'address'
   const [cep, setCep] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -21,17 +21,17 @@ const RegistroForm = () => {
               throw new Error('CEP não encontrado');
           }
 
-          // Preenche o campo endereço com o logradouro
-          setEndereco(`${data.logradouro}, ${data.bairro}, ${data.localidade} - ${data.uf}`);
+          // Preenche o campo address com o logradouro
+          setAddress(`${data.logradouro}, ${data.bairro}, ${data.localidade} - ${data.uf}`);
       } catch (error) {
           setErrorMessage('Erro ao buscar o endereço. Verifique o CEP.');
-          setEndereco(''); // Limpa o campo de endereço se o CEP não for encontrado
+          setAddress(''); // Limpa o campo de address se o CEP não for encontrado
       }
   };
 
   // Validação para garantir que todos os campos estão preenchidos
   const validarCampos = () => {
-      if (!nome || !email || !senha || !endereco || !cep) {
+      if (!nome || !email || !password || !address || !cep) { // Usando 'address' e 'password'
           setErrorMessage('Todos os campos devem ser preenchidos.');
           return false;
       }
@@ -55,8 +55,8 @@ const RegistroForm = () => {
               body: JSON.stringify({
                   nome,
                   email,
-                  password: senha,
-                  endereco,
+                  password,  // Usando 'password'
+                  address,   // Usando 'address'
                   cep,
                   userType: 'morador'  // Definindo o userType como 'morador'
               }),
@@ -71,8 +71,8 @@ const RegistroForm = () => {
           // Limpar os campos após sucesso
           setNome('');
           setEmail('');
-          setSenha('');
-          setEndereco('');
+          setPassword(''); // Limpar o campo password
+          setAddress('');  // Limpar o campo address
           setCep('');
       } catch (error) {
           setErrorMessage(error.message);
@@ -87,9 +87,10 @@ const RegistroForm = () => {
       if (cepValue.length === 8) {
           buscarEnderecoViaCep(cepValue);
       } else {
-          setEndereco(''); // Limpa o campo de endereço se o CEP estiver incompleto
+          setAddress(''); // Limpa o campo de address se o CEP estiver incompleto
       }
   };
+
   return (
     <div className="form-container">
       <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="logo-forms" alt="logo" />
@@ -124,7 +125,7 @@ const RegistroForm = () => {
         {address && (
           <div>
             <label className='label'>Endereço:</label>
-            <input type="text" value={address} readOnly />
+            <input type="text" value={address} />
           </div>
         )}
         {errorMessage && <p className="error">{errorMessage}</p>}
@@ -135,4 +136,4 @@ const RegistroForm = () => {
   );
 };
 
-export default RegistrarMorador;
+export default RegistrationForm;

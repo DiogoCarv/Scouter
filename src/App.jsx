@@ -12,6 +12,7 @@ import RegistrationForm from './components/RegistrationForm';
 
 import Login from './login';
 
+
 export function InputAdornments() {
   const [showPassword, setShowPassword] = useState(false);
 
