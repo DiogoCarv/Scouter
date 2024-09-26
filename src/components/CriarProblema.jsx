@@ -72,42 +72,49 @@ const CriarProblema = () => {
   };
 
   return (
-    <div className="criar-problema-container">
-      <h1>Criar Problema</h1>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      {successMessage && <p className="success-message">{successMessage}</p>}
+    <div>
 
-      <form onSubmit={handleSubmit}>
-        <label>
-          Descrição:
-          <textarea
-            value={descricao}
-            onChange={(e) => setDescricao(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Localização:
-          <input
-            type="text"
-            value={localizacao}
-            onChange={(e) => setLocalizacao(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Órgão Competente:
-          <select value={orgaoId} onChange={(e) => setOrgaoId(e.target.value)} required>
-            <option value="">Selecione um órgão</option>
-            {orgaos.map((orgao) => (
-              <option key={orgao.id} value={orgao.id}>
-                {orgao.nome}
-              </option>
-            ))}
-          </select>
-        </label>
-        <button type="submit">Criar Problema</button>
-      </form>
+      <div className='cabecalho'>
+        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
+      </div>
+
+      <div className="criar-problema-container">
+        <h1 className='titulo'>CRIAR PROBLEMA</h1>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {successMessage && <p className="success-message">{successMessage}</p>}
+
+        <form onSubmit={handleSubmit}>
+          <label className='label'>
+            DESCRIÇÃO:
+            <textarea
+              value={descricao}
+              onChange={(e) => setDescricao(e.target.value)}
+              required
+            />
+          </label>
+          <label className='label'>
+            LOCALIZAÇÃO:
+            <input
+              type="text"
+              value={localizacao}
+              onChange={(e) => setLocalizacao(e.target.value)}
+              required
+            />
+          </label>
+          <label className='label'>
+            ORGÃO COMPETENTE:
+            <select value={orgaoId} onChange={(e) => setOrgaoId(e.target.value)} required>
+              <option value="">Selecione um órgão</option>
+              {orgaos.map((orgao) => (
+                <option key={orgao.id} value={orgao.id}>
+                  {orgao.nome}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button type="submit" className='botao'>CRIAR PROBLEMA</button>
+        </form>
+      </div>
     </div>
   );
 };
