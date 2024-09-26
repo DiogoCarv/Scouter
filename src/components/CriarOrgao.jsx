@@ -17,7 +17,7 @@ const CriarOrgao = () => {
     setSuccessMessage(null);
 
     try {
-      const response = await fetch('http://localhost:5000/orgaos/criar', {
+      const response = await fetch('http://localhost:5000/criar-orgao', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
