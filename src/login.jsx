@@ -3,13 +3,14 @@ import './App.css';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';  
 import TextField from '@mui/material/TextField';
-import axios from 'axios';
 import logoVerde from './imagens/logo_verde.png';  
+import { useNavigate } from 'react-router-dom'; // Importa o hook useNavigate
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
+  const navigate = useNavigate(); // Inicializa o hook
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,38 +18,40 @@ const Login = () => {
     setSuccessMessage(null);
 
     try {
-      const response = await axios.post('http://localhost:5000/login', {
-        email,  // <--- Corrigir aqui
-        password,
+      const response = await fetch('http://localhost:5000/login', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password }), // Corpo da requisição
       });
 
-      if (response.status === 200) {
-        const { token, userType } = response.data;
-
-        // Armazenar o token JWT no localStorage
-        localStorage.setItem('token', token);
-        
-        setSuccessMessage('Login bem-sucedido! Redirecionando...');
-        
-        // Redirecionar o usuário de acordo com seu tipo
-        setTimeout(() => {
-          if (userType === 'morador') {
-            window.location.href = '/morador';  // Redireciona para a página dos moradores
-          } else if (userType === 'orgaoCompetente') {  // Corrigir o nome do tipo de usuário
-            window.location.href = '/orgao';  // Redireciona para a página do órgão responsável
-          } else if (userType === 'administrador') {  // Corrigir o nome do tipo de usuário
-            window.location.href = '/admin';  // Redireciona para a página do admin
-          }
-        }, 1000);
-      } else {
-        setErrorMessage('Erro ao fazer login. Verifique suas credenciais.');
+      if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'Erro ao fazer login');
       }
-    } catch (error) {
-      setErrorMessage('Erro ao fazer login. Verifique suas credenciais.');
-      console.error('Erro ao fazer login:', error);
-    }
-  };
 
+      const data = await response.json();
+      localStorage.setItem('token', data.token);
+
+      // Redirecionar baseado no userType
+      switch (data.userType) {
+          case 'morador':
+              navigate('/dashboardMorador');
+              break;
+          case 'administrador':
+              navigate('/dashboardAdministrador');
+              break;
+          case 'orgaoCompetente':
+              navigate('/dashboardOrgaoCompetente');
+              break;
+          default:
+              break;
+      }
+  } catch (error) {
+      setErrorMessage(error.message);
+  }
+};
 
   return (
     <div className="login-form">
