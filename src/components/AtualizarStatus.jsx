@@ -35,21 +35,35 @@ const AtualizarStatus = ({ problemaId }) => {
 
   return (
     <div>
-      <h2>Atualizar Status do Problema</h2>
-      {error && <p>{error}</p>}
-      {success && <p>{success}</p>}
 
-      <form onSubmit={handleSubmit}>
-        <label>
-          Status:
-          <input
-            type="text"
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
-          />
-        </label>
-        <button type="submit">Atualizar</button>
-      </form>
+      <div className='cabecalho'>
+        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
+      </div>
+
+      <div className='principal'>
+
+        <h2 className='titulo'>Atualizar Status do Problema</h2>
+        {error && <p>{error}</p>}
+        {success && <p>{success}</p>}
+
+        <div className='bloco'>
+
+          <form onSubmit={handleSubmit}>
+            <label>
+              Status:
+              <input
+                type="text"
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+              />
+            </label>
+            <button type="submit" className='botao'>Atualizar</button>
+          </form>
+
+        </div>
+
+      </div>
+
     </div>
   );
 };
