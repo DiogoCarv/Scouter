@@ -1,7 +1,9 @@
 import Publicacao from '../models/Publicacao.jsx';
 import Realizar from '../models/Realizar.jsx';
-import db from '../config/DatabaseConnect.jsx'; // Importar a conexão com o banco de dados
+import { databaseConnect } from '../config/databaseconnect';
 
+
+const db = await databaseConnect();
 export const criarPublicacao = async (req, res) => {
     const transaction = await db.transaction(); // Iniciar uma transação
     try {

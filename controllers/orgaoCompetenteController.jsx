@@ -1,6 +1,7 @@
 import { databaseConnect } from '../config/databaseconnect';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import jsonify from flask 
 
 // Atualizar status de um problema
 export const atualizarStatus = async (req, res) => {
@@ -47,3 +48,15 @@ export const autenticar = async (req, res) => {
         res.status(500).json({ error: 'Erro ao autenticar órgão competente' });
     }
 };
+
+export const listarOrgao = async (req, res) => {
+    const query = 'SELECT * FROM orgaos'; // Ajuste para o nome correto da tabela
+    const db = await databaseConnect();
+    try {
+      const results = await db.query(query); // Espera a execução da query
+      res.json(results.rows); // Retorna os órgãos como JSON
+    } catch (error) {
+      console.error('Erro ao listar órgãos:', error);
+      res.status(500).json({ message: 'Erro ao listar órgãos.' });
+    }
+  };

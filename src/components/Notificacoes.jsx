@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './Notificacoes.css';  // Estilização opcional para melhorar o layout
 
 const Notificacoes = () => {
@@ -10,21 +9,21 @@ const Notificacoes = () => {
     const fetchNotificacoes = async () => {
       try {
         const token = localStorage.getItem('token');  // Recupera o token JWT
-        const response = await axios.get('http://localhost:3000/notificacoes', {
+        const response = await fetch('/notificacao/listarNotificacoes', {
           headers: {
             'Authorization': `Bearer ${token}`,  // Autenticação via JWT
           },
         });
 
         // Verifica se há notificações
-        if (response.status === 200) {
-          setNotificacoes(response.data);  // Carrega as notificações
+        if (response.ok) {
+          const data = await response.json();
+          setNotificacoes(data);  // Carrega as notificações
         } else {
           setErrorMessage('Nenhuma notificação disponível no momento.');
         }
       } catch (error) {
         setErrorMessage('Erro ao carregar notificações. Tente novamente.');
-        console.error('Erro ao buscar notificações:', error);
       }
     };
 

@@ -6,12 +6,11 @@ import App from './App';
 import RegistrarProblema from './components/RegistrationForm';
 import ListarProblemas from './components/ListarProblemas';
 import Notificacoes from './components/Notificacoes';
-import VerificarProblema from './components/VerificarProblema';
-import AlterarStatusProblema from './components/AlterarStatusProblema';
 import MoradorDashboard from './components/MoradorDashBoard';
 import CriarOrgao from './components/CriarOrgao';
 import AdminDashboard from './components/AdminDashboard';
 import principal from './principal';
+import AtualizarStatus from './components/AtualizarStatus';
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem('token');
   return token ? children : <Navigate to="/login" />;
@@ -68,19 +67,12 @@ const AppRoutes = () => {
           
         }
       />
+     
       <Route
-        path="/verificar-problema"
-        element={
-         
-            <VerificarProblema />
-          
-        }
-      />
-      <Route
-        path="/alterar-status"
+        path="/atualizarStatusProblema"
         element={
           
-            <AlterarStatusProblema />
+            <AtualizarStatus />
           
         }
       />

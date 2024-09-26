@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './AlterarStatusProblema.css';
 
 const AlterarStatusProblema = () => {
@@ -12,8 +11,9 @@ const AlterarStatusProblema = () => {
   useEffect(() => {
     const fetchProblemas = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/orgao/listar-problemas'); // Rota para listar problemas
-        setProblemas(response.data);
+        const response = await fetch('/problema/listarProblemas'); // Usando o problemaController
+        const data = await response.json();
+        setProblemas(data);
       } catch (error) {
         console.error('Erro ao carregar problemas', error);
       }
@@ -27,56 +27,52 @@ const AlterarStatusProblema = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`http://localhost:3000/orgao/atualizar-status/${selectedProblema}`, {
-        status: novoStatus
+      const response = await fetch(`/problema/atualizarProblema/${selectedProblema}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: novoStatus }), // Atualizando o status via problemaController
       });
 
-      if (response.status === 200) {
-        setMensagem('Status atualizado com sucesso!');
+      if (response.ok) {
+        setMensagem('Status atualizado com sucesso');
+      } else {
+        setMensagem('Erro ao atualizar status');
       }
     } catch (error) {
-      setMensagem('Erro ao atualizar o status do problema.');
-      console.error(error);
+      console.error('Erro ao atualizar status', error);
     }
   };
 
   return (
     <div>
-      <h1>Alterar Status do Problema</h1>
-
-      {/* Selecionar o problema */}
+      <h1>Alterar Status de Problema</h1>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Selecione o Problema:</label>
-          <select
-            value={selectedProblema}
-            onChange={(e) => setSelectedProblema(e.target.value)}
-            required
-          >
+        <label>
+          Problema:
+          <select value={selectedProblema} onChange={(e) => setSelectedProblema(e.target.value)}>
             <option value="">Selecione um problema</option>
             {problemas.map((problema) => (
               <option key={problema.id} value={problema.id}>
-                {problema.descricao} - {problema.localizacao}
+                {problema.descricao}
               </option>
             ))}
           </select>
-        </div>
+        </label>
 
-        {/* Input para o novo status */}
-        <div>
-          <label>Novo Status:</label>
+        <label>
+          Novo Status:
           <input
             type="text"
             value={novoStatus}
             onChange={(e) => setNovoStatus(e.target.value)}
-            required
           />
-        </div>
+        </label>
 
         <button type="submit">Atualizar Status</button>
       </form>
 
-      {/* Mensagem de sucesso ou erro */}
       {mensagem && <p>{mensagem}</p>}
     </div>
   );

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 const AtualizarStatus = ({ problemaId }) => {
   const [status, setStatus] = useState('');
@@ -13,13 +12,18 @@ const AtualizarStatus = ({ problemaId }) => {
 
     try {
       const token = localStorage.getItem('token');  // Recupera o token JWT
-      const response = await axios.put(`http://localhost:3000/problemas/${problemaId}/status`, { status }, {
+      const response = await fetch(`/problema/atualizarStatusProblema/${problemaId}`, {
+        method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify({ status }), // Envia o novo status via problemaController
       });
 
-      if (response.data.problema) {
+      const data = await response.json();
+
+      if (data.problema) {
         setSuccess('Status atualizado com sucesso.');
       } else {
         setError('Erro ao atualizar status.');
@@ -34,17 +38,17 @@ const AtualizarStatus = ({ problemaId }) => {
       <h2>Atualizar Status do Problema</h2>
       {error && <p>{error}</p>}
       {success && <p>{success}</p>}
+
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Novo Status:</label>
+        <label>
+          Status:
           <input
             type="text"
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            required
           />
-        </div>
-        <button type="submit">Atualizar Status</button>
+        </label>
+        <button type="submit">Atualizar</button>
       </form>
     </div>
   );

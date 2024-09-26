@@ -43,3 +43,21 @@ export const deletarNotificacao = async (req, res) => {
         res.status(500).json({ error: 'Erro ao excluir notificação' });
     }
 };
+
+const criarNotificacao = async (req, res) => {
+    const { orgaoId, descricao } = req.body; // Extrai os dados do corpo da requisição
+  
+    try {
+      const db = await databaseConnect(); // Aguarda a conexão com o banco de dados
+  
+      // Supondo que você tenha uma tabela chamada "notificacoes"
+      const query = 'INSERT INTO notificacoes (orgao_id, descricao) VALUES ($1, $2) RETURNING *';
+      const values = [orgaoId, descricao];
+  
+      const result = await db.query(query, values); // Executa a consulta
+      res.status(201).json(result.rows[0]); // Retorna a nova notificação criada
+    } catch (error) {
+      console.error('Erro ao criar notificação:', error);
+      res.status(500).json({ message: 'Erro ao criar notificação.' });
+    }
+  };
