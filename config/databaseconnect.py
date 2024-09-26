@@ -18,3 +18,5 @@ def databaseConnect():
     except Exception as e:
         print(f"Erro ao conectar no banco de dados: {e}")
         return None
+if __name__ == "__main__":
+    databaseConnect()
