@@ -3,7 +3,6 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './login';
 import OrgaoDashboard from './components/OrgaoDashboard';
 import App from './App';
-import  from './components/CriarProblema';
 import ListarProblemas from './components/ListarProblemas';
 import Notificacoes from './components/Notificacoes';
 import MoradorDashboard from './components/MoradorDashBoard';

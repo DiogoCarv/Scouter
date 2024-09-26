@@ -1,9 +1,10 @@
 import express from 'express';
+import CriarOrgao from '../src/components/CriarOrgao';
+import {listarProblemas} from '../controllers/problemaController';
 const router = express.Router();
 
-import { gerenciarUsuarios, gerenciarProblemas } from '../controllers/administradorController.js';
 
-router.post('/gerenciar-usuarios', gerenciarUsuarios);
-router.post('/gerenciar-problemas', gerenciarProblemas);
+router.post('/gerenciar-usuarios', CriarOrgao);
+router.post('/gerenciar-problemas', listarProblemas);
 
 export default router;
