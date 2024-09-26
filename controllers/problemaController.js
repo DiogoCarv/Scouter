@@ -1,4 +1,16 @@
-import { databaseConnect } from '../config/databaseconnect';
+import { exec } from 'child_process';
+
+const databaseConnect = () => {
+    return new Promise((resolve, reject) => {
+        exec('python config/databaseconnect.py', (error, stdout, stderr) => {
+            if (error) {
+                reject(`Erro ao executar script: ${error.message}`);
+                return;
+            }
+            resolve(stdout); // Retorna a saída do script Python
+        });
+    });
+};
 
 // Listar problemas
 export const listarProblemas = async (req, res) => {

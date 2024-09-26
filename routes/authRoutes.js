@@ -1,6 +1,6 @@
 import express from'express';
 const router = express.Router();
-import { login, register, problema } from '../controllers/authController.jsx';  
+import { login, register, problema } from '../controllers/authController.js';  
 
 
 // Rota para login

@@ -1,7 +1,19 @@
 import { databaseConnect } from '../config/databaseconnect';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import jsonify from flask 
+import { exec } from 'child_process';
+
+const databaseConnect = () => {
+    return new Promise((resolve, reject) => {
+        exec('python config/databaseconnect.py', (error, stdout, stderr) => {
+            if (error) {
+                reject(`Erro ao executar script: ${error.message}`);
+                return;
+            }
+            resolve(stdout); // Retorna a saída do script Python
+        });
+    });
+};
 
 // Atualizar status de um problema
 export const atualizarStatus = async (req, res) => {

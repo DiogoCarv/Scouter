@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import { atualizarStatus, autenticar } from '../controllers/orgaoCompetenteController.jsx';
+import { atualizarStatus, autenticar } from '../controllers/orgaoCompetenteController.js';
 import { authMiddleware, isOrgaoCompetente } from '../middleware/auth.js'; // Middleware de autenticação
 
 // Protegendo a rota de atualização de status (somente órgãos competentes)

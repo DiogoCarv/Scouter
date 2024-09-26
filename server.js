@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import authMiddleware from './middleware/auth.js';
 import dotenv from 'dotenv';
-import { databaseConnect } from './config/databaseconnect.py'; // Importação da função do databaseconnect.py
+import { exec } from 'child_process'; // Importa exec para chamar o script Python
 
 const app = express();
 dotenv.config();
@@ -18,13 +18,14 @@ app.use(cors({
 app.use(bodyParser.json());
 
 // Importar as rotas
-import moradorRoutes from './routes/moradorRoutes.jsx';
-import administradorRoutes from './routes/administradorRoutes.jsx';
-import orgaoCompetenteRoutes from './routes/orgaoCompetenteRoutes.jsx';
-import problemaRoutes from './routes/problemaRoutes.jsx';
-import notificacaoRoutes from './routes/notificacaoRoutes.jsx';
-import authRoutes from './routes/authRoutes.jsx';
+import moradorRoutes from './routes/moradorRoutes.js';
+import administradorRoutes from './routes/administradorRoutes.js';
+import orgaoCompetenteRoutes from './routes/orgaoCompetenteRoutes.js';
+import problemaRoutes from './routes/problemaRoutes.js';
+import notificacaoRoutes from './routes/notificacaoRoutes.js';
+import authRoutes from './routes/authRoutes.js';
 
+// Middleware de admin
 const adminMiddleware = (req, res, next) => {
     if (req.user.tipo !== 'administrador') {
         return res.status(403).json({ message: 'Acesso negado.' });
@@ -32,6 +33,7 @@ const adminMiddleware = (req, res, next) => {
     next();
 };
 
+// Middleware de órgão competente
 const orgaoCompetenteMiddleware = (req, res, next) => {
     if (req.user.tipo !== 'orgaoCompetente') {
         return res.status(403).json({ message: 'Acesso negado.' });
@@ -39,6 +41,7 @@ const orgaoCompetenteMiddleware = (req, res, next) => {
     next();
 };
 
+// Middleware para log
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.url}`);
     next();
@@ -52,17 +55,23 @@ app.use('/orgaos', authMiddleware, orgaoCompetenteMiddleware, orgaoCompetenteRou
 app.use('/problemas', authMiddleware, problemaRoutes);
 app.use('/notificacoes', authMiddleware, notificacaoRoutes);
 
-// Sincronização com banco de dados
-databaseConnect()
-    .then(() => {
-        console.log('Conexão bem-sucedida com o banco de dados.');
-        const PORT = process.env.PORT || 5000;
-        app.listen(PORT, () => {
-            console.log(`Servidor rodando na porta ${PORT}`);
-        });
-    })
-    .catch(error => {
-        console.error('Erro ao conectar ao banco de dados:', error);
+// Função para executar o script Python
+const executarScriptPython = () => {
+    exec('python config/databaseconnect.py', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Erro ao executar script Python: ${error.message}`);
+            return;
+        }
+        console.log(`Resultado do script Python: ${stdout}`);
     });
+};
+
+// Sincronização com o banco de dados
+executarScriptPython(); // Chama a função para executar o script Python
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+});
 
 export default app;
