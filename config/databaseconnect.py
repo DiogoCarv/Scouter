@@ -1,8 +1,7 @@
 import os
-import mysql.connector  # Ou a biblioteca apropriada para seu banco de dados
+import mysql.connector  
 from dotenv import load_dotenv
 
-# Carrega as variáveis de ambiente do arquivo .env
 load_dotenv()
 
 def databaseConnect():
