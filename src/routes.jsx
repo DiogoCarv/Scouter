@@ -8,7 +8,6 @@ import Notificacoes from './components/Notificacoes';
 import MoradorDashboard from './components/MoradorDashBoard';
 import CriarOrgao from './components/CriarOrgao';
 import AdminDashboard from './components/AdminDashboard';
-import principal from './principal';
 import AtualizarStatus from './components/AtualizarStatus';
 import CriarProblema from './components/CriarProblema';
 const PrivateRoute = ({ children }) => {

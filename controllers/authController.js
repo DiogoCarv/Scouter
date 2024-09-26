@@ -15,6 +15,47 @@ const databaseConnect = () => {
     });
 };
 
+// Método de registro
+export const register = async (req, res) => {
+    const { nome, email, password, userType } = req.body;
+
+    try {
+        const db = await databaseConnect(); // Conecta ao banco de dados
+        const hashedPassword = await bcrypt.hash(password, 10); // Gera o hash da senha
+
+        let insertQuery;
+
+        // Inserção na tabela correta com base no tipo de usuário
+        if (userType === 'administrador') {
+            insertQuery = `
+                INSERT INTO administrador (nome, email, senha)
+                VALUES ('${nome}', '${email}', '${hashedPassword}')
+            `;
+        } else if (userType === 'morador') {
+            insertQuery = `
+                INSERT INTO morador (nome, email, senha)
+                VALUES ('${nome}', '${email}', '${hashedPassword}')
+            `;
+        } else if (userType === 'orgaoCompetente') {
+            insertQuery = `
+                INSERT INTO orgaoCompetente (nome, email, senha)
+                VALUES ('${nome}', '${email}', '${hashedPassword}')
+            `;
+        } else {
+            return res.status(400).json({ error: 'Tipo de usuário inválido' });
+        }
+
+        // Executar a query de inserção
+        await db.execute(insertQuery);
+
+        // Retorna uma resposta de sucesso
+        res.status(201).json({ message: 'Usuário registrado com sucesso' });
+    } catch (error) {
+        console.error('Erro ao registrar usuário:', error);
+        res.status(500).json({ error: 'Erro ao registrar usuário' });
+    }
+};
+
 // Controlador de login
 export const login = async (req, res) => {
     const { email, password } = req.body;

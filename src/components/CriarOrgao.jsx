@@ -16,22 +16,30 @@ const CriarOrgao = () => {
     setSuccessMessage(null);
 
     try {
-      const response = await axios.post('http://localhost:3000/admin/criar-orgao', {
-        nome,
-        email,
-        senha,
-        tipo: 'orgao'  // Tipo específico para órgão
+      const response = await fetch('http://localhost:5000/orgaos/criar', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              nome,
+              email,
+              senha,
+              telefone
+          }),
       });
-      
-      if (response.status === 201) {
-        setSuccessMessage('Órgão criado com sucesso!');
-      } else {
-        setErrorMessage('Erro ao criar órgão.');
+
+      if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'Erro ao criar órgão competente');
       }
-    } catch (error) {
-      setErrorMessage('Erro ao criar órgão.');
-    }
-  };
+
+      const data = await response.json();
+      setSuccessMessage(`Órgão Competente criado com sucesso! ID: ${data.orgaoId}`);
+  } catch (error) {
+      setErrorMessage(error.message);
+  }
+};
 
   return (
     <div>

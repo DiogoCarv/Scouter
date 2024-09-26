@@ -71,3 +71,28 @@ export const listarOrgao = async (req, res) => {
       res.status(500).json({ message: 'Erro ao listar órgãos.' });
     }
   };
+  export const criarOrgao = async (req, res) => {
+    const { nome, email, senha, telefone } = req.body;  // Assumindo que esses são os campos necessários
+
+    try {
+        const db = await databaseConnect();  // Conectar ao banco de dados
+
+        // Query para inserir o novo órgão competente
+        const insertQuery = `
+            INSERT INTO orgaoCompetente (nome, email, senha, telefone)
+            VALUES (?, ?, ?, ?)
+        `;
+
+        // Executar a query
+        const [result] = await db.execute(insertQuery, [nome, email, senha, telefone]);
+
+        // Retornar sucesso
+        res.status(201).json({
+            message: 'Órgão Competente criado com sucesso',
+            orgaoId: result.insertId,  // Retorna o ID do órgão criado
+        });
+    } catch (error) {
+        console.error('Erro ao criar órgão competente:', error);
+        res.status(500).json({ error: 'Erro ao criar órgão competente' });
+    }
+};
