@@ -10,6 +10,7 @@ import CriarOrgao from './components/CriarOrgao';
 import AdminDashboard from './components/AdminDashboard';
 import AtualizarStatus from './components/AtualizarStatus';
 import CriarProblema from './components/CriarProblema';
+import RegistrationForm from './components/RegistrationForm';
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem('token');
   return token ? children : <Navigate to="/login" />;
@@ -19,9 +20,8 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="/" element={<App />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/principal" element={<principal />} />
+      <Route path="/register" element={<RegistrationForm />} />
       
       {/* Rota do morador */}
       <Route
