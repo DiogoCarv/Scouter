@@ -1,0 +1,29 @@
+.App-logo {
+    height: 60px;
+    width: 60px;
+}
+
+.cabecalho {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 150px;
+}
+
+.principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bloco {
+    border: 2px solid black;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    border-radius: 25px;
+    width: auto
+}

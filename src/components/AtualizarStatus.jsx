@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './AtualizarStatus.css';
 
 const AtualizarStatus = ({ problemaId }) => {
   const [status, setStatus] = useState('');
