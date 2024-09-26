@@ -1,9 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import authMiddleware from './middleware/auth.jsx';
+import authMiddleware from './middleware/auth.js';
 import dotenv from 'dotenv';
-import { databaseConnect } from './config/databaseconnect'; // Importação da função do databaseconnect.py
+import { databaseConnect } from './config/databaseconnect.py'; // Importação da função do databaseconnect.py
 
 const app = express();
 dotenv.config();
