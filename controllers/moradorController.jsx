@@ -1,21 +1,21 @@
-import Morador from '../models/Morador.jsx';
-import Problema from '../models/Problema.jsx';
+import { databaseConnect } from '../config/databaseconnect';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 // Registrar novo morador
 export const register = async (req, res) => {
     const { nome, email, senha } = req.body;
-    try {
-      
+    const db = await databaseConnect();
+    if (!db) return res.status(500).json({ error: 'Erro ao conectar ao banco de dados' });
 
+    try {
         if (!nome || !email || !senha) {
             return res.status(400).json({ error: 'Todos os campos são obrigatórios.' });
         }
 
         // Verificar se o morador já existe
-        const existingMorador = await Morador.findOne({ where: { email } });
-        if (existingMorador) {
+        const [existingMorador] = await db.execute('SELECT * FROM morador WHERE email = ?', [email]);
+        if (existingMorador.length > 0) {
             return res.status(400).json({ error: 'Morador já registrado com esse email.' });
         }
 
@@ -23,95 +23,73 @@ export const register = async (req, res) => {
         const hashedPassword = await bcrypt.hash(senha, 10);
 
         // Criação do morador
-        const novoMorador = await Morador.create({ nome, email, senha: hashedPassword });
+        const [result] = await db.execute(
+            'INSERT INTO morador (nome, email, senha) VALUES (?, ?, ?)',
+            [nome, email, hashedPassword]
+        );
 
         // Gerar token JWT
-        const token = jwt.sign({ id: novoMorador.id }, 'secret', { expiresIn: '1h' });
+        const token = jwt.sign({ id: result.insertId }, 'secret', { expiresIn: '1h' });
 
-        
-        res.status(201).json({ message: 'Morador registrado com sucesso' });
+        res.status(201).json({ message: 'Morador registrado com sucesso', token });
     } catch (error) {
         res.status(500).json({ error: 'Erro ao registrar morador' });
     }
 };
 
-// Registrar problema
-export const registrarProblema = async (req, res) => {
-    try {
-        const { descricao, localizacao, tipo, moradorId } = req.body;
-        if (!descricao || !localizacao || !tipo || !moradorId) {
-            return res.status(400).json({ error: 'Todos os campos são obrigatórios.' });
-        }
-        const problema = await Problema.create({
-            descricao,
-            localizacao,
-            tipo,
-            status: 'Pendente',
-            moradorId,
-            dataRegistro: new Date()
-        });
-        res.status(201).json(problema);
-    } catch (error) {
-        res.status(500).json({ error: 'Erro ao registrar problema' });
-    }
-};
-
-// Verificar problemas
-export const verificarProblema = async (req, res) => {
-    try {
-        const problemas = await Problema.findAll({ where: { moradorId: req.params.moradorId } });
-        res.status(200).json(problemas);
-    } catch (error) {
-        res.status(500).json({ error: 'Erro ao verificar problemas' });
-    }
-};
-
 // Autenticar morador
 export const autenticar = async (req, res) => {
-    try {
-        const { email, senha } = req.body;
-        const morador = await Morador.findOne({ where: { email } });
+    const { email, senha } = req.body;
+    const db = await databaseConnect();
+    if (!db) return res.status(500).json({ error: 'Erro ao conectar ao banco de dados' });
 
-        if (!morador) {
+    try {
+        const [morador] = await db.execute('SELECT * FROM morador WHERE email = ?', [email]);
+
+        if (morador.length === 0) {
             return res.status(404).json({ error: 'Morador não encontrado' });
         }
 
-        const isPasswordValid = await bcrypt.compare(senha, morador.senha);
+        const isPasswordValid = await bcrypt.compare(senha, morador[0].senha);
 
         if (!isPasswordValid) {
             return res.status(401).json({ error: 'Senha incorreta' });
         }
 
-        const token = jwt.sign({ id: morador.id }, 'secret', { expiresIn: '1h' });
+        const token = jwt.sign({ id: morador[0].id }, 'secret', { expiresIn: '1h' });
         res.status(200).json({ token });
     } catch (error) {
         res.status(500).json({ error: 'Erro ao autenticar morador' });
     }
 };
-export const criarMorador = async (req, res) => {
+
+// Função para criar um novo morador
+export const createMorador = async (req, res) => {
+    const { nome, email, senha } = req.body;
+    const db = await databaseConnect();
+    if (!db) return res.status(500).json({ error: 'Erro ao conectar ao banco de dados' });
+
     try {
-      // Log dos dados recebidos
-      console.log('Dados recebidos no servidor:', req.body);
-  
-      // Desestruturar os dados recebidos
-      const { nome, email, senha } = req.body;
-  
-      // Criar o morador
-      const novoMorador = await Morador.create({ nome, email, senha });
-      
-      // Log do morador criado
-      console.log('Morador criado com sucesso:', novoMorador);
-  
-      // Resposta de sucesso
-      res.status(201).json({ message: 'Morador registrado com sucesso!' });
+        const [result] = await db.execute(
+            'INSERT INTO morador (nome, email, senha) VALUES (?, ?, ?)',
+            [nome, email, senha]
+        );
+        res.status(201).json({ message: 'Morador criado com sucesso', id: result.insertId });
     } catch (error) {
-      // Log do erro
-      console.error('Erro ao registrar morador:', error);
-      res.status(500).json({ message: 'Erro ao registrar morador.' });
+        res.status(500).json({ error: 'Erro ao criar morador' });
     }
-  };
-  
-  
-  
+};
 
+// Função para excluir um morador
+export const deleteMorador = async (req, res) => {
+    const { id } = req.params;
+    const db = await databaseConnect();
+    if (!db) return res.status(500).json({ error: 'Erro ao conectar ao banco de dados' });
 
+    try {
+        await db.execute('DELETE FROM morador WHERE id = ?', [id]);
+        res.status(200).json({ message: 'Morador excluído com sucesso' });
+    } catch (error) {
+        res.status(500).json({ error: 'Erro ao excluir morador' });
+    }
+};
