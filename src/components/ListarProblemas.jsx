@@ -9,7 +9,7 @@ const ListarProblemas = () => {
     const fetchProblemas = async () => {
       try {
         const token = localStorage.getItem('token');  // Recupera o token JWT
-        const response = await fetch('/problema/listarProblemas', {
+        const response = await fetch('/problema/listar-problemas', {
           headers: {
             'Authorization': `Bearer ${token}`,
           },

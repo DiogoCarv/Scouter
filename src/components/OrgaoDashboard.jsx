@@ -19,7 +19,6 @@ const OrgaoDashboard = () => {
           <h1 className='titulo'>PAINEL ORGÃO RESPONSÁVEL</h1>
 
           <div className='botoes'>
-            <button className='botao'><Link to="/verificar-problema" className='conteudo'>VERIFICAR PROBLEMAS</Link></button>
             <button className='botao'><Link to="/atualizarStatusProblema" className='conteudo'>ALTERAR STATUS DOS PROBLEMAS</Link></button>
             <button className='botao'><Link to="/listar-problemas-orgao" className='conteudo'>LISTAR PROBLEMAS</Link></button>
             <button className='botao'><Link to="/notificacoes-orgao" className='conteudo'>VER NOTIFICAÇÕES</Link></button>
