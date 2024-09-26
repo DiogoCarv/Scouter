@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './login';
 import OrgaoDashboard from './components/OrgaoDashboard';
 import App from './App';
-import RegistrarProblema from './components/RegistrationForm';
+import  from './components/CriarProblema';
 import ListarProblemas from './components/ListarProblemas';
 import Notificacoes from './components/Notificacoes';
 import MoradorDashboard from './components/MoradorDashBoard';
@@ -11,6 +11,7 @@ import CriarOrgao from './components/CriarOrgao';
 import AdminDashboard from './components/AdminDashboard';
 import principal from './principal';
 import AtualizarStatus from './components/AtualizarStatus';
+import CriarProblema from './components/CriarProblema';
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem('token');
   return token ? children : <Navigate to="/login" />;
@@ -37,7 +38,7 @@ const AppRoutes = () => {
         path="/registrar-problema"
         element={
           
-            <RegistrarProblema />
+            <CriarProblema />
         
         }
       />
