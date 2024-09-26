@@ -43,23 +43,25 @@ const AtualizarStatus = ({ problemaId }) => {
 
       <div className='principal'>
 
-        <h2 className='titulo'>Atualizar Status do Problema</h2>
+        <h2 className='titulo'>ATUALIZAR STATUS DO PROBLEMA</h2>
         {error && <p>{error}</p>}
         {success && <p>{success}</p>}
 
         <div className='bloco'>
 
-          <form onSubmit={handleSubmit}>
-            <label>
-              Status:
-              <input
-                type="text"
-                value={status}
-                onChange={(e) => setStatus(e.target.value)}
-              />
-            </label>
-            <button type="submit" className='botao'>Atualizar</button>
-          </form>
+          <div className='conteudo_bloco'>
+            <form onSubmit={handleSubmit}>
+              <label className='label'>
+                Status:
+                <input
+                  type="text"
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value)}
+                />
+              </label>
+              <button type="submit" className='botao'>ATUALIZAR</button>
+            </form>
+          </div>
 
         </div>
 
