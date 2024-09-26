@@ -1,10 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // Adicione useEffect aqui
 import './AtualizarStatus.css';
 
 const AtualizarStatus = ({ problemaId }) => {
   const [status, setStatus] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [orgaoId, setOrgaoId] = useState('');
+  const [orgaos, setOrgaos] = useState([]);
+
+  useEffect(() => {
+    const fetchOrgaos = async () => {
+      try {
+        const response = await fetch('/problema/listarProblemas');
+        if (!response.ok) {
+          throw new Error('Erro ao carregar Problemas.');
+        }
+        const data = await response.json();
+        setOrgaos(data);
+      } catch (error) {
+        console.error('Erro ao carregar Problemas', error);
+      }
+    };
+
+    fetchOrgaos();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,21 +55,29 @@ const AtualizarStatus = ({ problemaId }) => {
 
   return (
     <div>
-
       <div className='cabecalho'>
         <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
       </div>
 
       <div className='principal'>
-
         <h2 className='titulo'>ATUALIZAR STATUS DO PROBLEMA</h2>
         {error && <p>{error}</p>}
         {success && <p>{success}</p>}
 
         <div className='bloco'>
-
           <div className='conteudo_bloco'>
             <form onSubmit={handleSubmit}>
+              <label>
+                Problema:
+                <select value={orgaoId} onChange={(e) => setOrgaoId(e.target.value)} required>
+                  <option value="">Selecione um problema</option>
+                  {orgaos.map((orgao) => (
+                    <option key={orgao.id} value={orgao.id}>
+                      {orgao.nome}
+                    </option>
+                  ))}
+                </select>
+              </label>
               <label className='label'>
                 Status:
                 <input
@@ -62,11 +89,8 @@ const AtualizarStatus = ({ problemaId }) => {
               <button type="submit" className='botao'>ATUALIZAR</button>
             </form>
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 };
