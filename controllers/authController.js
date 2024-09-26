@@ -1,8 +1,5 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import Admin from '../models/Administrador.jsx';
-import Morador from '../models/Morador.jsx';
-import OrgaoCompetente from '../models/OrgaoCompetente.jsx';
 import { exec } from 'child_process';
 
 // Função para executar o script Python de conexão

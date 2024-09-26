@@ -1,7 +1,6 @@
 
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-
 import { exec } from 'child_process';
 
 const databaseConnect = () => {

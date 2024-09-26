@@ -1,4 +1,3 @@
-import { databaseConnect } from '../config/databaseconnect';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { exec } from 'child_process';
