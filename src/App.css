@@ -1,11 +1,11 @@
-.App {
+.App_principal {
   width: 100%;
   height: 100%;
   color: white;
 }
 
 /* Cabeçalho */
-.App-header {
+.App-header_principal {
   width: 100%;
   height: 50px;
   color: whitesmoke;
@@ -15,20 +15,20 @@
   margin-bottom: 22px;
 }
 
-.App-logo {
+.App-logo_principal {
   width: 60px;
   height: 60px;
   margin: 20px 10px 0;
   transition: transform 0.3s ease-in-out;
 }
 
-.App-logo:hover {
+.App-logo_principal:hover {
   transform: scale(1.2);
 }
 
 /*botoes cabecalho */
 
-.botao_login, .botao_registrar {
+.botao_login_principal, .botao_registrar_principal {
   width: 120px;
   height: 50px;
   margin: 25px 20px 0;
@@ -42,24 +42,23 @@
   border-radius: 25px; /* Adiciona bordas arredondadas */
 }
 
-.botao_login:hover, .botao_registrar:hover {
-  border-color: blueviolet;
+.botao_login_principal:hover, .botao_registrar_principal:hover {
   font-weight: bold;
   transform: scale(1.2);
 }
 
-.letra_botao {
-  color: aliceblue;
+.letra_botao_principal {
+  color: white;
 }
 
 /* outro botao */
 
-.letra_botao2{
+.letra_botao2_principal{
   color: #0b3e25;
 }
 
 
-.letra_botao2:hover{
+.letra_botao2_principal:hover{
   transform: scale(1.63);
   color: #082919;
   font-weight: bold;
@@ -67,7 +66,7 @@
 
 /* Carrosel */
 
-.carrosel {
+.carrosel_principal {
   width: 100%;
   height: 700px;
   background-image: url("https://i.ibb.co/3hVFg2r/cidade-verde.jpg");
@@ -77,7 +76,7 @@
   justify-content: center;
 }
 
-.titulo_carrosel {
+.titulo_carrosel_principal {
   font-weight: bold;
   font-size: 200px;
   color: white;
@@ -85,25 +84,25 @@
 
 /* Motivo */
 
-.motivo {
+.motivo_principal {
   width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.conteudo_motivo {
+.conteudo_motivo_principal {
   margin-left: 150px;
   margin-right: 150px;
 }
 
-.titulo_motivo {
+.titulo_motivo_principal {
   font-weight: bold;
   font-size: 40px;
   margin-right: 15px;
   color: black;
 }
 
-.texto_motivo {
+.texto_motivo_principal {
   font-weight: bold;
   font-size: 20px;
   margin-right: 15px;
@@ -113,7 +112,7 @@
 
 /* Quadrado */
 
-.faixa_quadrado {
+.faixa_quadrado_principal {
   width: 100%;
   height: 600px;
   display: flex;
@@ -121,7 +120,7 @@
   align-items: center;
 }
 
-.quadrado {
+.quadrado_principal {
   width: 80%;
   height: 100%;
   background-image: url("https://i.ibb.co/3hVFg2r/cidade-verde.jpg");
@@ -131,7 +130,7 @@
   overflow: hidden;
 }
 
-.esquerda_quadrado {
+.esquerda_quadrado_principal {
   width: 50%;
   height: 100%;
   background-color: rgba(0, 128, 0, 0.5);
@@ -142,14 +141,14 @@
   padding: 20px;
 }
 
-.conteudo_quadrado {
+.conteudo_quadrado_principal {
   font-weight: bold;
   font-size: 40px;
   margin-right: 25px;
   margin-left: 55px;
 }
 
-.direita_quadrado {
+.direita_quadrado_principal {
   width: 50%;
   height: 100%;
   background-color: transparent;
@@ -158,7 +157,7 @@
   align-items: center;
 }
 
-.titulo2 {
+.titulo2_principal {
   color: white;
   font-weight: bold;
   font-size: 40px;
@@ -168,7 +167,7 @@
 
 /* Botões meio */
 
-.letra_botao2 {
+.letra_botao2_principal {
   background-color: white;
   width: 230px;
   height: 70px;
@@ -183,14 +182,14 @@
   color: rgba(0, 128, 0, 0.5);
 }
 
-.letra_botao2:hover {
+.letra_botao2_principal:hover {
   transform: scale(1.2);
   color: rgba(0, 128, 0, 0.5);
 }
 
 /* Rodapé */
 
-.direitos {
+.direitos_principal {
   width: 100%;
   height: 200px;
   display: flex;
@@ -198,7 +197,7 @@
   align-items: center;
 }
 
-.rodape {
+.rodape_principal {
   width: 100%;
   height: 120px;
   display: flex;
@@ -207,8 +206,8 @@
   background-color: white;
 }
 
-.direitos_rodape1,
-.direitos_rodape2 {
+.direitos_rodape1_principal,
+.direitos_rodape2_principal {
   color: black;
   text-align: center;
   margin: 10px 0;
