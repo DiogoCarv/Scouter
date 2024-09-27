@@ -68,8 +68,8 @@ const CriarProblema = () => {
 
   return (
     <div>
-      <div className='cabecalho'>
-        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
+      <div className='cabecalho_criar_problema'>
+        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo_criar_problema" alt="logo" />
       </div>
 
       <div className="criar-problema-container">
