@@ -1,9 +1,13 @@
-.App-logo {
+.App-logo_listar_problema {
     height: 60px;
     width: 60px;
 }
 
-.cabecalho {
+.App-logo_listar_problema:hover {
+    transform: scale(1.2);
+}
+
+.cabecalho_listar_problema {
     width: 100%;
     height: 80px;
     display: flex;
@@ -11,16 +15,17 @@
     align-items: center;
 }
 
-.meio {
+.meio_listar_problema {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100vh;
+    margin-top: -100px;
 }
 
-.titulo {
+.titulo_listar_problema {
     font-weight: bold;
     font-size: 20px;
     color: black;

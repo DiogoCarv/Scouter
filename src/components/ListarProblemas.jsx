@@ -28,12 +28,12 @@ const ListarProblemas = () => {
 
   return (
     <div>
-      <div className='cabecalho'>
-        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
+      <div className='cabecalho_listar_problema'>
+        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo_listar_problema" alt="logo" />
       </div>
 
-      <div className='meio'>
-        <h2 className='titulo'>Problemas Registrados</h2>
+      <div className='meio_listar_problema'>
+        <h2 className='titulo_listar_problema'>Problemas Registrados</h2>
 
         {error && <p>{error}</p>}
 

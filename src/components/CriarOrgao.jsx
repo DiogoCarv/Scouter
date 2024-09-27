@@ -45,17 +45,17 @@ const CriarOrgao = () => {
               <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} required />
             </div>
 
-            <div className='preencher'>
+            <div className='preencher_criar_orgao'>
               <label>EMAIL:</label>
               <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </div>
 
-            <div className='preencher'>
+            <div className='preencher_criar_orgao'>
               <label>SENHA:</label>
               <input type="password" value={senha} onChange={(e) => setSenha(e.target.value)} required />
             </div>
 
-            <div className='preencher'>
+            <div className='preencher_criar_orgao'>
               <label>TELEFONE:</label>
               <input type="telefone" value={telefone} onChange={(e) => setTelefone(e.target.value)} required />
             </div>

@@ -8,20 +8,20 @@ const AdminDashboard = () => {
   return (
     <div>
 
-      <div className='cabecalho'>
-        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
+      <div className='cabecalho_admin'>
+        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo_admin" alt="logo" />
       </div>
 
-      <div className='principal'>
+      <div className='principal_admin'>
 
-        <div className='bloco'>
+        <div className='bloco_admin'>
 
-          <h1 className='titulo'>PAINEL ADMINISTRADOR</h1>
+          <h1 className='titulo_admin'>PAINEL ADMINISTRADOR</h1>
 
-          <div className='botoes'>
+          <div className='botoes_admin'>
 
-            <button className='botao'><Link to="/criar-orgao" className='conteudo'>CRIAR ORGÃO RESPONSÁVEL</Link></button>
-            <button className='botao'><Link to="/listar-todos-problemas" className='conteudo'>LISTAR PROBLEMAS</Link></button>
+            <button className='botao_admin'><Link to="/criar-orgao" className='conteudo_admin'>CRIAR ORGÃO RESPONSÁVEL</Link></button>
+            <button className='botao_admin'><Link to="/listar-todos-problemas" className='conteudo_admin'>LISTAR PROBLEMAS</Link></button>
 
           </div>
 
