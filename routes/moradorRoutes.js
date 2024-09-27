@@ -5,6 +5,5 @@ import {criarProblema , listarProblemas, } from '../controllers/problemaControll
 
 // Protegendo as rotas de morado
 router.post('/registrar-problema', authMiddleware, criarProblema);  
-router.get('listar-problema-morador', authMiddleware, listarProblemas);   // Somente moradores autenticados podem verificar seus problemas
 
 export default router;
