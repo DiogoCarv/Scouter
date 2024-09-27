@@ -1,9 +1,10 @@
-.botao:hover {
+.botao_morador:hover {
     font-weight: bold;
     transform: scale(1.2);
+    background-color: #0b3e25;
 }
 
-.botao {
+.botao_morador {
     background-color: #0b3e25;
     width: 300px;
     height: 50px;
@@ -15,13 +16,13 @@
     border-radius: 25px;
 }
 
-.conteudo {
+.conteudo_morador {
     color: white;
     text-decoration: none;
     font-weight: bold;
 }
 
-.botoes {
+.botoes_morador {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -30,7 +31,7 @@
     margin-bottom: 15px;
 }
 
-.titulo {
+.titulo_morador {
     color: black;
     font-weight: bold;
     font-size: 50px;
@@ -38,12 +39,12 @@
     margin-right: 15px;
 }
 
-.App-logo {
+.App-logo_morador {
     height: 60px;
     width: 60px;
 }
 
-.cabecalho {
+.cabecalho_morador {
     width: 100%;
     height: 80px;
     display: flex;
@@ -52,13 +53,13 @@
     margin-bottom: 150px;
 }
 
-.principal {
+.principal_morador {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.bloco {
+.bloco_morador {
     border: 2px solid black;
     justify-content: center;
     align-items: center;

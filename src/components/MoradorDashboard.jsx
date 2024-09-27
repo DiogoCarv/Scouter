@@ -9,20 +9,20 @@ const MoradorDashboard = () => {
   return (
     <div>
 
-      <div className='cabecalho'>
-        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
+      <div className='cabecalho_morador'>
+        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo_morador" alt="logo" />
       </div>
 
-      <div className='principal'>
+      <div className='principal_morador'>
 
-        <div className='bloco'>
+        <div className='bloco_morador'>
 
-          <h1 className='titulo'>Painel do Morador</h1>
+          <h1 className='titulo_morador'>Painel do Morador</h1>
 
-          <div className='botoes'>
-            <button className='botao'><Link to="/registrar-problema" className='conteudo'>REGISTRAR PROBLEMA</Link></button>
-            <button className='botao'><Link to="/listar-problemas" className='conteudo'>LISTAR PROBLEMAS CRIADOS</Link></button>
-            <button className='botao'><Link to="/notificacoes" className='conteudo'>VER NOTIFICAÇÕES</Link></button>
+          <div className='botoes_morador'>
+            <button className='botao_morador'><Link to="/registrar-problema" className='conteudo_morador'>REGISTRAR PROBLEMA</Link></button>
+            <button className='botao_morador'><Link to="/listar-problemas" className='conteudo_morador'>LISTAR PROBLEMAS CRIADOS</Link></button>
+            <button className='botao_morador'><Link to="/notificacoes" className='conteudo_morador'>VER NOTIFICAÇÕES</Link></button>
           </div>
 
         </div>
