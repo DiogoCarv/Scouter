@@ -74,17 +74,20 @@ const CriarProblema = () => {
   return (
     <div>
 
-      <div className='cabecalho'>
-        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
+      <div className='cabecalho_criar_problema'>
+        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo_criar_problema" alt="logo" />
       </div>
 
       <div className="criar-problema-container">
-        <h1 className='titulo'>CRIAR PROBLEMA</h1>
+
+        <h1 className='titulo_criar_problema'>CRIAR PROBLEMA</h1>
+
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         {successMessage && <p className="success-message">{successMessage}</p>}
 
         <form onSubmit={handleSubmit}>
-          <label className='label'>
+
+          <label className='label_criar_problema'>
             DESCRIÇÃO:
             <textarea
               value={descricao}
@@ -92,7 +95,8 @@ const CriarProblema = () => {
               required
             />
           </label>
-          <label className='label'>
+
+          <label className='label_criar_problema'>
             LOCALIZAÇÃO:
             <input
               type="text"
@@ -101,7 +105,8 @@ const CriarProblema = () => {
               required
             />
           </label>
-          <label className='label'>
+
+          <label className='label_criar_problema'>
             ORGÃO COMPETENTE:
             <select value={orgaoId} onChange={(e) => setOrgaoId(e.target.value)} required>
               <option value="">Selecione um órgão</option>
@@ -112,9 +117,13 @@ const CriarProblema = () => {
               ))}
             </select>
           </label>
-          <button type="submit" className='botao'>CRIAR PROBLEMA</button>
+
+          <button type="submit" className='botao_criar_problema'>CRIAR PROBLEMA</button>
+
         </form>
+
       </div>
+
     </div>
   );
 };
