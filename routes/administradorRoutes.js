@@ -5,6 +5,6 @@ const router = express.Router();
 
 
 router.post('/criar-orgao', criarOrgao);
-router.post('/listar-problemas',listarProblemas);
+router.get('/listar-problemas-orgao',listarProblemas);
 
 export default router;

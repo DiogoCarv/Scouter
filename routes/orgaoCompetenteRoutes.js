@@ -4,7 +4,7 @@ import { atualizarStatus, autenticar } from '../controllers/orgaoCompetenteContr
 import { authMiddleware, isOrgaoCompetente } from '../middleware/auth.js'; // Middleware de autenticação
 
 // Protegendo a rota de atualização de status (somente órgãos competentes)
-router.post('/atualizar-status', authMiddleware, isOrgaoCompetente, atualizarStatus); 
+router.post('/atualizar-status-problema', authMiddleware, isOrgaoCompetente, atualizarStatus); 
 
 // Rota pública para autenticação
 router.post('/autenticar', autenticar);

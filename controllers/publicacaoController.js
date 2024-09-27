@@ -1,53 +1,55 @@
-import Publicacao from '../models/Publicacao.jsx';
-import Realizar from '../models/Realizar.jsx';
-import { exec } from 'child_process';
+import { connectDatabase } from '../config/database.js';
 
-const databaseConnect = () => {
-    return new Promise((resolve, reject) => {
-        exec('python config/databaseconnect.py', (error, stdout, stderr) => {
-            if (error) {
-                reject(`Erro ao executar script: ${error.message}`);
-                return;
-            }
-            resolve(stdout); // Retorna a saída do script Python
-        });
-    });
-};
-
-
-const db = await databaseConnect();
+// Criar publicação
 export const criarPublicacao = async (req, res) => {
-    const transaction = await db.transaction(); // Iniciar uma transação
+  const { mensagem_publicacao, foto_publicacao, id_user } = req.body;
+
+  try {
+    const db = await connectDatabase();
+    const transaction = await db.getConnection();
+
     try {
-        const { mensagem_publicacao, foto_publicacao, id_user } = req.body;
+      // Iniciar uma transação
+      await transaction.beginTransaction();
 
-        // Cria a publicação
-        const novaPublicacao = await Publicacao.create({
-            mensagem_publicacao,
-            foto_publicacao,
-        }, { transaction }); // Passar a transação
+      // Cria a publicação
+      const [novaPublicacao] = await transaction.execute(
+        'INSERT INTO publicacao (mensagem_publicacao, foto_publicacao) VALUES (?, ?)',
+        [mensagem_publicacao, foto_publicacao]
+      );
 
-        // Relaciona a publicação com o usuário
-        await Realizar.create({
-            id_publicacao: novaPublicacao.id_publicacao,
-            id_user: id_user,
-        }, { transaction }); // Passar a transação
+      // Relaciona a publicação com o usuário
+      await transaction.execute(
+        'INSERT INTO realizar (id_publicacao, id_user) VALUES (?, ?)',
+        [novaPublicacao.insertId, id_user]
+      );
 
-        await transaction.commit(); // Confirmar a transação
-        res.status(201).json(novaPublicacao);
+      await transaction.commit(); // Confirmar a transação
+
+      res.status(201).json({ message: 'Publicação criada com sucesso', id: novaPublicacao.insertId });
     } catch (error) {
-        await transaction.rollback(); // Reverter a transação em caso de erro
-        console.error('Erro ao criar publicação:', error);
-        res.status(500).json({ error: 'Erro ao criar publicação' });
+      await transaction.rollback(); // Reverter a transação em caso de erro
+      console.error('Erro ao criar publicação:', error);
+      res.status(500).json({ error: 'Erro ao criar publicação' });
+    } finally {
+      transaction.release();
     }
+  } catch (error) {
+    console.error('Erro ao conectar ao banco de dados:', error);
+    res.status(500).json({ error: 'Erro ao conectar ao banco de dados' });
+  }
 };
 
+// Listar publicações
 export const listarPublicacoes = async (req, res) => {
-    try {
-        const publicacoes = await Publicacao.findAll();
-        res.status(200).json(publicacoes);
-    } catch (error) {
-        console.error('Erro ao listar publicações:', error);
-        res.status(500).json({ error: 'Erro ao listar publicações' });
-    }
+  try {
+    const db = await connectDatabase();
+
+    const [publicacoes] = await db.execute('SELECT * FROM publicacao');
+
+    res.status(200).json(publicacoes);
+  } catch (error) {
+    console.error('Erro ao listar publicações:', error);
+    res.status(500).json({ error: 'Erro ao listar publicações' });
+  }
 };

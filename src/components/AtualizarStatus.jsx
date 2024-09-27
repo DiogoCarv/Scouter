@@ -11,14 +11,14 @@ const AtualizarStatus = ({ problemaId }) => {
   useEffect(() => {
     const fetchOrgaos = async () => {
       try {
-        const response = await fetch('/problema/listarProblemas');
+        const response = await fetch('/problemas/listarProblemas');
         if (!response.ok) {
-          throw new Error('Erro ao carregar Problemas.');
+          throw new Error('Erro ao carregar órgãos.');
         }
         const data = await response.json();
         setOrgaos(data);
       } catch (error) {
-        console.error('Erro ao carregar Problemas', error);
+        console.error('Erro ao carregar problemas', error);
       }
     };
 

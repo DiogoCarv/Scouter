@@ -1,75 +1,58 @@
-import { exec } from 'child_process';
+import { connectDatabase } from '../config/database.js';
 
-const databaseConnect = () => {
-    return new Promise((resolve, reject) => {
-        exec('python config/databaseconnect.py', (error, stdout, stderr) => {
-            if (error) {
-                reject(`Erro ao executar script: ${error.message}`);
-                return;
-            }
-            resolve(stdout); // Retorna a saída do script Python
-        });
-    });
-};
-
-// Função para enviar notificação
+// Enviar notificação
 export const enviar = async (req, res) => {
-    const { mensagem, moradorId } = req.body;
-    const db = await databaseConnect();
-    if (!db) return res.status(500).json({ error: 'Erro ao conectar ao banco de dados' });
-
-    try {
-        const [result] = await db.execute(
-            'INSERT INTO notificacao (mensagem, moradorId, dataEnvio) VALUES (?, ?, NOW())',
-            [mensagem, moradorId]
-        );
-        res.status(201).json({ message: 'Notificação enviada com sucesso', id: result.insertId });
-    } catch (error) {
-        res.status(500).json({ error: 'Erro ao enviar notificação' });
-    }
+  const { mensagem, moradorId } = req.body;
+  try {
+    const db = await connectDatabase();
+    const [result] = await db.execute(
+      'INSERT INTO notificacao (mensagem, moradorId, dataEnvio) VALUES (?, ?, NOW())',
+      [mensagem, moradorId]
+    );
+    res.status(201).json({ message: 'Notificação enviada com sucesso', id: result.insertId });
+  } catch (error) {
+    console.error('Erro ao enviar notificação:', error);
+    res.status(500).json({ error: 'Erro ao enviar notificação' });
+  }
 };
 
-// Função para listar todas as notificações
+// Listar todas as notificações
 export const listarNotificacoes = async (req, res) => {
-    const db = await databaseConnect();
-    if (!db) return res.status(500).json({ error: 'Erro ao conectar ao banco de dados' });
-
-    try {
-        const [rows] = await db.execute('SELECT * FROM notificacao');
-        res.status(200).json(rows);
-    } catch (error) {
-        res.status(500).json({ error: 'Erro ao listar notificações' });
-    }
+  try {
+    const db = await connectDatabase();
+    const [rows] = await db.execute('SELECT * FROM notificacao');
+    res.status(200).json(rows);
+  } catch (error) {
+    console.error('Erro ao listar notificações:', error);
+    res.status(500).json({ error: 'Erro ao listar notificações' });
+  }
 };
 
-// Função para deletar uma notificação
+// Deletar uma notificação
 export const deletarNotificacao = async (req, res) => {
-    const { id } = req.params;
-    const db = await databaseConnect();
-    if (!db) return res.status(500).json({ error: 'Erro ao conectar ao banco de dados' });
-
-    try {
-        await db.execute('DELETE FROM notificacao WHERE id = ?', [id]);
-        res.status(200).json({ message: 'Notificação excluída com sucesso' });
-    } catch (error) {
-        res.status(500).json({ error: 'Erro ao excluir notificação' });
-    }
+  const { id } = req.params;
+  try {
+    const db = await connectDatabase();
+    await db.execute('DELETE FROM notificacao WHERE id = ?', [id]);
+    res.status(200).json({ message: 'Notificação excluída com sucesso' });
+  } catch (error) {
+    console.error('Erro ao excluir notificação:', error);
+    res.status(500).json({ error: 'Erro ao excluir notificação' });
+  }
 };
 
-const criarNotificacao = async (req, res) => {
-    const { orgaoId, descricao } = req.body; // Extrai os dados do corpo da requisição
-  
-    try {
-      const db = await databaseConnect(); // Aguarda a conexão com o banco de dados
-  
-      // Supondo que você tenha uma tabela chamada "notificacoes"
-      const query = 'INSERT INTO notificacoes (orgao_id, descricao) VALUES ($1, $2) RETURNING *';
-      const values = [orgaoId, descricao];
-  
-      const result = await db.query(query, values); // Executa a consulta
-      res.status(201).json(result.rows[0]); // Retorna a nova notificação criada
-    } catch (error) {
-      console.error('Erro ao criar notificação:', error);
-      res.status(500).json({ message: 'Erro ao criar notificação.' });
-    }
-  };
+// Criar nova notificação para um órgão competente
+export const criarNotificacao = async (req, res) => {
+  const { orgaoId, descricao } = req.body;
+  try {
+    const db = await connectDatabase();
+    await db.execute(
+      'INSERT INTO notificacao (orgaoId, descricao, dataEnvio) VALUES (?, ?, NOW())',
+      [orgaoId, descricao]
+    );
+    res.status(201).json({ message: 'Notificação criada com sucesso' });
+  } catch (error) {
+    console.error('Erro ao criar notificação:', error);
+    res.status(500).json({ error: 'Erro ao criar notificação' });
+  }
+};

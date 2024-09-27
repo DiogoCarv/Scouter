@@ -1,84 +1,49 @@
-import { exec } from 'child_process';
+import { connectDatabase } from '../config/database.js';
 
-const databaseConnect = () => {
-    return new Promise((resolve, reject) => {
-        exec('python config/databaseconnect.py', (error, stdout, stderr) => {
-            if (error) {
-                reject(`Erro ao executar script: ${error.message}`);
-                return;
-            }
-            resolve(stdout); // Retorna a saída do script Python
-        });
-    });
+// Listar administradores
+export const listarAdministradores = async (req, res) => {
+  try {
+    const db = await connectDatabase();
+    const [administradores] = await db.execute('SELECT * FROM administrador');
+    res.status(200).json(administradores);
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao listar administradores' });
+  }
 };
 
-// Função para obter um administrador pelo ID
-export const getAdministradorById = async (req, res) => {
-    const db = await databaseConnect();
-    if (!db) return res.status(500).json({ error: 'Erro ao conectar ao banco de dados' });
-
-    const { id } = req.params;
-
-    try {
-        const [rows] = await db.execute('SELECT * FROM administrador WHERE id = ?', [id]);
-        if (rows.length > 0) {
-            res.status(200).json(rows[0]);
-        } else {
-            res.status(404).json({ message: 'Administrador não encontrado' });
-        }
-    } catch (error) {
-        res.status(500).json({ error: 'Erro ao buscar administrador' });
-    }
+// Criar administrador
+export const criarAdministrador = async (req, res) => {
+  const { nome, email, senha } = req.body;
+  try {
+    const db = await connectDatabase();
+    await db.execute('INSERT INTO administrador (nome, email, senha) VALUES (?, ?, ?)', [nome, email, senha]);
+    res.status(201).json({ message: 'Administrador criado com sucesso' });
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao criar administrador' });
+  }
 };
 
-// Função para criar um novo administrador
-export const createAdministrador = async (req, res) => {
-    const db = await databaseConnect();
-    if (!db) return res.status(500).json({ error: 'Erro ao conectar ao banco de dados' });
-
-    const { nome, email, senha } = req.body;
-
-    try {
-        const [result] = await db.execute(
-            'INSERT INTO administrador (nome, email, senha) VALUES (?, ?, ?)', 
-            [nome, email, senha]
-        );
-        res.status(201).json({ message: 'Administrador criado com sucesso', id: result.insertId });
-    } catch (error) {
-        res.status(500).json({ error: 'Erro ao criar administrador' });
-    }
+// Atualizar administrador
+export const atualizarAdministrador = async (req, res) => {
+  const { id } = req.params;
+  const { nome, email, senha } = req.body;
+  try {
+    const db = await connectDatabase();
+    await db.execute('UPDATE administrador SET nome = ?, email = ?, senha = ? WHERE id = ?', [nome, email, senha, id]);
+    res.status(200).json({ message: 'Administrador atualizado com sucesso' });
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao atualizar administrador' });
+  }
 };
 
-// Função para atualizar os dados de um administrador
-export const updateAdministrador = async (req, res) => {
-    const db = await databaseConnect();
-    if (!db) return res.status(500).json({ error: 'Erro ao conectar ao banco de dados' });
-
-    const { id } = req.params;
-    const { nome, email, senha } = req.body;
-
-    try {
-        await db.execute(
-            'UPDATE administrador SET nome = ?, email = ?, senha = ? WHERE id = ?', 
-            [nome, email, senha, id]
-        );
-        res.status(200).json({ message: 'Administrador atualizado com sucesso' });
-    } catch (error) {
-        res.status(500).json({ error: 'Erro ao atualizar administrador' });
-    }
-};
-
-// Função para excluir um administrador
-export const deleteAdministrador = async (req, res) => {
-    const db = await databaseConnect();
-    if (!db) return res.status(500).json({ error: 'Erro ao conectar ao banco de dados' });
-
-    const { id } = req.params;
-
-    try {
-        await db.execute('DELETE FROM administrador WHERE id = ?', [id]);
-        res.status(200).json({ message: 'Administrador excluído com sucesso' });
-    } catch (error) {
-        res.status(500).json({ error: 'Erro ao excluir administrador' });
-    }
+// Excluir administrador
+export const excluirAdministrador = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const db = await connectDatabase();
+    await db.execute('DELETE FROM administrador WHERE id = ?', [id]);
+    res.status(200).json({ message: 'Administrador excluído com sucesso' });
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao excluir administrador' });
+  }
 };
