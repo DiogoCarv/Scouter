@@ -49,19 +49,26 @@ const AtualizarStatus = ({ problemaId }) => {
 
   return (
     <div>
-      <div className='cabecalho'>
-        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
+
+      <div className='cabecalho_atualizar_status'>
+
+        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo_atualizar_status" alt="logo" />
+
       </div>
 
-      <div className='principal'>
-        <h2 className='titulo'>ATUALIZAR STATUS DO PROBLEMA</h2>
+      <div className='principal_atualizar_status'>
+
+        <h2 className='titulo_atualizar_status'>ATUALIZAR STATUS DO PROBLEMA</h2>
         {error && <p>{error}</p>}
         {success && <p>{success}</p>}
 
-        <div className='bloco'>
-          <div className='conteudo_bloco'>
+        <div className='bloco_atualizar_status'>
+
+          <div className='conteudo_bloco_atualizar_status'>
+
             <form onSubmit={handleSubmit}>
-              <label>
+
+              <label className='label_atualizar_status'>
                 Problema:
                 <select value={orgaoId} onChange={(e) => setOrgaoId(e.target.value)} required>
                   <option value="">Selecione um problema</option>
@@ -72,7 +79,8 @@ const AtualizarStatus = ({ problemaId }) => {
                   ))}
                 </select>
               </label>
-              <label className='label'>
+
+              <label className='label_atualizar_status'>
                 Status:
                 <input
                   type="text"
@@ -80,11 +88,19 @@ const AtualizarStatus = ({ problemaId }) => {
                   onChange={(e) => setStatus(e.target.value)}
                 />
               </label>
-              <button type="submit" className='botao'>ATUALIZAR</button>
+              
+              <div className='botaobloco_atualizar_status'>
+                <button type="submit" className='botao_atualizar_status'>ATUALIZAR</button>
+              </div>
+
             </form>
+
           </div>
+
         </div>
+
       </div>
+
     </div>
   );
 };

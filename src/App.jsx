@@ -67,15 +67,15 @@ function App() {
   };
 
   return (
-    <div className='App'>
-      <div className='App-header'>
+    <div className='App_principal'>
+      <div className='App-header_principal'>
 
-        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
+        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo_principal" alt="logo" />
 
         <div>
           {!showLogin && (
-            <button className='botao_login' onClick={handleLoginButtonClick}>
-              <h3 className='letra_botao'>LOGIN</h3>
+            <button className='botao_login_principal' onClick={handleLoginButtonClick}>
+              <h3 className='letra_botao_principal'>LOGIN</h3>
             </button>
           )}
           {showLogin && (
@@ -89,8 +89,8 @@ function App() {
             </div>
           )}
           {!showRegister && (
-            <button className='botao_registrar' onClick={handleRegisterButtonClick}>
-              <h3 className='letra_botao'>REGISTRAR</h3>
+            <button className='botao_registrar_principal' onClick={handleRegisterButtonClick}>
+              <h3 className='letra_botao_principal'>REGISTRAR</h3>
             </button>
           )}
           {showRegister && (
@@ -106,14 +106,14 @@ function App() {
         </div>
       </div>
 
-      <div className='meio'>
+      <div className='meio_principal'>
  
-        <div className='carrosel'>
-          <h1 className='titulo_carrosel'>SCOUTER</h1>
+        <div className='carrosel_principal'>
+          <h1 className='titulo_carrosel_principal'>SCOUTER</h1>
         </div>
 
-        <div className='motivo'>
-          <div className='conteudo_motivo'>
+        <div className='motivo_principal'>
+          <div className='conteudo_motivo_principal'>
             <Box
               sx={{
                 display: 'flex',
@@ -126,11 +126,11 @@ function App() {
                 p: 2,
               }}
             >
-              <h2 className='titulo_motivo'>Motivo</h2>
+              <h2 className='titulo_motivo_principal'>Motivo</h2>
 
               <Divider orientation="vertical" variant="middle" flexItem />
 
-              <h2 className='texto_motivo'>
+              <h2 className='texto_motivo_principal'>
                 Bem-vindo à plataforma onde os cidadãos podem reportar problemas urbanos diretamente para os órgãos competentes. Nosso objetivo é melhorar a qualidade de vida em nossa cidade, facilitando a comunicação entre a população e as autoridades responsáveis pela manutenção e desenvolvimento urbano.
               </h2>
 
@@ -138,20 +138,20 @@ function App() {
           </div>
         </div>
 
-        <div className="faixa_quadrado">
-          <div className="quadrado">
-            <div className="esquerda_quadrado">
-              <h2 className='conteudo_quadrado'>Envie suas reclamações com fotos no sistema</h2>
+        <div className="faixa_quadrado_principal">
+          <div className="quadrado_principal">
+            <div className="esquerda_quadrado_principal">
+              <h2 className='conteudo_quadrado_principal'>Envie suas reclamações com fotos no sistema</h2>
             </div>
-            <div className="direita_quadrado"></div>
+            <div className="direita_quadrado_principal"></div>
           </div>
         </div>
 
       </div>
 
-      <div className='rodape'>
+      <div className='rodape_principal'>
         
-        <div className='direitos'>
+        <div className='direitos_principal'>
           
             <Box
               sx={{

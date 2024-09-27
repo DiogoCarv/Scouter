@@ -8,20 +8,20 @@ const OrgaoDashboard = () => {
   return (
     <div>
 
-      <div className='cabecalho'>
-        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
+      <div className='cabecalho_orgao'>
+        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo_orgao" alt="logo" />
       </div>
 
-      <div className='principal'>
+      <div className='principal_orgao'>
 
-        <div className='bloco'>
+        <div className='bloco_orgao'>
 
-          <h1 className='titulo'>PAINEL ORGÃO RESPONSÁVEL</h1>
+          <h1 className='titulo_orgao'>PAINEL ORGÃO RESPONSÁVEL</h1>
 
-          <div className='botoes'>
-            <button className='botao'><Link to="/atualizarStatusProblema" className='conteudo'>ALTERAR STATUS DOS PROBLEMAS</Link></button>
-            <button className='botao'><Link to="/listar-problemas-orgao" className='conteudo'>LISTAR PROBLEMAS</Link></button>
-            <button className='botao'><Link to="/notificacoes-orgao" className='conteudo'>VER NOTIFICAÇÕES</Link></button>
+          <div className='botoes_orgao'>
+            <button className='botao_orgao'><Link to="/atualizarStatusProblema" className='conteudo_orgao'>ALTERAR STATUS DOS PROBLEMAS</Link></button>
+            <button className='botao_orgao'><Link to="/listar-problemas-orgao" className='conteudo_orgao'>LISTAR PROBLEMAS</Link></button>
+            <button className='botao_orgao'><Link to="/notificacoes-orgao" className='conteudo_orgao'>VER NOTIFICAÇÕES</Link></button>
           </div>
 
         </div>

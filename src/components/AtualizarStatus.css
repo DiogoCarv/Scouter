@@ -1,9 +1,13 @@
-.App-logo {
+.App-logo_atualizar_status {
     height: 60px;
     width: 60px;
 }
 
-.cabecalho {
+.App-logo_atualizar_status:hover {
+    transform: scale(1.2);
+}
+
+.cabecalho_atualizar_status {
     width: 100%;
     height: 80px;
     display: flex;
@@ -12,14 +16,14 @@
     margin-bottom: 150px;
 }
 
-.principal {
+.principal_atualizar_status {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.bloco {
+.bloco_atualizar_status {
     border: 2px solid black;
     justify-content: center;
     align-items: center;
@@ -29,24 +33,28 @@
     width: auto
 }
 
-.conteudo_bloco {
+.conteudo_bloco_atualizar_status {
     margin-top: 35px;
     margin-bottom: 35px;
     margin-left: 35px;
     margin-right: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-.label {
+.label_atualizar_status {
     margin-right: 30px;
     margin-bottom: 15px;
 }
 
-.botao:hover {
+.botao_atualizar_status:hover {
     font-weight: bold;
     transform: scale(1.2);
     background-color: #0b3e25;
 }
 
-.botao {
+.botao_atualizar_status {
     background-color: #0b3e25;
     width: 300px;
     height: 50px;
@@ -57,4 +65,13 @@
     transition: 0.3s;
     border-radius: 25px;
     font-weight: bold;
+    color: white;
+    margin-top: 20px;
+}
+
+.botaobloco_atualizar_status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }

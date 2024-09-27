@@ -32,13 +32,13 @@ const Notificacoes = () => {
   return (
     <div className="notificacoes-container">
 
-      <div className='cabecalho'>
-        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
+      <div className='cabecalho_notificacoes'>
+        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo_notificacoes" alt="logo" />
       </div>
 
-      <div className='meio'>
+      <div className='meio_notificacoes'>
 
-        <h2 className='titulo'>Notificações</h2>
+        <h2 className='titulo_notificacoes'>Notificações</h2>
 
         {errorMessage && <p className="error">{errorMessage}</p>}
         {notificacoes.length > 0 ? (
