@@ -44,6 +44,10 @@
     width: 60px;
 }
 
+.App-logo_admin:hover {
+    transform: scale(1.2);
+}
+
 .cabecalho_admin {
     width: 100%;
     height: 80px;
