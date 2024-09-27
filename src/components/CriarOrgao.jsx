@@ -31,16 +31,16 @@ const CriarOrgao = () => {
 
   return (
     <div>
-      <div className='cabecalho'>
-        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
+      <div className='cabecalho_criar_orgao'>
+        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo_criar_orgao" alt="logo" />
       </div>
 
-      <div className='principal'>
-        <div className='bloco'>
-          <h1 className='titulo'>CRIAR ORGÃO RESPONSÁVEL</h1>
+      <div className='principal_criar_orgao'>
+        <div className='bloco_criar_orgao'>
+          <h1 className='titulo_criar_orgao'>CRIAR ORGÃO RESPONSÁVEL</h1>
 
           <form onSubmit={handleSubmit}>
-            <div className='preencher'>
+            <div className='preencher_criar_orgao'>
               <label>NOME:</label>
               <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} required />
             </div>
@@ -63,7 +63,7 @@ const CriarOrgao = () => {
             {errorMessage && <p className="error">{errorMessage}</p>}
             {successMessage && <p className="success">{successMessage}</p>}
 
-            <button type="submit" className='botao'>CRIAR ORGÃO</button>
+            <button type="submit" className='botao_criar_orgao'>CRIAR ORGÃO</button>
           </form>
         </div>
       </div>

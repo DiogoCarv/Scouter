@@ -85,53 +85,76 @@ const RegistrationForm = () => {
   return (
     <div className="form-container">
       <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="logo-forms" alt="logo" />
+
       <form onSubmit={handleSubmit}>
+
         <div className='label-divisao'>
+
           <label className='label'>Nome:</label>
+
           <input
             type="text"
             value={nome}
             onChange={(e) => setNome(e.target.value)}
             required
           />
+
         </div>
+
         <div className='label-divisao'>
+
           <label className='label'>Email:</label>
+
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+
         </div>
+
         <div className='label-divisao'>
+
           <label className='label'>Senha:</label>
+
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+
         </div>
+
         <div className='label-divisao'>
+
           <label className='label'>CEP:</label>
+
           <input
             type="text"
             value={cep}
             onChange={handleCepChange}
             required
           />
+
         </div>
+
         {address && (
           <div className='label-divisao'>
             <label className='label'>Endereço:</label>
             <input type="text" value={address} readOnly />
           </div>
         )}
+
         {errorMessage && <p className="error">{errorMessage}</p>}
+
         {successMessage && <p className="success">{successMessage}</p>}
+
         <button type="submit" className='botao_registrar'>Registrar</button>
+
       </form>
+      
     </div>
   );
 };
