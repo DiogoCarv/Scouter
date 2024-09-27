@@ -1,9 +1,14 @@
-.App-logo {
+.App-logo_criar_orgao {
     height: 60px;
     width: 60px;
 }
 
-.cabecalho {
+.App-logo_criar_orgao:hover {
+    transform: scale(1.2);
+}
+
+
+.cabecalho_criar_orgao {
     width: 100%;
     height: 80px;
     display: flex;
@@ -12,16 +17,18 @@
     margin-bottom: 150px;
 }
 
-.preencher {
+.preencher_criar_orgao {
     margin-bottom: 10px;
 }
 
-.botao:hover {
+.botao_criar_orgao:hover {
     font-weight: bold;
     transform: scale(1.2);
+    background-color: #0b3e25;
+    color: white;
 }
 
-.botao {
+.botao_criar_orgao {
     background-color: #0b3e25;
     width: 300px;
     height: 50px;
@@ -33,9 +40,11 @@
     border-radius: 25px;
     margin-right: 0px;
     margin-bottom: 15px;
+    color: white;
+    font-weight: bold;
 }
 
-.titulo {
+.titulo_criar_orgao {
     color: black;
     font-weight: bold;
     font-size: 50px;
@@ -43,13 +52,13 @@
     margin-right: 15px;
 }
 
-.principal {
+.principal_criar_orgao {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.bloco {
+.bloco_criar_orgao {
     border: 2px solid black;
     justify-content: center;
     align-items: center;

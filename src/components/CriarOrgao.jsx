@@ -46,34 +46,34 @@ const CriarOrgao = () => {
   return (
     <div>
 
-      <div className='cabecalho'>
-        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
+      <div className='cabecalho_criar_orgao'>
+        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo_criar_orgao" alt="logo" />
       </div>
 
-      <div className='principal'>
+      <div className='principal_criar_orgao'>
 
-        <div className='bloco'>
+        <div className='bloco_criar_orgao'>
           
-          <h1 className='titulo'>CRIAR ORGÃO RESPONSÁVEL</h1>
+          <h1 className='titulo_criar_orgao'>CRIAR ORGÃO RESPONSÁVEL</h1>
 
           <form onSubmit={handleSubmit}>
 
-            <div className='preencher'>
+            <div className='preencher_criar_orgao'>
               <label>NOME:</label>
               <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} required />
             </div>
 
-            <div className='preencher'>
+            <div className='preencher_criar_orgao'>
               <label>EMAIL:</label>
               <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </div>
 
-            <div className='preencher'>
+            <div className='preencher_criar_orgao'>
               <label>SENHA:</label>
               <input type="password" value={senha} onChange={(e) => setSenha(e.target.value)} required />
             </div>
 
-            <div className='preencher'>
+            <div className='preencher_criar_orgao'>
               <label>TELEFONE:</label>
               <input type="telefone" value={telefone} onChange={(e) => setTelefone(e.target.value)} required />
             </div>
@@ -81,7 +81,7 @@ const CriarOrgao = () => {
             {errorMessage && <p className="error">{errorMessage}</p>}
             {successMessage && <p className="success">{successMessage}</p>}
 
-            <button type="submit" className='botao'>CRIAR ORGÃO</button>
+            <button type="submit" className='botao_criar_orgao'>CRIAR ORGÃO</button>
 
           </form>
         </div>
