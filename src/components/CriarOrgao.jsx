@@ -1,5 +1,3 @@
-// src/components/CriarOrgao.jsx
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import './CriarOrgao.css';
@@ -18,46 +16,30 @@ const CriarOrgao = () => {
     setSuccessMessage(null);
 
     try {
-      const response = await fetch('http://localhost:5000/criar-orgao', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-              nome,
-              email,
-              senha,
-              telefone
-          }),
+      const response = await axios.post('http://localhost:5000/criar-orgao', {
+        nome,
+        email,
+        senha,
+        telefone
       });
 
-      if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error || 'Erro ao criar órgão competente');
-      }
-
-      const data = await response.json();
-      setSuccessMessage(`Órgão Competente criado com sucesso! ID: ${data.orgaoId}`);
-  } catch (error) {
-      setErrorMessage(error.message);
-  }
-};
+      setSuccessMessage(`Órgão Competente criado com sucesso! ID: ${response.data.orgaoId}`);
+    } catch (error) {
+      setErrorMessage(error.response?.data?.error || 'Erro ao criar órgão competente');
+    }
+  };
 
   return (
     <div>
-
       <div className='cabecalho'>
         <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
       </div>
 
       <div className='principal'>
-
         <div className='bloco'>
-          
           <h1 className='titulo'>CRIAR ORGÃO RESPONSÁVEL</h1>
 
           <form onSubmit={handleSubmit}>
-
             <div className='preencher'>
               <label>NOME:</label>
               <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} required />
@@ -82,12 +64,9 @@ const CriarOrgao = () => {
             {successMessage && <p className="success">{successMessage}</p>}
 
             <button type="submit" className='botao'>CRIAR ORGÃO</button>
-
           </form>
         </div>
-
       </div>
-
     </div>
   );
 };

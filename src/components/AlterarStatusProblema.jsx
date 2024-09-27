@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';  // Adicionar Axios para requisições HTTP
 import './AlterarStatusProblema.css';
 
 const AlterarStatusProblema = () => {
@@ -7,13 +8,12 @@ const AlterarStatusProblema = () => {
   const [novoStatus, setNovoStatus] = useState('');
   const [mensagem, setMensagem] = useState('');
 
-  // Busca os problemas ao carregar a página
+  // Buscar os problemas ao carregar a página
   useEffect(() => {
     const fetchProblemas = async () => {
       try {
-        const response = await fetch('/problema/listarProblemas'); // Usando o problemaController
-        const data = await response.json();
-        setProblemas(data);
+        const response = await axios.get('/problema/listarProblemas'); // Utilizando Axios
+        setProblemas(response.data);
       } catch (error) {
         console.error('Erro ao carregar problemas', error);
       }
@@ -27,21 +27,18 @@ const AlterarStatusProblema = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`/problema/atualizarProblema/${selectedProblema}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ status: novoStatus }), // Atualizando o status via problemaController
+      const response = await axios.put(`/problema/atualizarProblema/${selectedProblema}`, {
+        status: novoStatus
       });
 
-      if (response.ok) {
+      if (response.status === 200) {
         setMensagem('Status atualizado com sucesso');
       } else {
         setMensagem('Erro ao atualizar status');
       }
     } catch (error) {
       console.error('Erro ao atualizar status', error);
+      setMensagem('Erro ao atualizar status');
     }
   };
 

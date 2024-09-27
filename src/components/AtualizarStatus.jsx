@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'; // Adicione useEffect aqui
+import React, { useState, useEffect } from 'react'; 
+import axios from 'axios'; 
 import './AtualizarStatus.css';
 
 const AtualizarStatus = ({ problemaId }) => {
@@ -8,23 +9,22 @@ const AtualizarStatus = ({ problemaId }) => {
   const [orgaoId, setOrgaoId] = useState('');
   const [orgaos, setOrgaos] = useState([]);
 
+  // Fazer a chamada para buscar problemas
   useEffect(() => {
-    const fetchOrgaos = async () => {
+    const fetchProblemas = async () => {
       try {
-        const response = await fetch('/problemas/listarProblemas');
-        if (!response.ok) {
-          throw new Error('Erro ao carregar órgãos.');
-        }
-        const data = await response.json();
-        setOrgaos(data);
+        const response = await axios.get('/problema/listarProblemas');
+        setOrgaos(response.data);
       } catch (error) {
-        console.error('Erro ao carregar problemas', error);
+        console.error('Erro ao carregar Problemas', error);
+        setError('Erro ao carregar Problemas.');
       }
     };
 
-    fetchOrgaos();
+    fetchProblemas();
   }, []);
 
+  // Enviar a atualização de status
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -32,18 +32,12 @@ const AtualizarStatus = ({ problemaId }) => {
 
     try {
       const token = localStorage.getItem('token');  // Recupera o token JWT
-      const response = await fetch(`/problema/atualizarStatusProblema/${problemaId}`, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ status }), // Envia o novo status via problemaController
-      });
+      const response = await axios.put(`/problema/atualizarStatusProblema/${problemaId}`, 
+        { status }, 
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
 
-      const data = await response.json();
-
-      if (data.problema) {
+      if (response.data.problema) {
         setSuccess('Status atualizado com sucesso.');
       } else {
         setError('Erro ao atualizar status.');

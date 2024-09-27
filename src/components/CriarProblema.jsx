@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './CriarProblema.css';
 
 const CriarProblema = () => {
@@ -9,39 +10,36 @@ const CriarProblema = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
 
+  // Buscar os órgãos competentes ao carregar a página
   useEffect(() => {
     const fetchOrgaos = async () => {
       try {
-        const response = await fetch('/orgao/listarOrgao');
-        if (!response.ok) {
-          throw new Error('Erro ao carregar órgãos.');
-        }
-        const data = await response.json();
-        setOrgaos(data);
+        const response = await axios.get('/orgao/listarOrgao'); // Utilizando Axios
+        setOrgaos(response.data);
       } catch (error) {
         console.error('Erro ao carregar órgãos', error);
+        setErrorMessage('Erro ao carregar órgãos.');
       }
     };
 
     fetchOrgaos();
   }, []);
 
+  // Enviar o novo problema
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage(null);
     setSuccessMessage(null);
 
     try {
-      const response = await fetch('/problema/criarProblema', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ descricao, localizacao, orgaoId }),
+      const response = await axios.post('/problema/criarProblema', {
+        descricao,
+        localizacao,
+        orgaoId
       });
 
-      if (response.ok) {
-        // Notificar o órgão
+      if (response.status === 200) {
+        // Notificar o órgão competente
         await notificarOrgao(orgaoId, descricao);
 
         setSuccessMessage('Problema criado com sucesso!');
@@ -56,15 +54,12 @@ const CriarProblema = () => {
     }
   };
 
-  // Função para notificar o órgão
+  // Função para notificar o órgão competente
   const notificarOrgao = async (orgaoId, descricaoProblema) => {
     try {
-      await fetch('/notificacao/criarNotificacao', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ orgaoId, descricao: `Novo problema criado: ${descricaoProblema}` }),
+      await axios.post('/notificacao/criarNotificacao', {
+        orgaoId,
+        descricao: `Novo problema criado: ${descricaoProblema}`
       });
     } catch (error) {
       console.error('Erro ao notificar o órgão:', error);
@@ -73,7 +68,6 @@ const CriarProblema = () => {
 
   return (
     <div>
-
       <div className='cabecalho'>
         <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
       </div>

@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import logoVerde from './imagens/logo_verde.png';  
 import { useNavigate } from 'react-router-dom'; // Importa o hook useNavigate
+import axios from 'axios';  // Adicionando Axios
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,40 +20,29 @@ const Login = () => {
     setSuccessMessage(null);
 
     try {
-      const response = await fetch('http://localhost:5000/login', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, password }), // Corpo da requisição
-      });
+      const response = await axios.post('http://localhost:5000/login', { email, password });  // Usando Axios para requisição
 
-      if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error || 'Erro ao fazer login');
-      }
-
-      const data = await response.json();
+      const data = response.data;
       localStorage.setItem('token', data.token);
 
       // Redirecionar baseado no userType
       switch (data.userType) {
-          case 'morador':
-              navigate('/dashboardMorador');
-              break;
-          case 'administrador':
-              navigate('/dashboardAdministrador');
-              break;
-          case 'orgaoCompetente':
-              navigate('/dashboardOrgaoCompetente');
-              break;
-          default:
-              break;
+        case 'morador':
+          navigate('/dashboardMorador');
+          break;
+        case 'administrador':
+          navigate('/dashboardAdministrador');
+          break;
+        case 'orgaoCompetente':
+          navigate('/dashboardOrgaoCompetente');
+          break;
+        default:
+          break;
       }
-  } catch (error) {
-      setErrorMessage(error.message);
-  }
-};
+    } catch (error) {
+      setErrorMessage(error.response?.data?.error || 'Erro ao fazer login');
+    }
+  };
 
   return (
     <div className="login-form">
