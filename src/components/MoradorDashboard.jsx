@@ -1,4 +1,3 @@
-// src/components/MoradorDashboard.jsx
 
 import './MoradorDashboard.css';
 

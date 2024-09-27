@@ -1,5 +1,3 @@
-// src/components/CriarOrgao.jsx
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import './CriarOrgao.css';
@@ -18,47 +16,31 @@ const CriarOrgao = () => {
     setSuccessMessage(null);
 
     try {
-      const response = await fetch('http://localhost:5000/criar-orgao', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-              nome,
-              email,
-              senha,
-              telefone
-          }),
+      const response = await axios.post('http://localhost:5000/criar-orgao', {
+        nome,
+        email,
+        senha,
+        telefone
       });
 
-      if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error || 'Erro ao criar órgão competente');
-      }
-
-      const data = await response.json();
-      setSuccessMessage(`Órgão Competente criado com sucesso! ID: ${data.orgaoId}`);
-  } catch (error) {
-      setErrorMessage(error.message);
-  }
-};
+      setSuccessMessage(`Órgão Competente criado com sucesso! ID: ${response.data.orgaoId}`);
+    } catch (error) {
+      setErrorMessage(error.response?.data?.error || 'Erro ao criar órgão competente');
+    }
+  };
 
   return (
     <div>
-
-      <div className='cabecalho_criar_orgao'>
-        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo_criar_orgao" alt="logo" />
+      <div className='cabecalho'>
+        <img src="https://i.ibb.co/vJRNYqQ/logo-verde.png" className="App-logo" alt="logo" />
       </div>
 
-      <div className='principal_criar_orgao'>
-
-        <div className='bloco_criar_orgao'>
-          
-          <h1 className='titulo_criar_orgao'>CRIAR ORGÃO RESPONSÁVEL</h1>
+      <div className='principal'>
+        <div className='bloco'>
+          <h1 className='titulo'>CRIAR ORGÃO RESPONSÁVEL</h1>
 
           <form onSubmit={handleSubmit}>
-
-            <div className='preencher_criar_orgao'>
+            <div className='preencher'>
               <label>NOME:</label>
               <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} required />
             </div>
@@ -81,13 +63,10 @@ const CriarOrgao = () => {
             {errorMessage && <p className="error">{errorMessage}</p>}
             {successMessage && <p className="success">{successMessage}</p>}
 
-            <button type="submit" className='botao_criar_orgao'>CRIAR ORGÃO</button>
-
+            <button type="submit" className='botao'>CRIAR ORGÃO</button>
           </form>
         </div>
-
       </div>
-
     </div>
   );
 };

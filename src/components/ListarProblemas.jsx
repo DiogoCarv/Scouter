@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios'; 
 import './ListarProblemas.css';
 
 const ListarProblemas = () => {
   const [problemas, setProblemas] = useState([]);
   const [error, setError] = useState('');
 
+  // Buscar problemas ao carregar a página
   useEffect(() => {
     const fetchProblemas = async () => {
       try {
         const token = localStorage.getItem('token');  // Recupera o token JWT
-        const response = await fetch('/problema/listar-problemas', {
+        const response = await axios.get('/problema/listar-problemas', {
           headers: {
-            'Authorization': `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         });
 
-        const data = await response.json();
-        setProblemas(data);  // Carrega os problemas
+        setProblemas(response.data);  // Carrega os problemas
       } catch (err) {
         setError('Erro ao carregar problemas.');
       }
